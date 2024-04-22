@@ -1,17 +1,17 @@
-import { Client } from "@planetscale/database";
-import { drizzle } from "drizzle-orm/planetscale-serverless";
+import { drizzle } from 'drizzle-orm/postgres-js';
 
 import { connectionStr } from "./config";
 import * as auth from "./schema/auth";
 import * as post from "./schema/post";
+import postgres from 'postgres';
 
 export const schema = { ...auth, ...post };
 
-export { mySqlTable as tableCreator } from "./schema/_table";
+export { pgTable as tableCreator } from "./schema/_table";
 
 export * from "drizzle-orm/sql";
-export { alias } from "drizzle-orm/mysql-core";
+export { alias } from "drizzle-orm/pg-core";
 
-const psClient = new Client({ url: connectionStr.href });
+const pgClient = postgres(connectionStr.href );
 
-export const db = drizzle(psClient, { schema });
+export const db = drizzle(pgClient, { schema });

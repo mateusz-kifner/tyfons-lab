@@ -1,5 +1,5 @@
 {
-  "name": "@acme/auth",
+  "name": "@tyfons-lab/auth",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -18,9 +18,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/db": "workspace:*",
     "@auth/drizzle-adapter": "^0.8.1",
     "@t3-oss/env-nextjs": "^0.10.0",
+    "@tyfons-lab/db": "workspace:*",
     "next": "^14.2.0",
     "next-auth": "5.0.0-beta.16",
     "react": "18.2.0",
@@ -28,12 +28,9 @@
     "zod": "^3.23.0"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
-    "eslint": "^9.0.0",
-    "prettier": "^3.2.5",
+    "@tyfons-lab/biome-config": "workspace:*",
+    "@tyfons-lab/tsconfig": "workspace:*",
     "typescript": "^5.4.5"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@tyfons-lab/prettier-config"
 }

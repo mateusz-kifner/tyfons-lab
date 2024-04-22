@@ -3,7 +3,7 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { vercel } from "@t3-oss/env-nextjs/presets";
 import { z } from "zod";
 
-import { env as authEnv } from "@acme/auth/env";
+import { env as authEnv } from "@tyfons-lab/auth/env";
 
 export const env = createEnv({
   extends: [authEnv, vercel()],
@@ -17,10 +17,7 @@ export const env = createEnv({
    * This way you can ensure the app isn't built with invalid env vars.
    */
   server: {
-    DB_HOST: z.string(),
-    DB_NAME: z.string(),
-    DB_PASSWORD: z.string(),
-    DB_USERNAME: z.string(),
+    DATABASE_URL: z.string(),
   },
 
   /**

@@ -2,9 +2,9 @@
 
 import { use } from "react";
 
-import type { RouterOutputs } from "@acme/api";
-import { cn } from "@acme/ui";
-import { Button } from "@acme/ui/button";
+import type { RouterOutputs } from "@tyfons-lab/api";
+import { cn } from "@tyfons-lab/ui";
+import { Button } from "@tyfons-lab/ui/button";
 import {
   Form,
   FormControl,
@@ -12,10 +12,10 @@ import {
   FormItem,
   FormMessage,
   useForm,
-} from "@acme/ui/form";
-import { Input } from "@acme/ui/input";
-import { toast } from "@acme/ui/toast";
-import { CreatePostSchema } from "@acme/validators";
+} from "@tyfons-lab/ui/form";
+import { Input } from "@tyfons-lab/ui/input";
+import { toast } from "@tyfons-lab/ui/toast";
+import { CreatePostSchema } from "@tyfons-lab/validators";
 
 import { api } from "~/trpc/react";
 

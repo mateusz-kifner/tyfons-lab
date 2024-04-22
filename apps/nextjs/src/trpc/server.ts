@@ -1,8 +1,8 @@
 import { cache } from "react";
 import { headers } from "next/headers";
 
-import { createCaller, createTRPCContext } from "@acme/api";
-import { auth } from "@acme/auth";
+import { createCaller, createTRPCContext } from "@tyfons-lab/api";
+import { auth } from "@tyfons-lab/auth";
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when

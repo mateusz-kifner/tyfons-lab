@@ -1,5 +1,5 @@
 {
-  "extends": ["@acme/tsconfig/base.json"],
+  "extends": ["@tyfons-lab/tsconfig/base.json"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -7,6 +7,7 @@
     },
     "jsx": "react-native",
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "incremental": true,
     "types": ["nativewind/types"],
     "checkJs": false
   },

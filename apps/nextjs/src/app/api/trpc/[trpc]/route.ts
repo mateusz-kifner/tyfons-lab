@@ -1,7 +1,7 @@
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
-import { appRouter, createTRPCContext } from "@acme/api";
-import { auth } from "@acme/auth";
+import { appRouter, createTRPCContext } from "@tyfons-lab/api";
+import { auth } from "@tyfons-lab/auth";
 
 export const runtime = "edge";
 
