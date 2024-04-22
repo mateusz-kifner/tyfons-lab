@@ -19,13 +19,12 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "zod": "^3.23.0"
+    "zod": "3.23.0"
   },
   "devDependencies": {
     "@tyfons-lab/biome-config": "workspace:*",
     "@tyfons-lab/tsconfig": "workspace:*",
-
-    "typescript": "^5.4.5"
+    "typescript": "5.4.5"
   },
   "prettier": "@tyfons-lab/prettier-config"
 }

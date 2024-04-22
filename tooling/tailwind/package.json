@@ -15,14 +15,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
-    "tailwindcss-animate": "^1.0.7"
+    "postcss": "8.4.38",
+    "tailwindcss": "3.4.3",
+    "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
     "@tyfons-lab/biome-config": "workspace:*",
     "@tyfons-lab/tsconfig": "workspace:*",
-    "typescript": "^5.4.5"
+    "typescript": "5.4.5"
   },
   "prettier": "@tyfons-lab/prettier-config"
 }

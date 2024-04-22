@@ -2,7 +2,8 @@ import type { DefaultSession, NextAuthConfig } from "next-auth";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import Discord from "next-auth/providers/discord";
 
-import { db, tableCreator } from "@tyfons-lab/db";
+import { db, schema} from "@tyfons-lab/db";
+
 
 declare module "next-auth" {
   interface Session {
@@ -13,7 +14,7 @@ declare module "next-auth" {
 }
 
 export const authConfig = {
-  adapter: DrizzleAdapter(db, tableCreator),
+  adapter: DrizzleAdapter(db, { usersTable: schema.users, accountsTable: schema.accounts, sessionsTable: schema.sessions, verificationTokensTable: schema.verificationTokens }),
   providers: [Discord],
   callbacks: {
     session: (opts) => {

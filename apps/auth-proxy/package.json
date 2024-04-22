@@ -11,18 +11,18 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@auth/core": "0.28.1"
+    "@auth/core": "0.30.0"
   },
   "devDependencies": {
     "@tyfons-lab/biome-config": "workspace:*",
     "@tyfons-lab/tailwind-config": "workspace:*",
     "@tyfons-lab/tsconfig": "workspace:*",
-    "@types/node": "^20.12.5",
-    "eslint": "^9.0.0",
-    "h3": "^1.11.1",
-    "nitropack": "^2.9.6",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "@types/node": "20.12.7",
+    "eslint": "9.1.1",
+    "h3": "1.11.1",
+    "nitropack": "2.9.6",
+    "prettier": "3.2.5",
+    "typescript": "5.4.5"
   },
   "prettier": "@tyfons-lab/prettier-config"
 }

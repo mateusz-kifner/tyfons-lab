@@ -18,19 +18,19 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@auth/drizzle-adapter": "^0.8.1",
-    "@t3-oss/env-nextjs": "^0.10.0",
+    "@auth/drizzle-adapter": "1.0.0",
+    "@t3-oss/env-nextjs": "0.10.0",
     "@tyfons-lab/db": "workspace:*",
-    "next": "^14.2.0",
+    "next": "14.2.2",
     "next-auth": "5.0.0-beta.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "zod": "^3.23.0"
+    "zod": "3.23.0"
   },
   "devDependencies": {
     "@tyfons-lab/biome-config": "workspace:*",
     "@tyfons-lab/tsconfig": "workspace:*",
-    "typescript": "^5.4.5"
+    "typescript": "5.4.5"
   },
   "prettier": "@tyfons-lab/prettier-config"
 }

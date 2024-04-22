@@ -1,85 +1,80 @@
-import { relations, sql } from "drizzle-orm";
 import {
   index,
   integer,
   primaryKey,
-  text,
   timestamp,
-  varchar,
+  text,
 } from "drizzle-orm/pg-core";
 
 import { pgTable } from "./_table";
+import { randomUUID } from "crypto"
 
-export const users = pgTable("user", {
-  id: varchar("id", { length: 255 }).notNull().primaryKey(),
-  name: varchar("name", { length: 255 }),
-  email: varchar("email", { length: 255 }).notNull(),
-  emailVerified: timestamp("emailVerified", {
-    mode: "date",
-   
-  }).default(sql`CURRENT_TIMESTAMP(3)`),
-  image: varchar("image", { length: 255 }),
-});
+export const users= pgTable("user" as string, {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => randomUUID()),
+  name: text("name"),
+  email: text("email").notNull().unique(),
+  emailVerified: timestamp("emailVerified", { mode: "date" }),
+  image: text("image"),
+})
 
-export const usersRelations = relations(users, ({ many }) => ({
-  accounts: many(accounts),
-}));
-
-export const accounts = pgTable(
-  "account",
+export const accounts= pgTable(
+  "account" as string,
   {
-    userId: varchar("userId", { length: 255 }).notNull(),
-    type: varchar("type", { length: 255 })
-      .$type<"oauth" | "oidc" | "email">()
-      .notNull(),
-    provider: varchar("provider", { length: 255 }).notNull(),
-    providerAccountId: varchar("providerAccountId", { length: 255 }).notNull(),
-    refresh_token: varchar("refresh_token", { length: 255 }),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    type: text("type").notNull(),
+    provider: text("provider").notNull(),
+    providerAccountId: text("providerAccountId").notNull(),
+    refresh_token: text("refresh_token"),
     access_token: text("access_token"),
     expires_at: integer("expires_at"),
-    token_type: varchar("token_type", { length: 255 }),
-    scope: varchar("scope", { length: 255 }),
+    token_type: text("token_type"),
+    scope: text("scope"),
     id_token: text("id_token"),
-    session_state: varchar("session_state", { length: 255 }),
+    session_state: text("session_state"),
   },
-  (account) => ({
-    compoundKey: primaryKey({
-      columns: [account.provider, account.providerAccountId],
-    }),
-    userIdIdx: index("userAccountId_idx").on(account.userId),
-  }),
-);
+  (table) => {
+    return {
+      userIdIdx: index().on(table.userId),
+      compositePk: primaryKey({
+        columns: [table.provider, table.providerAccountId],
+      }),
+    }
+  }
+)
 
-export const accountsRelations = relations(accounts, ({ one }) => ({
-  user: one(users, { fields: [accounts.userId], references: [users.id] }),
-}));
-
-export const sessions = pgTable(
-  "session",
+export const sessions= pgTable(
+  "session" as string,
   {
-    sessionToken: varchar("sessionToken", { length: 255 })
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => randomUUID()),
+    sessionToken: text("sessionToken").notNull().unique(),
+    userId: text("userId")
       .notNull()
-      .primaryKey(),
-    userId: varchar("userId", { length: 255 }).notNull(),
+      .references(() => users.id, { onDelete: "cascade" }),
     expires: timestamp("expires", { mode: "date" }).notNull(),
   },
-  (session) => ({
-    userIdIdx: index("userSessionId_idx").on(session.userId),
-  }),
-);
+  (table) => {
+    return {
+      userIdIdx: index().on(table.userId),
+    }
+  }
+)
 
-export const sessionsRelations = relations(sessions, ({ one }) => ({
-  user: one(users, { fields: [sessions.userId], references: [users.id] }),
-}));
-
-export const verificationTokens = pgTable(
-  "verificationToken",
+export const verificationTokens= pgTable(
+  "verificationToken" as string,
   {
-    identifier: varchar("identifier", { length: 255 }).notNull(),
-    token: varchar("token", { length: 255 }).notNull(),
+    identifier: text("identifier").notNull(),
+    token: text("token").notNull().unique(),
     expires: timestamp("expires", { mode: "date" }).notNull(),
   },
-  (vt) => ({
-    compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
-  }),
-);
+  (table) => {
+    return {
+      compositePk: primaryKey({ columns: [table.identifier, table.token] }),
+    }
+  }
+)

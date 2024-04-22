@@ -12,6 +12,6 @@ export { pgTable as tableCreator } from "./schema/_table";
 export * from "drizzle-orm/sql";
 export { alias } from "drizzle-orm/pg-core";
 
-const pgClient = postgres(connectionStr.href );
+const pgClient = postgres(connectionStr );
 
 export const db = drizzle(pgClient, { schema });
