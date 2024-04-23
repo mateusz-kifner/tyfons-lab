@@ -14,8 +14,7 @@ const env = createEnv({
 // export const connectionStr = new URL(env.DATABASE_URL);
 // connectionStr.searchParams.set("ssl", '{"rejectUnauthorized":true}');
 
-export const connectionStr = env.DATABASE_URL
-
+export const connectionStr = env.DATABASE_URL;
 
 export default {
   schema: "./src/schema",

@@ -6,23 +6,19 @@
     "build": "nitro build",
     "clean": "rm -rf .turbo node_modules",
     "dev": "nitro dev --port 3001",
-    "lint": "eslint",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "biome lint ./routes",
+    "format": "biome format ./routes",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@auth/core": "0.30.0"
   },
   "devDependencies": {
-    "@tyfons-lab/biome-config": "workspace:*",
     "@tyfons-lab/tailwind-config": "workspace:*",
     "@tyfons-lab/tsconfig": "workspace:*",
     "@types/node": "20.12.7",
-    "eslint": "9.1.1",
     "h3": "1.11.1",
     "nitropack": "2.9.6",
-    "prettier": "3.2.5",
     "typescript": "5.4.5"
-  },
-  "prettier": "@tyfons-lab/prettier-config"
+  }
 }

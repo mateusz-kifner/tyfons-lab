@@ -22,7 +22,7 @@ function PostCard(props: {
           }}
         >
           <Pressable className="">
-            <Text className=" text-xl font-semibold text-primary">
+            <Text className="font-semibold text-primary text-xl">
               {props.post.title}
             </Text>
             <Text className="mt-2 text-foreground">{props.post.content}</Text>
@@ -30,7 +30,7 @@ function PostCard(props: {
         </Link>
       </View>
       <Pressable onPress={props.onDelete}>
-        <Text className="font-bold uppercase text-primary">Delete</Text>
+        <Text className="font-bold text-primary uppercase">Delete</Text>
       </Pressable>
     </View>
   );
@@ -53,7 +53,7 @@ function CreatePost() {
   return (
     <View className="mt-4 flex gap-2">
       <TextInput
-        className=" items-center rounded-md border border-input bg-background px-3 text-lg leading-[1.25] text-foreground"
+        className="items-center rounded-md border border-input bg-background px-3 text-foreground text-lg leading-[1.25]"
         value={title}
         onChangeText={setTitle}
         placeholder="Title"
@@ -64,7 +64,7 @@ function CreatePost() {
         </Text>
       )}
       <TextInput
-        className="items-center rounded-md border border-input bg-background px-3  text-lg leading-[1.25] text-foreground"
+        className="items-center rounded-md border border-input bg-background px-3 text-foreground text-lg leading-[1.25]"
         value={content}
         onChangeText={setContent}
         placeholder="Content"
@@ -104,11 +104,11 @@ export default function Index() {
   });
 
   return (
-    <SafeAreaView className=" bg-background">
+    <SafeAreaView className="bg-background">
       {/* Changes page title visible on the header */}
       <Stack.Screen options={{ title: "Home Page" }} />
       <View className="h-full w-full bg-background p-4">
-        <Text className="pb-2 text-center text-5xl font-bold text-foreground">
+        <Text className="pb-2 text-center font-bold text-5xl text-foreground">
           Create <Text className="text-primary">T3</Text> Turbo
         </Text>
 
@@ -120,7 +120,7 @@ export default function Index() {
         </Pressable>
 
         <View className="py-2">
-          <Text className="font-semibold italic text-primary">
+          <Text className="font-semibold text-primary italic">
             Press on a post
           </Text>
         </View>

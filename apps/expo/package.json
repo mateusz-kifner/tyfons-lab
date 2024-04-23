@@ -10,8 +10,8 @@
     "dev:ios": "expo start --ios",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
+    "format": "biome format ./src",
+    "lint": "biome lint ./src",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@tyfons-lab/api": "workspace:*",
-    "@tyfons-lab/biome-config": "workspace:*",
+
     "@tyfons-lab/tailwind-config": "workspace:*",
     "@tyfons-lab/tsconfig": "workspace:*",
     "@babel/core": "7.24.4",
@@ -50,6 +50,5 @@
     "@types/react": "18.2.79",
     "tailwindcss": "3.4.3",
     "typescript": "5.4.5"
-  },
-  "prettier": "@tyfons-lab/prettier-config"
+  }
 }

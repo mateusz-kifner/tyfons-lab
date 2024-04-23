@@ -7,9 +7,9 @@ import {
 } from "drizzle-orm/pg-core";
 
 import { pgTable } from "./_table";
-import { randomUUID } from "crypto"
+import { randomUUID } from "crypto";
 
-export const users= pgTable("user" as string, {
+export const users = pgTable("user" as string, {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => randomUUID()),
@@ -17,9 +17,9 @@ export const users= pgTable("user" as string, {
   email: text("email").notNull().unique(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
-})
+});
 
-export const accounts= pgTable(
+export const accounts = pgTable(
   "account" as string,
   {
     userId: text("userId")
@@ -42,11 +42,11 @@ export const accounts= pgTable(
       compositePk: primaryKey({
         columns: [table.provider, table.providerAccountId],
       }),
-    }
-  }
-)
+    };
+  },
+);
 
-export const sessions= pgTable(
+export const sessions = pgTable(
   "session" as string,
   {
     id: text("id")
@@ -61,11 +61,11 @@ export const sessions= pgTable(
   (table) => {
     return {
       userIdIdx: index().on(table.userId),
-    }
-  }
-)
+    };
+  },
+);
 
-export const verificationTokens= pgTable(
+export const verificationTokens = pgTable(
   "verificationToken" as string,
   {
     identifier: text("identifier").notNull(),
@@ -75,6 +75,6 @@ export const verificationTokens= pgTable(
   (table) => {
     return {
       compositePk: primaryKey({ columns: [table.identifier, table.token] }),
-    }
-  }
-)
+    };
+  },
+);

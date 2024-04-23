@@ -11,8 +11,8 @@
   "scripts": {
     "add": "pnpm dlx shadcn-ui add",
     "clean": "rm -rf .turbo node_modules",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
+    "format": "biome format ./src",
+    "lint": "biome lint ./src",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "ui-add": "pnpm dlx shadcn-ui add && prettier src --write --list-different"
   },
@@ -30,7 +30,6 @@
     "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
-    "@tyfons-lab/biome-config": "workspace:*",
     "@tyfons-lab/tailwind-config": "workspace:*",
     "@tyfons-lab/tsconfig": "workspace:*",
     "@types/react": "18.2.79",
@@ -42,6 +41,5 @@
   "peerDependencies": {
     "react": "18.2.0",
     "zod": "3.23.0"
-  },
-  "prettier": "@tyfons-lab/prettier-config"
+  }
 }
