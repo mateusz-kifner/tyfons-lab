@@ -19,12 +19,12 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@trpc/server": "11.0.0-rc.351",
+    "@trpc/server": "11.0.0-rc.354",
     "@tyfons-lab/auth": "workspace:*",
     "@tyfons-lab/db": "workspace:*",
     "@tyfons-lab/validators": "workspace:*",
     "superjson": "2.2.1",
-    "zod": "3.23.0"
+    "zod": "3.23.4"
   },
   "devDependencies": {
     "@tyfons-lab/tsconfig": "workspace:*",
