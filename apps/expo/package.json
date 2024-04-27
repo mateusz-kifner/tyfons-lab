@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "git clean -xdf .expo .turbo node_modules",
-    "dev:no_run": "expo start",
+    "dev": "expo start --tunnel",
     "dev:android": "expo start --android",
     "dev:ios": "expo start --ios",
     "android": "expo run:android",
@@ -40,7 +40,6 @@
   },
   "devDependencies": {
     "@tyfons-lab/api": "workspace:*",
-
     "@tyfons-lab/tailwind-config": "workspace:*",
     "@tyfons-lab/tsconfig": "workspace:*",
     "@babel/core": "7.24.4",
