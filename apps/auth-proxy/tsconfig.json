@@ -1,4 +1,0 @@
-{
-  "extends": "@tyfons-lab/tsconfig/base.json",
-  "include": ["routes"]
-}
