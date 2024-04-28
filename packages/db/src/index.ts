@@ -15,3 +15,6 @@ export { alias } from "drizzle-orm/pg-core";
 const pgClient = postgres(connectionStr);
 
 export const db = drizzle(pgClient, { schema });
+
+export * from "./validators"
+

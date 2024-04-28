@@ -1,44 +1,38 @@
-import { Suspense } from "react";
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
+import { lucia, validateRequest } from "@tyfons-lab/auth";
+import { type ActionResult, Form } from "./_form";
 
-import { api } from "~/trpc/server";
-import { AuthShowcase } from "./_components/auth-showcase";
-import {
-  CreatePostForm,
-  PostCardSkeleton,
-  PostList,
-} from "./_components/posts";
-import { logger } from "@tyfons-lab/logger";
 
-//export const runtime = "edge";
-
-export default function HomePage() {
-  // You can await this here if you don't want to show Suspense fallback below
-  const posts = api.post.all();
-  logger.info({ user: "test" }, "test");
-
-  return (
-    <main className="container h-screen py-16">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="font-extrabold text-5xl tracking-tight sm:text-[5rem]">
-          Create <span className="text-primary">T3</span> Turbo
-        </h1>
-        <AuthShowcase />
-
-        <CreatePostForm />
-        <div className="w-full max-w-2xl overflow-y-scroll">
-          <Suspense
-            fallback={
-              <div className="flex w-full flex-col gap-4">
-                <PostCardSkeleton />
-                <PostCardSkeleton />
-                <PostCardSkeleton />
-              </div>
-            }
-          >
-            <PostList posts={posts} />
-          </Suspense>
-        </div>
-      </div>
-    </main>
-  );
+export default async function Page() {
+	const { user } = await validateRequest();
+	if (!user) {
+		return redirect("/login");
+	}
+	return (
+		<>
+			<h1>Hi, {user.username}!</h1>
+			<p>Your user ID is {user.id}.</p>
+			<Form action={logout}>
+				<button type="submit">Sign out</button>
+			</Form>
+		</>
+	);
 }
+
+async function logout(): Promise<ActionResult> {
+	"use server";
+	const { session } = await validateRequest();
+	if (!session) {
+		return {
+			error: "Unauthorized"
+		};
+	}
+
+	await lucia.invalidateSession(session.id);
+
+	const sessionCookie = lucia.createBlankSessionCookie();
+	cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+	return redirect("/login");
+}
+
