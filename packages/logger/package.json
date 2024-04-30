@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
+    "dev": "tsc --watch --preserveWatchOutput ",
     "clean": "rm -rf .turbo node_modules",
     "format": "biome format ./src",
     "lint": "biome lint ./src",
