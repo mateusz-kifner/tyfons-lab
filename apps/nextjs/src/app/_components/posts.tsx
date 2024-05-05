@@ -17,7 +17,7 @@ import { Input } from "@tyfons-lab/ui/input";
 import { toast } from "@tyfons-lab/ui/toast";
 import { CreatePostSchema } from "@tyfons-lab/validators";
 
-import { api } from "~/trpc/react";
+import { api } from "@/trpc/react";
 
 export function CreatePostForm() {
   const form = useForm({

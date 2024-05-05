@@ -5,7 +5,7 @@ import { type ActionResult, Form } from "./_form";
 
 import { Suspense } from "react";
 
-import { api } from "~/trpc/server";
+import { api } from "@/trpc/server";
 import {
   CreatePostForm,
   PostCardSkeleton,

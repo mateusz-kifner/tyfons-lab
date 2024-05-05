@@ -1,0 +1,19 @@
+table tyfons_lab_session {
+  id text [pk, not null]
+  user_id text [not null]
+  expires_at "timestamp with time zone" [not null]
+}
+
+table tyfons_lab_user {
+  id text [pk, not null]
+  username text [not null, unique]
+  password text [not null]
+}
+
+table tyfons_lab_post {
+  id serial [pk, not null, increment]
+  name varchar(256) [not null]
+  content varchar(256) [not null]
+  created_at timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  updatedAt timestamp [default: `now()`]
+}

@@ -20,11 +20,13 @@
     "lint:ws": "pnpm dlx sherif@latest",
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo typecheck",
-    "ui-add": "pnpm -F ui ui-add"
+    "ui-add": "pnpm -F ui ui-add",
+    "db:gen-graph": "pnpm -F db-graph-gen generate"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.1",
     "@turbo/gen": "^1.13.2",
+    "cross-env": "^7.0.3",
     "turbo": "^1.13.2",
     "typescript": "^5.4.5"
   }
