@@ -1,11 +1,12 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { credentials, lucia, validateRequest } from "@tyfons-lab/auth";
+import { sendSignInEmail } from "@tyfons-lab/email-templates";
 import { type ActionResult, Form } from "./_form";
 
 import { Suspense } from "react";
 
-import { api } from "@/trpc/server";
+// import { api } from "@/trpc/server";
 import {
   CreatePostForm,
   PostCardSkeleton,
@@ -18,7 +19,14 @@ export default async function HomePage() {
     return redirect("/signin");
   }
   // You can await this here if you don't want to show Suspense fallback below
-  const posts = api.post.all();
+  // const posts = api.post.all();
+
+  async function  sendMail(){
+    "use server"
+    await sendSignInEmail("jawnie.anonimowy@gmail.com", "test code")
+    console.log("action")
+  
+  }
 
   return (
     <main className="container h-screen py-16">
@@ -32,6 +40,10 @@ export default async function HomePage() {
           <button type="submit">Sign out</button>
         </Form>
 
+        <form action={sendMail}>
+          <button type="submit">Send Email</button>
+        </form>
+
         <CreatePostForm />
         <div className="w-full max-w-2xl overflow-y-scroll">
           <Suspense
@@ -43,7 +55,7 @@ export default async function HomePage() {
               </div>
             }
           >
-            <PostList posts={posts} />
+            {/* <PostList posts={posts} /> */}
           </Suspense>
         </div>
       </div>

@@ -4,13 +4,15 @@ import type { Session, User } from "lucia";
 import { type UserType, db, schema } from "@tyfons-lab/db";
 import { cookies } from "next/headers";
 import { cache } from "react";
+import { env } from "../env";
+
 
 const adapter = new DrizzlePostgreSQLAdapter(db, schema.sessions, schema.users);
 
 export const lucia = new Lucia(adapter, {
   sessionCookie: {
     attributes: {
-      secure: process.env.NODE_ENV === "production",
+      secure: env.NODE_ENV === "production",
     },
   },
   getUserAttributes: (attributes) => {
