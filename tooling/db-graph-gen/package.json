@@ -1,5 +1,5 @@
 {
-  "name": "@tyfons-lab/logger",
+  "name": "@tyfons-lab/db-graph-gen",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -7,19 +7,16 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch --preserveWatchOutput ",
     "clean": "rm -rf .turbo node_modules",
     "format": "biome format ./src",
     "lint": "biome lint ./src",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@softwaretechnik/dbml-renderer": "^1.0.30",
     "@tyfons-lab/tsconfig": "workspace:*",
-    "pino-pretty": "11.0.0",
+    "drizzle-dbml-generator": "^0.6.1",
+    "ts-node": "^10.9.2",
     "typescript": "5.4.5"
-  },
-  "dependencies": {
-    "pino": "9.0.0"
   }
 }

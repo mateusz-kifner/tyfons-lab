@@ -9,7 +9,6 @@
     },
     "./env": "./env.ts"
   },
-  "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "format": "biome format ./src",
