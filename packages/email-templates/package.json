@@ -1,0 +1,26 @@
+{
+  "name": "@tyfons-lab/email-templates",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "license": "UNLICENSED",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "format": "biome format ./src",
+    "lint": "biome lint ./src",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@tyfons-lab/tsconfig": "workspace:*",
+    "typescript": "5.4.5"
+  },
+  "dependencies": {
+    "@react-email/components": "^0.0.17",
+    "@react-email/render": "^0.0.13",
+    "nodemailer": "^6.9.13",
+    "react-email": "^2.1.2"
+  }
+}
