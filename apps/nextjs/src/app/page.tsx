@@ -6,7 +6,7 @@ import { type ActionResult, Form } from "./_form";
 
 import { Suspense } from "react";
 
-// import { api } from "@/trpc/server";
+import { api } from "@/trpc/server";
 import {
   CreatePostForm,
   PostCardSkeleton,
@@ -19,7 +19,7 @@ export default async function HomePage() {
     return redirect("/signin");
   }
   // You can await this here if you don't want to show Suspense fallback below
-  // const posts = api.post.all();
+  const posts = api.post.all();
 
   async function  sendMail(){
     "use server"
@@ -55,7 +55,7 @@ export default async function HomePage() {
               </div>
             }
           >
-            {/* <PostList posts={posts} /> */}
+            <PostList posts={posts} />
           </Suspense>
         </div>
       </div>
