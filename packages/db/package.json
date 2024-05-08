@@ -22,14 +22,14 @@
   },
   "dependencies": {
     "@t3-oss/env-core": "0.10.1",
-    "drizzle-orm": "0.30.9",
+    "drizzle-orm": "0.30.10",
     "postgres": "3.4.4",
-    "zod": "3.23.4"
+    "zod": "3.23.7"
   },
   "devDependencies": {
     "@tyfons-lab/tsconfig": "workspace:*",
-    "dotenv-cli": "7.4.1",
-    "drizzle-kit": "0.20.17",
+    "dotenv-cli": "7.4.2",
+    "drizzle-kit": "0.20.18",
     "typescript": "5.4.5"
   }
 }
