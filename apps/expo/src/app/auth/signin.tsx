@@ -1,7 +1,7 @@
 import { Button, SafeAreaView, Text, View } from "react-native";
 import { Stack, useGlobalSearchParams } from "expo-router";
 
-import { api } from "~/utils/api";
+import { api } from "@/utils/api";
 import { TextInput } from "react-native-gesture-handler";
 import { useRef, useState } from "react";
 
