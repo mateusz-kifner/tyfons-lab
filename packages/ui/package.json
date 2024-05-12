@@ -14,7 +14,7 @@
     "format": "biome format ./src",
     "lint": "biome lint ./src",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "ui-add": "pnpm dlx shadcn-ui add && prettier src --write --list-different"
+    "ui-add": "pnpm dlx shadcn-ui add"
   },
   "dependencies": {
     "@hookform/resolvers": "3.3.4",

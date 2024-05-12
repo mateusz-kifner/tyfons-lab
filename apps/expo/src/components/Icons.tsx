@@ -1,4 +1,4 @@
-import { Icon, IconAlertCircle} from '@tabler/icons-react-native';
+import { Icon, IconAlertCircle, IconCheck, IconChevronDown, IconChevronLeft, IconChevronRight, IconChevronUp, IconX} from '@tabler/icons-react-native';
 import { cssInterop } from 'nativewind';
 
 function interopIcon(icon: Icon) {
@@ -14,6 +14,12 @@ function interopIcon(icon: Icon) {
 }
 
 interopIcon( IconAlertCircle );
+interopIcon( IconChevronUp );
+interopIcon( IconChevronDown );
+interopIcon( IconChevronRight );
+interopIcon( IconChevronLeft );
+interopIcon( IconCheck );
+interopIcon( IconX );
 
 
-export { IconAlertCircle };
+export { IconAlertCircle, IconCheck, IconChevronDown, IconChevronLeft, IconChevronRight, IconChevronUp, IconX };

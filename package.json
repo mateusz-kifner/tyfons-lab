@@ -20,7 +20,8 @@
     "lint:ws": "pnpm dlx sherif@latest",
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo typecheck",
-    "ui-add": "pnpm -F ui ui-add",
+    "ui-next-add": "pnpm -F ui ui-add",
+    "ui-expo-add": "pnpm -F expo ui-add",
     "db:gen-graph": "pnpm -F db-graph-gen generate"
   },
   "devDependencies": {

@@ -34,6 +34,7 @@ function PostCard(props: {
       <Pressable onPress={props.onDelete}>
         <Text className="font-bold text-primary uppercase">Delete</Text>
       </Pressable>
+      
     </View>
   );
 }
@@ -138,7 +139,7 @@ export default function Index() {
             />
           )}
         />
-        <Button><Text>Test</Text></Button>
+        <Button>Test</Button>
 
         <CreatePost />
       </View>
