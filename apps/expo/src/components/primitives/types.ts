@@ -27,9 +27,11 @@ interface Insets {
   right?: number;
 }
 
-// CustomEvent seams to be missing
-// type PointerDownOutsideEvent = CustomEvent<{ originalEvent: PointerEvent }>;
-// type FocusOutsideEvent = CustomEvent<{ originalEvent: FocusEvent }>;
+// TODO: find what CustomEvents type is supposed to be
+type CustomEvent<T = any> = Event
+
+type PointerDownOutsideEvent = CustomEvent<{ originalEvent: PointerEvent }>;
+type FocusOutsideEvent = CustomEvent<{ originalEvent: FocusEvent }>;
 
 /**
  * Certain props are only available on the native version of the component.
