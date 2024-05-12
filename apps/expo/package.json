@@ -12,9 +12,7 @@
     "ios": "expo run:ios",
     "format": "biome format ./src",
     "lint": "biome lint ./src",
-    "typecheck": "tsc --noEmit",
-    "ui-add": "pnpm dlx @react-native-reusables/cli@latest add"
-
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@expo/metro-config": "~0.18.3",
@@ -46,7 +44,8 @@
     "superjson": "2.2.1",
     "tailwind-merge": "2.3.0",
     "tailwindcss-animate": "1.0.7",
-    "zustand": "^4.5.2"
+    "zustand": "^4.5.2",
+    "@tyfons-lab/ui-native": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "7.24.5",

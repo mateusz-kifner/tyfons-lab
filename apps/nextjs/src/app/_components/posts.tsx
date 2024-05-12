@@ -3,8 +3,8 @@
 import { use } from "react";
 
 import type { RouterOutputs } from "@tyfons-lab/api";
-import { cn } from "@tyfons-lab/ui";
-import { Button } from "@tyfons-lab/ui/button";
+import { cn } from "@tyfons-lab/ui-web";
+import { Button } from "@tyfons-lab/ui-web/button";
 import {
   Form,
   FormControl,
@@ -12,9 +12,9 @@ import {
   FormItem,
   FormMessage,
   useForm,
-} from "@tyfons-lab/ui/form";
-import { Input } from "@tyfons-lab/ui/input";
-import { toast } from "@tyfons-lab/ui/toast";
+} from "@tyfons-lab/ui-web/form";
+import { Input } from "@tyfons-lab/ui-web/input";
+import { toast } from "@tyfons-lab/ui-web/toast";
 import { CreatePostSchema } from "@tyfons-lab/validators";
 
 import { api } from "@/trpc/react";

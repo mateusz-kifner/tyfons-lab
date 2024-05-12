@@ -13,7 +13,7 @@ const config = {
     "@tyfons-lab/api",
     "@tyfons-lab/auth",
     "@tyfons-lab/db",
-    "@tyfons-lab/ui",
+    "@tyfons-lab/ui-web",
     "@tyfons-lab/validators",
   ],
 

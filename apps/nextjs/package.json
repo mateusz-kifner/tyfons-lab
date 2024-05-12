@@ -23,7 +23,7 @@
     "@tyfons-lab/auth": "workspace:*",
     "@tyfons-lab/db": "workspace:*",
     "@tyfons-lab/logger": "workspace:*",
-    "@tyfons-lab/ui": "workspace:*",
+    "@tyfons-lab/ui-web": "workspace:*",
     "@tyfons-lab/validators": "workspace:*",
     "@tyfons-lab/email-templates": "workspace:*",
     "geist": "1.3.0",
