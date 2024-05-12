@@ -1,4 +1,4 @@
-import * as AspectRatioPrimitive from '@/components/primitives/aspect-ratio';
+import * as AspectRatioPrimitive from "@/primitives/aspect-ratio";
 
 const AspectRatio = AspectRatioPrimitive.Root;
 

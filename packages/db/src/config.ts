@@ -23,7 +23,7 @@ export const connectionStr = env.DATABASE_URL;
 
 export default {
   schema: "./src/schema",
-  driver: "pg",
-  dbCredentials: { connectionString: connectionStr },
+  dialect: "postgresql",
+  dbCredentials: { url: connectionStr },
   tablesFilter: ["tyfons_lab_*"],
 } satisfies Config;

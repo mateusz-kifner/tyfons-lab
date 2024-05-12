@@ -1,4 +1,4 @@
-import { ForceMountable } from '@/components/primitives/types';
+import type { ForceMountable } from "@/primitives/types";
 
 interface MenubarRootProps {
   value: string | undefined;

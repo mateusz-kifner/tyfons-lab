@@ -4,7 +4,7 @@ import { GeistSans } from "geist/font/sans";
 
 import { cn } from "@tyfons-lab/ui-web";
 import { ThemeProvider, ThemeToggle } from "@tyfons-lab/ui-web/theme";
-import { Toaster } from "@tyfons-lab/ui-web/toast";
+import { Toaster } from "@tyfons-lab/ui-web/sonner";
 
 import { TRPCReactProvider } from "@/trpc/react";
 

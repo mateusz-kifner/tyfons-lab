@@ -2,8 +2,13 @@
   "extends": "@tyfons-lab/tsconfig/internal-package.json",
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "ES2022"],
-    "jsx": "preserve",
-    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
+    "jsx": "react-native",
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["nativewind/types"],
+    "checkJs": false
   },
   "include": ["*.ts", "src"],
   "exclude": ["node_modules"]

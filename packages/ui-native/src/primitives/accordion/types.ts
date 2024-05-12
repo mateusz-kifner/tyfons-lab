@@ -1,22 +1,25 @@
-import { ForceMountable } from '@/components/primitives/types';
+import type { ForceMountable } from "@/primitives/types";
 
 type RootContext = {
-  type: 'single' | 'multiple';
+  type: "single" | "multiple";
   value: (string | undefined) | string[];
-  onValueChange: (value: string | undefined) => void | ((value: string[]) => void);
+  onValueChange: (
+    value: string | undefined,
+  // biome-ignore lint/suspicious/noConfusingVoidType: <TODO>
+  ) => void | ((value: string[]) => void);
   collapsible: boolean;
   disabled?: boolean;
 };
 
 type SingleRootProps = {
-  type: 'single';
+  type: "single";
   defaultValue?: string | undefined;
   value?: string | undefined;
   onValueChange?: (value: string | undefined) => void;
 };
 
 type MultipleRootProps = {
-  type: 'multiple';
+  type: "multiple";
   defaultValue?: string[];
   value?: string[];
   onValueChange?: (value: string[]) => void;
@@ -29,11 +32,11 @@ type AccordionRootProps = (SingleRootProps | MultipleRootProps) & {
   /**
    * Platform: WEB ONLY
    */
-  dir?: 'ltr' | 'rtl';
+  dir?: "ltr" | "rtl";
   /**
    * Platform: WEB ONLY
    */
-  orientation?: 'vertical' | 'horizontal';
+  orientation?: "vertical" | "horizontal";
 };
 
 type AccordionItemProps = {
@@ -42,4 +45,9 @@ type AccordionItemProps = {
 };
 type AccordionContentProps = ForceMountable;
 
-export type { AccordionContentProps, AccordionItemProps, AccordionRootProps, RootContext };
+export type {
+  AccordionContentProps,
+  AccordionItemProps,
+  AccordionRootProps,
+  RootContext,
+};

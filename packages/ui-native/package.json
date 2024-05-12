@@ -5,6 +5,8 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./ui/*": "./src/ui/*.tsx",
+    "./primitives/*": "./src/primitives/*.tsx",
     "./*": "./src/*.tsx"
   },
   "license": "MIT",
@@ -16,7 +18,11 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "class-variance-authority": "0.7.0",
+    "clsx": "^2.1.1",
     "tailwind-merge": "2.3.0",
+    "tailwindcss-animate": "1.0.7",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

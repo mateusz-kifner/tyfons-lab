@@ -9,7 +9,7 @@ import type { AppRouter } from "@tyfons-lab/api";
 
 /**
  * A set of typesafe hooks for consuming your API.
-*/
+ */
 export const api = createTRPCReact<AppRouter>();
 
 export { type RouterInputs, type RouterOutputs } from "@tyfons-lab/api";

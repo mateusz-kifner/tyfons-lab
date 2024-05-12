@@ -6,10 +6,11 @@ import { cookies } from "next/headers";
 import { cache } from "react";
 import { env } from "../env";
 
-
 const adapter = new DrizzlePostgreSQLAdapter(db, schema.sessions, schema.users);
 
-export type UserSession =  { user: User; session: Session } | { user: null; session: null }
+export type UserSession =
+  | { user: User; session: Session }
+  | { user: null; session: null };
 
 export const lucia = new Lucia(adapter, {
   sessionCookie: {
@@ -32,9 +33,7 @@ declare module "lucia" {
 }
 
 export const validateRequest = cache(
-  async (callback?: () => Promise<UserSession>): Promise<
-  UserSession
-  > => {
+  async (callback?: () => Promise<UserSession>): Promise<UserSession> => {
     const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
     if (!sessionId) {
       return {
@@ -66,4 +65,3 @@ export const validateRequest = cache(
     return result;
   },
 );
-

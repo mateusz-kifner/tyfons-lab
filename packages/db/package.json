@@ -15,7 +15,7 @@
     "clean": "rm -rf .turbo node_modules",
     "format": "biome format ./src",
     "lint": "biome lint ./src",
-    "push": "pnpm with-env drizzle-kit push:pg --config src/config.ts",
+    "push": "pnpm with-env drizzle-kit push --config src/config.ts",
     "studio": "pnpm with-env drizzle-kit studio --config src/config.ts",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "dotenv -e ../../.env --"

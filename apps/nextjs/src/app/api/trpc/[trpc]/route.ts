@@ -27,8 +27,7 @@ const createContext = async (req: NextRequest) => {
   return createTRPCContext({ headers: req.headers });
 };
 
-
-const handler = async (req:NextRequest) => {
+const handler = async (req: NextRequest) => {
   const response = await fetchRequestHandler({
     endpoint: "/api/trpc",
     router: appRouter,
@@ -41,6 +40,6 @@ const handler = async (req:NextRequest) => {
 
   setCorsHeaders(response);
   return response;
-}
+};
 
 export { handler as GET, handler as POST };

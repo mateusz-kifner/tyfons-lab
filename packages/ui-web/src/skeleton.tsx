@@ -1,4 +1,4 @@
-import { cn } from "@tyfons-lab/ui-web"
+import { cn } from "@tyfons-lab/ui-web";
 
 function Skeleton({
   className,
@@ -9,7 +9,7 @@ function Skeleton({
       className={cn("animate-pulse rounded-md bg-muted", className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Skeleton }
+export { Skeleton };

@@ -25,7 +25,7 @@ import { db } from "@tyfons-lab/db";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = async  (opts: {
+export const createTRPCContext = async (opts: {
   headers: Headers;
 }) => {
   const { session, user } = await validateRequest();

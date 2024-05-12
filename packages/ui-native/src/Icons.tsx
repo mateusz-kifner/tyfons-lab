@@ -1,10 +1,19 @@
-import { Icon, IconAlertCircle, IconCheck, IconChevronDown, IconChevronLeft, IconChevronRight, IconChevronUp, IconX} from '@tabler/icons-react-native';
-import { cssInterop } from 'nativewind';
+import {
+  type Icon,
+  IconAlertCircle,
+  IconCheck,
+  IconChevronDown,
+  IconChevronLeft,
+  IconChevronRight,
+  IconChevronUp,
+  IconX,
+} from "@tabler/icons-react-native";
+import { cssInterop } from "nativewind";
 
 function interopIcon(icon: Icon) {
   cssInterop(icon, {
     className: {
-      target: 'style',
+      target: "style",
       nativeStyleToProp: {
         color: true,
         opacity: true,
@@ -13,13 +22,20 @@ function interopIcon(icon: Icon) {
   });
 }
 
-interopIcon( IconAlertCircle );
-interopIcon( IconChevronUp );
-interopIcon( IconChevronDown );
-interopIcon( IconChevronRight );
-interopIcon( IconChevronLeft );
-interopIcon( IconCheck );
-interopIcon( IconX );
+interopIcon(IconAlertCircle);
+interopIcon(IconChevronUp);
+interopIcon(IconChevronDown);
+interopIcon(IconChevronRight);
+interopIcon(IconChevronLeft);
+interopIcon(IconCheck);
+interopIcon(IconX);
 
-
-export { IconAlertCircle, IconCheck, IconChevronDown, IconChevronLeft, IconChevronRight, IconChevronUp, IconX };
+export {
+  IconAlertCircle,
+  IconCheck,
+  IconChevronDown,
+  IconChevronLeft,
+  IconChevronRight,
+  IconChevronUp,
+  IconX,
+};

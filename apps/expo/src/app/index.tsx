@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Pressable,  TextInput, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Pressable, TextInput, View } from "react-native";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
 
 import type { RouterOutputs } from "@/utils/api";
 import { api } from "@/utils/api";
-import { Button } from "@/components/ui/button";
-import { Text } from "@/components/ui/text";
+
+import { Text } from "@tyfons-lab/ui-native/ui/text";
+import { Button } from "@tyfons-lab/ui-native/ui/button";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue   } from "@tyfons-lab/ui-native/ui/select"
 
 function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
@@ -34,7 +36,6 @@ function PostCard(props: {
       <Pressable onPress={props.onDelete}>
         <Text className="font-bold text-primary uppercase">Delete</Text>
       </Pressable>
-      
     </View>
   );
 }
@@ -106,6 +107,16 @@ export default function Index() {
     onSettled: () => utils.post.all.invalidate().then(),
   });
 
+  const insets = useSafeAreaInsets();
+  const contentInsets = {
+    top: insets.top,
+    bottom: insets.bottom,
+    left: 12,
+    right: 12,
+  };
+
+
+
   return (
     <SafeAreaView className="bg-background">
       {/* Changes page title visible on the header */}
@@ -140,6 +151,34 @@ export default function Index() {
           )}
         />
         <Button>Test</Button>
+        <Select defaultValue={{ value: 'apple', label: 'Apple' }}>
+      <SelectTrigger className='w-[250px]'>
+        <SelectValue
+          className='text-foreground text-sm native:text-lg'
+          placeholder='Select a fruit'
+        />
+      </SelectTrigger>
+      <SelectContent insets={contentInsets} className='w-[250px]'>
+        <SelectGroup>
+          <SelectLabel>Fruits</SelectLabel>
+          <SelectItem label='Apple' value='apple'>
+            Apple
+          </SelectItem>
+          <SelectItem label='Banana' value='banana'>
+            Banana
+          </SelectItem>
+          <SelectItem label='Blueberry' value='blueberry'>
+            Blueberry
+          </SelectItem>
+          <SelectItem label='Grapes' value='grapes'>
+            Grapes
+          </SelectItem>
+          <SelectItem label='Pineapple' value='pineapple'>
+            Pineapple
+          </SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
 
         <CreatePost />
       </View>

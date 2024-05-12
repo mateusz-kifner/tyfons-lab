@@ -16,5 +16,4 @@ const pgClient = postgres(connectionStr);
 
 export const db = drizzle(pgClient, { schema });
 
-export * from "./validators"
-
+export * from "./validators";

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   BackHandler,
   Pressable,
@@ -6,25 +6,29 @@ import {
   type GestureResponderEvent,
   type LayoutChangeEvent,
   type LayoutRectangle,
-} from 'react-native';
-import { useRelativePosition, type LayoutPosition, useControllableState } from '@/components/primitives/hooks';
-import { Portal as RNPPortal } from '@/components/primitives/portal';
-import * as Slot from '@/components/primitives/slot';
+} from "react-native";
+import {
+  useRelativePosition,
+  type LayoutPosition,
+  useControllableState,
+} from "@/primitives/hooks";
+import { Portal as RNPPortal } from "@/primitives/portal";
+import * as Slot from "@/primitives/slot";
 import type {
   PositionedContentProps,
   PressableRef,
   SlottablePressableProps,
   SlottableViewProps,
   ViewRef,
-} from '@/components/primitives/types';
+} from "@/primitives/types";
 import type {
   HoverCardOverlayProps,
   HoverCardPortalProps,
   HoverCardRootProps,
-  RootContext,
-} from './types';
+  RootContext as RootContextType,
+} from "./types";
 
-interface IRootContext extends RootContext {
+interface IRootContext extends RootContextType {
   triggerPosition: LayoutPosition | null;
   setTriggerPosition: (triggerPosition: LayoutPosition | null) => void;
   contentLayout: LayoutRectangle | null;
@@ -45,7 +49,7 @@ const Root = React.forwardRef<ViewRef, SlottableViewProps & HoverCardRootProps>(
       closeDelay: _closeDelay,
       ...viewProps
     },
-    ref
+    ref,
   ) => {
     const nativeID = React.useId();
     const [open = false, onOpenChange] = useControllableState({
@@ -53,8 +57,10 @@ const Root = React.forwardRef<ViewRef, SlottableViewProps & HoverCardRootProps>(
       defaultProp: defaultOpen,
       onChange: onOpenChangeProp,
     });
-    const [triggerPosition, setTriggerPosition] = React.useState<LayoutPosition | null>(null);
-    const [contentLayout, setContentLayout] = React.useState<LayoutRectangle | null>(null);
+    const [triggerPosition, setTriggerPosition] =
+      React.useState<LayoutPosition | null>(null);
+    const [contentLayout, setContentLayout] =
+      React.useState<LayoutRectangle | null>(null);
 
     const Component = asChild ? Slot.View : View;
     return (
@@ -72,16 +78,16 @@ const Root = React.forwardRef<ViewRef, SlottableViewProps & HoverCardRootProps>(
         <Component ref={ref} {...viewProps} />
       </RootContext.Provider>
     );
-  }
+  },
 );
 
-Root.displayName = 'RootNativeHoverCard';
+Root.displayName = "RootNativeHoverCard";
 
 function useRootContext() {
   const context = React.useContext(RootContext);
   if (!context) {
     throw new Error(
-      'HoverCard compound components cannot be rendered outside the HoverCard component'
+      "HoverCard compound components cannot be rendered outside the HoverCard component",
     );
   }
   return context;
@@ -100,7 +106,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
         }
         return triggerRef.current;
       },
-      [triggerRef.current]
+      [triggerRef.current],
     );
 
     function onPress(ev: GestureResponderEvent) {
@@ -118,16 +124,16 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
       <Component
         ref={triggerRef}
         aria-disabled={disabled ?? undefined}
-        role='button'
+        role="button"
         onPress={onPress}
         disabled={disabled ?? undefined}
         {...props}
       />
     );
-  }
+  },
 );
 
-Trigger.displayName = 'TriggerNativeHoverCard';
+Trigger.displayName = "TriggerNativeHoverCard";
 
 /**
  * @warning when using a custom `<PortalHost />`, you might have to adjust the Content's sideOffset to account for nav elements like headers.
@@ -152,9 +158,22 @@ function Portal({ forceMount, hostName, children }: HoverCardPortalProps) {
   );
 }
 
-const Overlay = React.forwardRef<PressableRef, SlottablePressableProps & HoverCardOverlayProps>(
-  ({ asChild, forceMount, onPress: OnPressProp, closeOnPress = true, ...props }, ref) => {
-    const { open, onOpenChange, setTriggerPosition, setContentLayout } = useRootContext();
+const Overlay = React.forwardRef<
+  PressableRef,
+  SlottablePressableProps & HoverCardOverlayProps
+>(
+  (
+    {
+      asChild,
+      forceMount,
+      onPress: OnPressProp,
+      closeOnPress = true,
+      ...props
+    },
+    ref,
+  ) => {
+    const { open, onOpenChange, setTriggerPosition, setContentLayout } =
+      useRootContext();
 
     function onPress(ev: GestureResponderEvent) {
       if (closeOnPress) {
@@ -173,21 +192,24 @@ const Overlay = React.forwardRef<PressableRef, SlottablePressableProps & HoverCa
 
     const Component = asChild ? Slot.Pressable : Pressable;
     return <Component ref={ref} onPress={onPress} {...props} />;
-  }
+  },
 );
 
-Overlay.displayName = 'OverlayNativeHoverCard';
+Overlay.displayName = "OverlayNativeHoverCard";
 
 /**
  * @info `position`, `top`, `left`, and `maxWidth` style properties are controlled internally. Opt out of this behavior by setting `disablePositioningStyle` to `true`.
  */
-const Content = React.forwardRef<ViewRef, SlottableViewProps & PositionedContentProps>(
+const Content = React.forwardRef<
+  ViewRef,
+  SlottableViewProps & PositionedContentProps
+>(
   (
     {
       asChild = false,
       forceMount,
-      align = 'start',
-      side = 'bottom',
+      align = "start",
+      side = "bottom",
       sideOffset = 0,
       alignOffset = 0,
       avoidCollisions = true,
@@ -197,7 +219,7 @@ const Content = React.forwardRef<ViewRef, SlottableViewProps & PositionedContent
       disablePositioningStyle,
       ...props
     },
-    ref
+    ref,
   ) => {
     const {
       open,
@@ -210,12 +232,15 @@ const Content = React.forwardRef<ViewRef, SlottableViewProps & PositionedContent
     } = useRootContext();
 
     React.useEffect(() => {
-      const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-        setTriggerPosition(null);
-        setContentLayout(null);
-        onOpenChange(false);
-        return true;
-      });
+      const backHandler = BackHandler.addEventListener(
+        "hardwareBackPress",
+        () => {
+          setTriggerPosition(null);
+          setContentLayout(null);
+          onOpenChange(false);
+          return true;
+        },
+      );
 
       return () => {
         setContentLayout(null);
@@ -250,7 +275,7 @@ const Content = React.forwardRef<ViewRef, SlottableViewProps & PositionedContent
     return (
       <Component
         ref={ref}
-        role='dialog'
+        role="dialog"
         nativeID={nativeID}
         aria-modal={true}
         style={[positionStyle, style]}
@@ -259,10 +284,10 @@ const Content = React.forwardRef<ViewRef, SlottableViewProps & PositionedContent
         {...props}
       />
     );
-  }
+  },
 );
 
-Content.displayName = 'ContentNativeHoverCard';
+Content.displayName = "ContentNativeHoverCard";
 
 export { Content, Overlay, Portal, Root, Trigger, useRootContext };
 

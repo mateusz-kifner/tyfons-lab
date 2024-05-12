@@ -21,17 +21,16 @@ export default async function HomePage() {
   // You can await this here if you don't want to show Suspense fallback below
   const posts = api.post.all();
 
-  async function  sendMail(){
-    "use server"
-    await sendSignInEmail("jawnie.anonimowy@gmail.com", "test code")
-    console.log("action")
-  
+  async function sendMail() {
+    "use server";
+    await sendSignInEmail("jawnie.anonimowy@gmail.com", "test code");
+    console.log("action");
   }
 
   return (
     <main className="container h-screen py-16">
       <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
+        <h1 className="font-extrabold text-5xl tracking-tight sm:text-[5rem]">
           Create <span className="text-primary">T3</span> Turbo
         </h1>
         <h1>Hi, {user.username}!</h1>

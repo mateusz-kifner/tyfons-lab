@@ -5,7 +5,14 @@
     }
   ],
   "cSpell.words": [
+    "clsx",
+    "Pressable",
+    "reusables",
+    "sonner",
     "tabler",
-    "TRPC"
+    "tailwindcss",
+    "TRPC",
+    "typecheck",
+    "zustand"
   ]
 }
