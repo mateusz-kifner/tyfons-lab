@@ -23,7 +23,7 @@
     "@tyfons-lab/db": "workspace:*",
     "@tyfons-lab/validators": "workspace:*",
     "superjson": "2.2.1",
-    "zod": "3.23.7"
+    "zod": "3.23.8"
   },
   "devDependencies": {
     "@tyfons-lab/tsconfig": "workspace:*",
