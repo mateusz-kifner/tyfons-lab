@@ -5,11 +5,10 @@ import { type Theme, ThemeProvider } from "@react-navigation/native";
 import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
-// import { Platform } from "react-native";
+import { Platform } from "react-native";
 import { NAV_THEME } from "@/lib/constants";
 import { useColorScheme } from "@/lib/useColorScheme";
 import { TRPCProvider } from "@/utils/api";
-import {PortalHost} from "@tyfons-lab/ui-native/primitives/portal"
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -66,7 +65,6 @@ export default function RootLayout() {
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
         <StatusBar style={isDarkColorScheme ? "light" : "dark"} />
         <Stack />
-        <PortalHost />
       </ThemeProvider>
     </TRPCProvider>
   );

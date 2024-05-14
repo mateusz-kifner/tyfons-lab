@@ -1,7 +1,0 @@
-{
-  "platforms": "native-only",
-  "aliases": {
-    "components": "src/",
-    "lib": "src/"
-  }
-}
