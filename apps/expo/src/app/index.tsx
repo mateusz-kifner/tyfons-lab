@@ -12,15 +12,15 @@ import { api } from "@/utils/api";
 import { Text } from "@/components/ui/text";
 import { Button } from "@/components/ui/button";
 
-// import {
-//   Select,
-//   SelectContent,
-//   SelectGroup,
-//   SelectItem,
-//   SelectLabel,
-//   SelectTrigger,
-//   SelectValue,
-// } from "@tyfons-lab/ui-native/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
@@ -129,7 +129,7 @@ export default function Index() {
   return (
     <SafeAreaView className="bg-background">
       {/* Changes page title visible on the header */}
-      <Stack.Screen options={{ title: "Home Page" }} />
+      {/* <Stack.Screen options={{ title: "Home Page" }} /> */}
       <View className="h-full w-full bg-background p-4">
         <Text className="pb-2 text-center font-bold text-5xl text-foreground">
           Create <Text className="text-primary">T3</Text> Turbo
@@ -162,7 +162,7 @@ export default function Index() {
         <Button onPress={() => console.log("Test")}>
           <Text>Test</Text>
         </Button>
-        {/* <Select defaultValue={{ value: "apple", label: "Apple" }}>
+        <Select defaultValue={{ value: "apple", label: "Apple" }}>
           <SelectTrigger className="w-[250px]">
             <SelectValue
               className="text-foreground text-sm native:text-lg"
@@ -189,7 +189,7 @@ export default function Index() {
               </SelectItem>
             </SelectGroup>
           </SelectContent>
-        </Select> */}
+        </Select>
 
         <CreatePost />
       </View>
