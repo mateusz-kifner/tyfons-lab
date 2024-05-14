@@ -27,7 +27,7 @@ const Menubar = React.forwardRef<
   <MenubarPrimitive.Root
     ref={ref}
     className={cn(
-      "flex flex-row h-10 native:h-12 items-center space-x-1 rounded-md border border-border bg-background p-1",
+      "flex h-10 flex-row items-center space-x-1 rounded-md border border-border bg-background p-1 native:h-12",
       className,
     )}
     {...props}
@@ -46,7 +46,7 @@ const MenubarTrigger = React.forwardRef<
     <MenubarPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-row web:cursor-default web:select-none items-center rounded-sm px-3 py-1.5 text-sm native:h-10 native:px-5 native:py-0 font-medium web:outline-none web:focus:bg-accent active:bg-accent web:focus:text-accent-foreground",
+        "flex flex-row items-center rounded-sm px-3 py-1.5 font-medium text-sm native:h-10 web:cursor-default web:select-none active:bg-accent web:focus:bg-accent native:px-5 native:py-0 web:focus:text-accent-foreground web:outline-none",
         value === itemValue && "bg-accent text-accent-foreground",
         className,
       )}
@@ -79,7 +79,7 @@ const MenubarSubTrigger = React.forwardRef<
       <MenubarPrimitive.SubTrigger
         ref={ref}
         className={cn(
-          "flex flex-row web:cursor-default web:select-none items-center gap-2 web:focus:bg-accent active:bg-accent web:hover:bg-accent rounded-sm px-2 py-1.5 native:py-2 web:outline-none",
+          "flex flex-row items-center gap-2 rounded-sm px-2 py-1.5 web:cursor-default web:select-none active:bg-accent web:focus:bg-accent web:hover:bg-accent native:py-2 web:outline-none",
           open && "bg-accent",
           inset && "pl-8",
           className,
@@ -104,10 +104,10 @@ const MenubarSubContent = React.forwardRef<
     <MenubarPrimitive.SubContent
       ref={ref}
       className={cn(
-        "z-50 min-w-[8rem] overflow-hidden rounded-md border mt-1 border-border bg-popover p-1 shadow-md shadow-foreground/5 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 mt-1 min-w-[8rem] overflow-hidden rounded-md border border-border bg-popover p-1 shadow-foreground/5 shadow-md",
         open
-          ? "web:animate-in web:fade-in-0 web:zoom-in-95"
-          : "web:animate-out web:fade-out-0 web:zoom-out ",
+          ? "web:fade-in-0 web:zoom-in-95 web:animate-in"
+          : "web:fade-out-0 web:zoom-out web:animate-out",
         className,
       )}
       {...props}
@@ -129,10 +129,10 @@ const MenubarContent = React.forwardRef<
       <MenubarPrimitive.Content
         ref={ref}
         className={cn(
-          "z-50 min-w-[8rem] overflow-hidden rounded-md border border-border bg-popover p-1 shadow-md shadow-foreground/5 ",
+          "z-50 min-w-[8rem] overflow-hidden rounded-md border border-border bg-popover p-1 shadow-foreground/5 shadow-md",
           value === itemValue
-            ? "web:animate-in web:fade-in-0 web:zoom-in-95"
-            : "web:animate-out web:fade-out-0 web:zoom-out-95",
+            ? "web:fade-in-0 web:zoom-in-95 web:animate-in"
+            : "web:fade-out-0 web:zoom-out-95 web:animate-out",
           className,
         )}
         {...props}
@@ -152,7 +152,7 @@ const MenubarItem = React.forwardRef<
     <MenubarPrimitive.Item
       ref={ref}
       className={cn(
-        "relative flex flex-row web:cursor-default items-center gap-2 rounded-sm px-2 py-1.5 native:py-2 web:outline-none web:focus:bg-accent active:bg-accent web:hover:bg-accent group",
+        "group relative flex flex-row items-center gap-2 rounded-sm px-2 py-1.5 web:cursor-default active:bg-accent web:focus:bg-accent web:hover:bg-accent native:py-2 web:outline-none",
         inset && "pl-8",
         props.disabled && "opacity-50 web:pointer-events-none",
         className,
@@ -170,8 +170,8 @@ const MenubarCheckboxItem = React.forwardRef<
   <MenubarPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex flex-row web:cursor-default items-center web:group rounded-sm py-1.5 native:py-2 pl-8 pr-2 web:outline-none web:focus:bg-accent active:bg-accent",
-      props.disabled && "web:pointer-events-none opacity-50",
+      "web:group relative flex flex-row items-center rounded-sm py-1.5 pr-2 pl-8 web:cursor-default active:bg-accent web:focus:bg-accent native:py-2 web:outline-none",
+      props.disabled && "opacity-50 web:pointer-events-none",
       className,
     )}
     checked={checked}
@@ -195,15 +195,15 @@ const MenubarRadioItem = React.forwardRef<
   <MenubarPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex flex-row web:cursor-default web:group items-center rounded-sm py-1.5 native:py-2 pl-8 pr-2 web:outline-none web:focus:bg-accent active:bg-accent",
-      props.disabled && "web:pointer-events-none opacity-50",
+      "web:group relative flex flex-row items-center rounded-sm py-1.5 pr-2 pl-8 web:cursor-default active:bg-accent web:focus:bg-accent native:py-2 web:outline-none",
+      props.disabled && "opacity-50 web:pointer-events-none",
       className,
     )}
     {...props}
   >
     <View className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <MenubarPrimitive.ItemIndicator>
-        <View className="bg-foreground h-2 w-2 rounded-full" />
+        <View className="h-2 w-2 rounded-full bg-foreground" />
       </MenubarPrimitive.ItemIndicator>
     </View>
     {/* biome-ignore lint/complexity/noUselessFragments: Native Hack */}
@@ -221,7 +221,7 @@ const MenubarLabel = React.forwardRef<
   <MenubarPrimitive.Label
     ref={ref}
     className={cn(
-      "px-2 py-1.5 text-sm native:text-base font-semibold text-foreground web:cursor-default",
+      "px-2 py-1.5 font-semibold text-foreground text-sm web:cursor-default native:text-base",
       inset && "pl-8",
       className,
     )}
@@ -249,7 +249,7 @@ const MenubarShortcut = ({
   return (
     <Text
       className={cn(
-        "ml-auto text-xs native:text-sm tracking-widest text-muted-foreground",
+        "ml-auto text-muted-foreground text-xs tracking-widest native:text-sm",
         className,
       )}
       {...props}

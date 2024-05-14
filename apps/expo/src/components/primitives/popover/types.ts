@@ -1,4 +1,4 @@
-import type { ForceMountable } from '@/components/primitives/types';
+import type { ForceMountable } from "@/components/primitives/types";
 
 interface RootContext {
   open: boolean;
@@ -27,4 +27,9 @@ interface PopoverOverlayProps extends ForceMountable {
   closeOnPress?: boolean;
 }
 
-export type { PopoverRootProps, PopoverPortalProps, PopoverOverlayProps, RootContext };
+export type {
+  PopoverRootProps,
+  PopoverPortalProps,
+  PopoverOverlayProps,
+  RootContext,
+};

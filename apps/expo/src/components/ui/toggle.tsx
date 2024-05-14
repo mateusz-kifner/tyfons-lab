@@ -6,13 +6,13 @@ import * as TogglePrimitive from "@/components/primitives/toggle";
 import { cn } from "@/lib/utils";
 
 const toggleVariants = cva(
-  "web:group web:inline-flex items-center justify-center rounded-md web:ring-offset-background web:transition-colors web:hover:bg-muted active:bg-muted web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2",
+  "web:group items-center justify-center rounded-md web:inline-flex active:bg-muted web:hover:bg-muted web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2 web:ring-offset-background web:transition-colors",
   {
     variants: {
       variant: {
         default: "bg-transparent",
         outline:
-          "border border-input bg-transparent web:hover:bg-accent active:bg-accent active:bg-accent",
+          "border border-input bg-transparent active:bg-accent active:bg-accent web:hover:bg-accent",
       },
       size: {
         default: "h-10 px-3 native:h-12 native:px-[12]",
@@ -28,13 +28,13 @@ const toggleVariants = cva(
 );
 
 const toggleTextVariants = cva(
-  "text-sm native:text-base text-foreground font-medium",
+  "font-medium text-foreground text-sm native:text-base",
   {
     variants: {
       variant: {
         default: "",
         outline:
-          "web:group-hover:text-accent-foreground web:group-active:text-accent-foreground",
+          "web:group-active:text-accent-foreground web:group-hover:text-accent-foreground",
       },
       size: {
         default: "",
@@ -67,7 +67,7 @@ const Toggle = React.forwardRef<
       ref={ref}
       className={cn(
         toggleVariants({ variant, size }),
-        props.disabled && "web:pointer-events-none opacity-50",
+        props.disabled && "opacity-50 web:pointer-events-none",
         props.pressed && "bg-accent",
         className,
       )}

@@ -1,4 +1,4 @@
-import type { ForceMountable } from '@/components/primitives/types';
+import type { ForceMountable } from "@/components/primitives/types";
 
 interface RootContext {
   open: boolean;
@@ -39,4 +39,9 @@ interface HoverCardOverlayProps extends ForceMountable {
   closeOnPress?: boolean;
 }
 
-export type { HoverCardRootProps, HoverCardOverlayProps, HoverCardPortalProps, RootContext };
+export type {
+  HoverCardRootProps,
+  HoverCardOverlayProps,
+  HoverCardPortalProps,
+  RootContext,
+};

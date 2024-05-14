@@ -1,8 +1,6 @@
-import { Button, SafeAreaView, Text, View } from "react-native";
-import { Stack, useGlobalSearchParams } from "expo-router";
-
-import { api } from "@/utils/api";
-import { TextInput } from "react-native-gesture-handler";
+import { Button, SafeAreaView, Text, type TextInput, View } from "react-native";
+import { Stack } from "expo-router";
+import { Input } from "@/components/ui/input";
 import { useRef, useState } from "react";
 
 export default function signin() {
@@ -12,15 +10,18 @@ export default function signin() {
   return (
     <SafeAreaView className="bg-background">
       <Stack.Screen options={{ title: "Sign in" }} />
-      <View className="flex h-full w-full flex-col p-4">
-        <Text className="py-4 text-foreground">Username</Text>
-        <TextInput
+      <View className="flex flex h-full w-full flex-col gap-2 p-4">
+        <Input
           ref={usernameRef}
+          placeholder="Username"
           className="items-center rounded-md border border-input bg-background px-3 text-foreground text-lg leading-[1.25]"
         />
-        <Text className="py-4 text-foreground">Password</Text>
-        <TextInput
+
+        <Input
           ref={passwordRef}
+          autoComplete="password"
+          placeholder="Password"
+          secureTextEntry
           className="items-center rounded-md border border-input bg-background px-3 text-foreground text-lg leading-[1.25]"
         />
         <Button

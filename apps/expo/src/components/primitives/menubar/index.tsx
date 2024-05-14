@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   BackHandler,
   Pressable,
@@ -7,10 +7,13 @@ import {
   type GestureResponderEvent,
   type LayoutChangeEvent,
   type LayoutRectangle,
-} from 'react-native';
-import { useRelativePosition, type LayoutPosition } from '@/components/primitives/hooks';
-import { Portal as RNPPortal } from '@/components/primitives/portal';
-import * as Slot from '@/components/primitives/slot';
+} from "react-native";
+import {
+  useRelativePosition,
+  type LayoutPosition,
+} from "@/components/primitives/hooks";
+import { Portal as RNPPortal } from "@/components/primitives/portal";
+import * as Slot from "@/components/primitives/slot";
 import type {
   ForceMountable,
   PositionedContentProps,
@@ -20,7 +23,7 @@ import type {
   SlottableViewProps,
   TextRef,
   ViewRef,
-} from '@/components/primitives/types';
+} from "@/components/primitives/types";
 import type {
   MenubarCheckboxItemProps,
   MenubarItemProps,
@@ -33,7 +36,7 @@ import type {
   MenubarSeparatorProps,
   MenubarSubProps,
   MenubarSubTriggerProps,
-} from './types';
+} from "./types";
 
 interface IMenuContext extends MenubarRootProps {
   triggerPosition: LayoutPosition | null;
@@ -48,8 +51,10 @@ const RootContext = React.createContext<IMenuContext | null>(null);
 const Root = React.forwardRef<ViewRef, SlottableViewProps & MenubarRootProps>(
   ({ asChild, value, onValueChange, ...viewProps }, ref) => {
     const nativeID = React.useId();
-    const [triggerPosition, setTriggerPosition] = React.useState<LayoutPosition | null>(null);
-    const [contentLayout, setContentLayout] = React.useState<LayoutRectangle | null>(null);
+    const [triggerPosition, setTriggerPosition] =
+      React.useState<LayoutPosition | null>(null);
+    const [contentLayout, setContentLayout] =
+      React.useState<LayoutRectangle | null>(null);
 
     const Component = asChild ? Slot.View : View;
     return (
@@ -67,15 +72,17 @@ const Root = React.forwardRef<ViewRef, SlottableViewProps & MenubarRootProps>(
         <Component ref={ref} {...viewProps} />
       </RootContext.Provider>
     );
-  }
+  },
 );
 
-Root.displayName = 'RootMenubar';
+Root.displayName = "RootMenubar";
 
 function useRootContext() {
   const context = React.useContext(RootContext);
   if (!context) {
-    throw new Error('Menubar compound components cannot be rendered outside the Menubar component');
+    throw new Error(
+      "Menubar compound components cannot be rendered outside the Menubar component",
+    );
   }
   return context;
 }
@@ -91,18 +98,20 @@ const Menu = React.forwardRef<ViewRef, SlottableViewProps & MenubarMenuProps>(
           value,
         }}
       >
-        <Component ref={ref} role='menubar' {...viewProps} />
+        <Component ref={ref} role="menubar" {...viewProps} />
       </MenuContext.Provider>
     );
-  }
+  },
 );
 
-Menu.displayName = 'MenuMenubar';
+Menu.displayName = "MenuMenubar";
 
 function useMenuContext() {
   const context = React.useContext(MenuContext);
   if (!context) {
-    throw new Error('Menubar compound components cannot be rendered outside the Menubar component');
+    throw new Error(
+      "Menubar compound components cannot be rendered outside the Menubar component",
+    );
   }
   return context;
 }
@@ -121,7 +130,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
         }
         return triggerRef.current;
       },
-      [triggerRef.current]
+      [triggerRef.current],
     );
 
     function onPress(ev: GestureResponderEvent) {
@@ -139,17 +148,17 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
       <Component
         ref={triggerRef}
         aria-disabled={disabled ?? undefined}
-        role='button'
+        role="button"
         onPress={onPress}
         disabled={disabled ?? undefined}
         aria-expanded={value === menuValue}
         {...props}
       />
     );
-  }
+  },
 );
 
-Trigger.displayName = 'TriggerMenubar';
+Trigger.displayName = "TriggerMenubar";
 
 /**
  * @warning when using a custom `<PortalHost />`, you will have to adjust the Content's sideOffset to account for nav elements like headers.
@@ -170,8 +179,14 @@ function Portal({ forceMount, hostName, children }: MenubarPortalProps) {
 
   return (
     <RNPPortal hostName={hostName} name={`${menubar.nativeID}_portal`}>
-      <RootContext.Provider value={menubar} key={`RootContext_${menubar.nativeID}_portal_provider`}>
-        <MenuContext.Provider value={menu} key={`MenuContext_${menubar.nativeID}_portal_provider`}>
+      <RootContext.Provider
+        value={menubar}
+        key={`RootContext_${menubar.nativeID}_portal_provider`}
+      >
+        <MenuContext.Provider
+          value={menu}
+          key={`MenuContext_${menubar.nativeID}_portal_provider`}
+        >
           {children}
         </MenuContext.Provider>
       </RootContext.Provider>
@@ -179,9 +194,22 @@ function Portal({ forceMount, hostName, children }: MenubarPortalProps) {
   );
 }
 
-const Overlay = React.forwardRef<PressableRef, SlottablePressableProps & MenubarOverlayProps>(
-  ({ asChild, forceMount, onPress: OnPressProp, closeOnPress = true, ...props }, ref) => {
-    const { value, onValueChange, setContentLayout, setTriggerPosition } = useRootContext();
+const Overlay = React.forwardRef<
+  PressableRef,
+  SlottablePressableProps & MenubarOverlayProps
+>(
+  (
+    {
+      asChild,
+      forceMount,
+      onPress: OnPressProp,
+      closeOnPress = true,
+      ...props
+    },
+    ref,
+  ) => {
+    const { value, onValueChange, setContentLayout, setTriggerPosition } =
+      useRootContext();
 
     function onPress(ev: GestureResponderEvent) {
       if (closeOnPress) {
@@ -200,21 +228,24 @@ const Overlay = React.forwardRef<PressableRef, SlottablePressableProps & Menubar
 
     const Component = asChild ? Slot.Pressable : Pressable;
     return <Component ref={ref} onPress={onPress} {...props} />;
-  }
+  },
 );
 
-Overlay.displayName = 'OverlayMenubar';
+Overlay.displayName = "OverlayMenubar";
 
 /**
  * @info `position`, `top`, `left`, and `maxWidth` style properties are controlled internally. Opt out of this behavior by setting `disablePositioningStyle` to `true`.
  */
-const Content = React.forwardRef<ViewRef, SlottableViewProps & PositionedContentProps>(
+const Content = React.forwardRef<
+  ViewRef,
+  SlottableViewProps & PositionedContentProps
+>(
   (
     {
       asChild = false,
       forceMount,
-      align = 'start',
-      side = 'bottom',
+      align = "start",
+      side = "bottom",
       sideOffset = 0,
       alignOffset = 0,
       avoidCollisions = true,
@@ -224,7 +255,7 @@ const Content = React.forwardRef<ViewRef, SlottableViewProps & PositionedContent
       disablePositioningStyle,
       ...props
     },
-    ref
+    ref,
   ) => {
     const {
       value,
@@ -238,12 +269,15 @@ const Content = React.forwardRef<ViewRef, SlottableViewProps & PositionedContent
     const { value: menuValue } = useMenuContext();
 
     React.useEffect(() => {
-      const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-        setTriggerPosition(null);
-        setContentLayout(null);
-        onValueChange(undefined);
-        return true;
-      });
+      const backHandler = BackHandler.addEventListener(
+        "hardwareBackPress",
+        () => {
+          setTriggerPosition(null);
+          setContentLayout(null);
+          onValueChange(undefined);
+          return true;
+        },
+      );
 
       return () => {
         setContentLayout(null);
@@ -278,7 +312,7 @@ const Content = React.forwardRef<ViewRef, SlottableViewProps & PositionedContent
     return (
       <Component
         ref={ref}
-        role='menu'
+        role="menu"
         nativeID={nativeID}
         aria-modal={true}
         style={[positionStyle, style]}
@@ -287,17 +321,28 @@ const Content = React.forwardRef<ViewRef, SlottableViewProps & PositionedContent
         {...props}
       />
     );
-  }
+  },
 );
 
-Content.displayName = 'ContentMenubar';
+Content.displayName = "ContentMenubar";
 
-const Item = React.forwardRef<PressableRef, SlottablePressableProps & MenubarItemProps>(
+const Item = React.forwardRef<
+  PressableRef,
+  SlottablePressableProps & MenubarItemProps
+>(
   (
-    { asChild, textValue, onPress: onPressProp, disabled = false, closeOnPress = true, ...props },
-    ref
+    {
+      asChild,
+      textValue,
+      onPress: onPressProp,
+      disabled = false,
+      closeOnPress = true,
+      ...props
+    },
+    ref,
   ) => {
-    const { onValueChange, setContentLayout, setTriggerPosition } = useRootContext();
+    const { onValueChange, setContentLayout, setTriggerPosition } =
+      useRootContext();
 
     function onPress(ev: GestureResponderEvent) {
       if (closeOnPress) {
@@ -312,7 +357,7 @@ const Item = React.forwardRef<PressableRef, SlottablePressableProps & MenubarIte
     return (
       <Component
         ref={ref}
-        role='menuitem'
+        role="menuitem"
         onPress={onPress}
         disabled={disabled}
         aria-valuetext={textValue}
@@ -321,24 +366,28 @@ const Item = React.forwardRef<PressableRef, SlottablePressableProps & MenubarIte
         {...props}
       />
     );
-  }
+  },
 );
 
-Item.displayName = 'ItemMenubar';
+Item.displayName = "ItemMenubar";
 
-const Group = React.forwardRef<ViewRef, SlottableViewProps>(({ asChild, ...props }, ref) => {
-  const Component = asChild ? Slot.View : View;
-  return <Component ref={ref} role='group' {...props} />;
-});
+const Group = React.forwardRef<ViewRef, SlottableViewProps>(
+  ({ asChild, ...props }, ref) => {
+    const Component = asChild ? Slot.View : View;
+    return <Component ref={ref} role="group" {...props} />;
+  },
+);
 
-Group.displayName = 'GroupMenubar';
+Group.displayName = "GroupMenubar";
 
-const Label = React.forwardRef<TextRef, SlottableTextProps>(({ asChild, ...props }, ref) => {
-  const Component = asChild ? Slot.Text : Text;
-  return <Component ref={ref} {...props} />;
-});
+const Label = React.forwardRef<TextRef, SlottableTextProps>(
+  ({ asChild, ...props }, ref) => {
+    const Component = asChild ? Slot.Text : Text;
+    return <Component ref={ref} {...props} />;
+  },
+);
 
-Label.displayName = 'LabelMenubar';
+Label.displayName = "LabelMenubar";
 
 type FormItemContext =
   | { checked: boolean }
@@ -364,9 +413,10 @@ const CheckboxItem = React.forwardRef<
       disabled = false,
       ...props
     },
-    ref
+    ref,
   ) => {
-    const { onValueChange, setTriggerPosition, setContentLayout, nativeID } = useRootContext();
+    const { onValueChange, setTriggerPosition, setContentLayout, nativeID } =
+      useRootContext();
 
     function onPress(ev: GestureResponderEvent) {
       onCheckedChange(!checked);
@@ -384,7 +434,7 @@ const CheckboxItem = React.forwardRef<
         <Component
           ref={ref}
           key={`checkbox-${nativeID}-${checked}`}
-          role='checkbox'
+          role="checkbox"
           aria-checked={checked}
           onPress={onPress}
           disabled={disabled}
@@ -395,33 +445,34 @@ const CheckboxItem = React.forwardRef<
         />
       </FormItemContext.Provider>
     );
-  }
+  },
 );
 
-CheckboxItem.displayName = 'CheckboxItemMenubar';
+CheckboxItem.displayName = "CheckboxItemMenubar";
 
 function useFormItemContext() {
   const context = React.useContext(FormItemContext);
   if (!context) {
     throw new Error(
-      'CheckboxItem or RadioItem compound components cannot be rendered outside of a CheckboxItem or RadioItem component'
+      "CheckboxItem or RadioItem compound components cannot be rendered outside of a CheckboxItem or RadioItem component",
     );
   }
   return context;
 }
 
-const RadioGroup = React.forwardRef<ViewRef, SlottableViewProps & MenubarRadioGroupProps>(
-  ({ asChild, value, onValueChange, ...props }, ref) => {
-    const Component = asChild ? Slot.View : View;
-    return (
-      <FormItemContext.Provider value={{ value, onValueChange }}>
-        <Component ref={ref} role='radiogroup' {...props} />
-      </FormItemContext.Provider>
-    );
-  }
-);
+const RadioGroup = React.forwardRef<
+  ViewRef,
+  SlottableViewProps & MenubarRadioGroupProps
+>(({ asChild, value, onValueChange, ...props }, ref) => {
+  const Component = asChild ? Slot.View : View;
+  return (
+    <FormItemContext.Provider value={{ value, onValueChange }}>
+      <Component ref={ref} role="radiogroup" {...props} />
+    </FormItemContext.Provider>
+  );
+});
 
-RadioGroup.displayName = 'RadioGroupMenubar';
+RadioGroup.displayName = "RadioGroupMenubar";
 
 type BothFormItemContext = Exclude<FormItemContext, { checked: boolean }> & {
   checked: boolean;
@@ -429,7 +480,10 @@ type BothFormItemContext = Exclude<FormItemContext, { checked: boolean }> & {
 
 const RadioItemContext = React.createContext({} as { itemValue: string });
 
-const RadioItem = React.forwardRef<PressableRef, SlottablePressableProps & MenubarRadioItemProps>(
+const RadioItem = React.forwardRef<
+  PressableRef,
+  SlottablePressableProps & MenubarRadioItemProps
+>(
   (
     {
       asChild,
@@ -440,7 +494,7 @@ const RadioItem = React.forwardRef<PressableRef, SlottablePressableProps & Menub
       closeOnPress = true,
       ...props
     },
-    ref
+    ref,
   ) => {
     const {
       onValueChange: onRootValueChange,
@@ -448,7 +502,8 @@ const RadioItem = React.forwardRef<PressableRef, SlottablePressableProps & Menub
       setContentLayout,
     } = useRootContext();
 
-    const { value, onValueChange } = useFormItemContext() as BothFormItemContext;
+    const { value, onValueChange } =
+      useFormItemContext() as BothFormItemContext;
     function onPress(ev: GestureResponderEvent) {
       onValueChange(itemValue);
       if (closeOnPress) {
@@ -465,7 +520,7 @@ const RadioItem = React.forwardRef<PressableRef, SlottablePressableProps & Menub
         <Component
           ref={ref}
           onPress={onPress}
-          role='radio'
+          role="radio"
           aria-checked={value === itemValue}
           disabled={disabled ?? false}
           accessibilityState={{
@@ -477,43 +532,51 @@ const RadioItem = React.forwardRef<PressableRef, SlottablePressableProps & Menub
         />
       </RadioItemContext.Provider>
     );
-  }
+  },
 );
 
-RadioItem.displayName = 'RadioItemMenubar';
+RadioItem.displayName = "RadioItemMenubar";
 
 function useItemIndicatorContext() {
   return React.useContext(RadioItemContext);
 }
 
-const ItemIndicator = React.forwardRef<ViewRef, SlottableViewProps & ForceMountable>(
-  ({ asChild, forceMount, ...props }, ref) => {
-    const { itemValue } = useItemIndicatorContext();
-    const { checked, value } = useFormItemContext() as BothFormItemContext;
+const ItemIndicator = React.forwardRef<
+  ViewRef,
+  SlottableViewProps & ForceMountable
+>(({ asChild, forceMount, ...props }, ref) => {
+  const { itemValue } = useItemIndicatorContext();
+  const { checked, value } = useFormItemContext() as BothFormItemContext;
 
-    if (!forceMount) {
-      if (itemValue == null && !checked) {
-        return null;
-      }
-      if (value !== itemValue) {
-        return null;
-      }
+  if (!forceMount) {
+    if (itemValue == null && !checked) {
+      return null;
     }
-    const Component = asChild ? Slot.View : View;
-    return <Component ref={ref} role='presentation' {...props} />;
+    if (value !== itemValue) {
+      return null;
+    }
   }
-);
+  const Component = asChild ? Slot.View : View;
+  return <Component ref={ref} role="presentation" {...props} />;
+});
 
-ItemIndicator.displayName = 'ItemIndicatorMenubar';
+ItemIndicator.displayName = "ItemIndicatorMenubar";
 
-const Separator = React.forwardRef<ViewRef, SlottableViewProps & MenubarSeparatorProps>(
-  ({ asChild, decorative, ...props }, ref) => {
-    const Component = asChild ? Slot.View : View;
-    return <Component role={decorative ? 'presentation' : 'separator'} ref={ref} {...props} />;
-  }
-);
+const Separator = React.forwardRef<
+  ViewRef,
+  SlottableViewProps & MenubarSeparatorProps
+>(({ asChild, decorative, ...props }, ref) => {
+  const Component = asChild ? Slot.View : View;
+  return (
+    <Component
+      role={decorative ? "presentation" : "separator"}
+      ref={ref}
+      {...props}
+    />
+  );
+});
 
-Separator.displayName = 'SeparatorMenubar';
+Separator.displayName = "SeparatorMenubar";
 
 const SubContext = React.createContext<{
   nativeID: string;
@@ -537,21 +600,29 @@ const Sub = React.forwardRef<ViewRef, SlottableViewProps & MenubarSubProps>(
         <Component ref={ref} {...props} />
       </SubContext.Provider>
     );
-  }
+  },
 );
 
-Sub.displayName = 'SubMenubar';
+Sub.displayName = "SubMenubar";
 
 function useSubContext() {
   const context = React.useContext(SubContext);
   if (!context) {
-    throw new Error('Sub compound components cannot be rendered outside of a Sub component');
+    throw new Error(
+      "Sub compound components cannot be rendered outside of a Sub component",
+    );
   }
   return context;
 }
 
-const SubTrigger = React.forwardRef<PressableRef, SlottablePressableProps & MenubarSubTriggerProps>(
-  ({ asChild, textValue, onPress: onPressProp, disabled = false, ...props }, ref) => {
+const SubTrigger = React.forwardRef<
+  PressableRef,
+  SlottablePressableProps & MenubarSubTriggerProps
+>(
+  (
+    { asChild, textValue, onPress: onPressProp, disabled = false, ...props },
+    ref,
+  ) => {
     const { nativeID, open, onOpenChange } = useSubContext();
 
     function onPress(ev: GestureResponderEvent) {
@@ -564,7 +635,7 @@ const SubTrigger = React.forwardRef<PressableRef, SlottablePressableProps & Menu
       <Component
         ref={ref}
         aria-valuetext={textValue}
-        role='menuitem'
+        role="menuitem"
         aria-expanded={open}
         accessibilityState={{ expanded: open, disabled: !!disabled }}
         nativeID={nativeID}
@@ -574,27 +645,30 @@ const SubTrigger = React.forwardRef<PressableRef, SlottablePressableProps & Menu
         {...props}
       />
     );
-  }
+  },
 );
 
-SubTrigger.displayName = 'SubTriggerMenubar';
+SubTrigger.displayName = "SubTriggerMenubar";
 
-const SubContent = React.forwardRef<ViewRef, SlottableViewProps & ForceMountable>(
-  ({ asChild = false, forceMount, ...props }, ref) => {
-    const { open, nativeID } = useSubContext();
+const SubContent = React.forwardRef<
+  ViewRef,
+  SlottableViewProps & ForceMountable
+>(({ asChild = false, forceMount, ...props }, ref) => {
+  const { open, nativeID } = useSubContext();
 
-    if (!forceMount) {
-      if (!open) {
-        return null;
-      }
+  if (!forceMount) {
+    if (!open) {
+      return null;
     }
-
-    const Component = asChild ? Slot.View : View;
-    return <Component ref={ref} role='group' aria-labelledby={nativeID} {...props} />;
   }
-);
 
-SubContent.displayName = 'SubContentMenubar';
+  const Component = asChild ? Slot.View : View;
+  return (
+    <Component ref={ref} role="group" aria-labelledby={nativeID} {...props} />
+  );
+});
+
+SubContent.displayName = "SubContentMenubar";
 
 export {
   CheckboxItem,

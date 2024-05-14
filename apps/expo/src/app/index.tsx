@@ -12,18 +12,17 @@ export default function Index() {
     <SafeAreaView className="bg-white">
       {/* Changes page title visible on the header */}
       {/* <Stack.Screen options={{ title: "Home Page" }}  /> */}
-      <View className="h-full w-full bg-red-500 p-4">
+      <View className="h-full w-full bg-background p-4">
         <Link
           asChild
           href={{
-            pathname: "/text-page",
+            pathname: "/auth/signin",
           }}
         >
           <Button>
-            <Text>tests</Text>
+            <Text>Sign In</Text>
           </Button>
         </Link>
-        <Text>Test</Text>
       </View>
     </SafeAreaView>
   );

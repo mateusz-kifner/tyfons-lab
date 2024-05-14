@@ -2,7 +2,6 @@
 
 import { logger } from "@tyfons-lab/logger";
 
-
 function PostsPage() {
   logger.info("test client");
   // useEffect(() => {
