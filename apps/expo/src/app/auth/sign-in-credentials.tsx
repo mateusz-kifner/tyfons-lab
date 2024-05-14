@@ -1,32 +1,36 @@
 import { Button, SafeAreaView, Text, type TextInput, View } from "react-native";
 import { Stack } from "expo-router";
 import { Input } from "@/components/ui/input";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import _ from "lodash";
 
 export default function signin() {
-  const usernameRef = useRef<TextInput>(null);
-  const passwordRef = useRef<TextInput>(null);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [test, setTest] = useState("");
   return (
     <SafeAreaView className="bg-background">
       <Stack.Screen options={{ title: "Sign in" }} />
       <View className="flex flex h-full w-full flex-col gap-2 p-4">
         <Input
-          ref={usernameRef}
           placeholder="Username"
+          autoComplete="username"
+          value={username}
+          onChangeText={setUsername}
           className="items-center rounded-md border border-input bg-background px-3 text-foreground text-lg leading-[1.25]"
         />
 
         <Input
-          ref={passwordRef}
           autoComplete="password"
           placeholder="Password"
+          value={password}
+          onChangeText={setPassword}
           secureTextEntry
           className="items-center rounded-md border border-input bg-background px-3 text-foreground text-lg leading-[1.25]"
         />
         <Button
           onPress={() => {
-            setTest(`${usernameRef.current} ${passwordRef.current}`);
+            setTest(`${username} ${password}`);
           }}
           title="Sign in"
         />

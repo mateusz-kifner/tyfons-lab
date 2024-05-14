@@ -16,7 +16,7 @@ export default function Index() {
         <Link
           asChild
           href={{
-            pathname: "/auth/signin",
+            pathname: "/auth/sign-in-magic-link",
           }}
         >
           <Button>
