@@ -75,7 +75,7 @@ importers:
         specifier: ~1.12.1
         version: 1.12.1
       lodash:
-        specifier: ^4.17.21
+        specifier: 4.17.21
         version: 4.17.21
       nativewind:
         specifier: 4.0.36
@@ -142,7 +142,7 @@ importers:
         specifier: 7.20.5
         version: 7.20.5
       '@types/lodash':
-        specifier: ^4.17.1
+        specifier: 4.17.1
         version: 4.17.1
       '@types/react':
         specifier: 18.3.2
@@ -278,6 +278,9 @@ importers:
       '@tyfons-lab/db':
         specifier: workspace:*
         version: link:../db
+      '@tyfons-lab/email-templates':
+        specifier: workspace:*
+        version: link:../email-templates
       lucia:
         specifier: ^3.2.0
         version: 3.2.0

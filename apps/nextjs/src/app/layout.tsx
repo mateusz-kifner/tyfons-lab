@@ -1,3 +1,4 @@
+import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
@@ -7,8 +8,6 @@ import { ThemeProvider, ThemeToggle } from "@tyfons-lab/ui-web/theme";
 import { Toaster } from "@tyfons-lab/ui-web/sonner";
 
 import { TRPCReactProvider } from "@/trpc/react";
-
-import "@/app/globals.css";
 
 import { env } from "@/env";
 
