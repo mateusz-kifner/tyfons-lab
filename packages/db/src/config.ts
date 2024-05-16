@@ -22,7 +22,7 @@ const env = createEnv({
 export const connectionStr = env.DATABASE_URL;
 
 export default {
-  schema: "./src/schema",
+  schema: "./src/schemas.ts",
   dialect: "postgresql",
   dbCredentials: { url: connectionStr },
   tablesFilter: ["tyfons_lab_*"],

@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 import { serial, timestamp, varchar } from "drizzle-orm/pg-core";
 
-import { pgTable } from "./_table";
+import { pgTable } from "../pgTable";
 
 export const post = pgTable("post", {
   id: serial("id").primaryKey(),
