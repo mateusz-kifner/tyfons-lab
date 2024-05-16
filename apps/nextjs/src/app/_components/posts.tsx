@@ -15,7 +15,6 @@ import {
 } from "@tyfons-lab/ui-web/form";
 import { Input } from "@tyfons-lab/ui-web/input";
 // import { toast } from "@tyfons-lab/ui-web/toast";
-import { CreatePostSchema } from "@tyfons-lab/validators";
 
 import { api } from "@/trpc/react";
 

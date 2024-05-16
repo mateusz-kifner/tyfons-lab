@@ -14,7 +14,6 @@ const config = {
     "@tyfons-lab/auth",
     "@tyfons-lab/db",
     "@tyfons-lab/ui-web",
-    "@tyfons-lab/validators",
   ],
 
   /** We already do linting and typechecking as separate tasks in CI */
@@ -22,10 +21,8 @@ const config = {
   typescript: { ignoreBuildErrors: true },
 
   experimental: {
-    serverComponentsExternalPackages: ["oslo"]
-  }
-  
-  
+    serverComponentsExternalPackages: ["oslo"],
+  },
 };
 
 export default config;

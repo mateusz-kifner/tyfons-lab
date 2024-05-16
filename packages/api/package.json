@@ -21,7 +21,6 @@
     "@trpc/server": "11.0.0-rc.366",
     "@tyfons-lab/auth": "workspace:*",
     "@tyfons-lab/db": "workspace:*",
-    "@tyfons-lab/validators": "workspace:*",
     "superjson": "2.2.1",
     "zod": "3.23.8"
   },
