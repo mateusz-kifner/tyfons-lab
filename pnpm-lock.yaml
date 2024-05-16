@@ -189,9 +189,6 @@ importers:
       '@tyfons-lab/ui-web':
         specifier: workspace:*
         version: link:../../packages/ui-web
-      '@tyfons-lab/validators':
-        specifier: workspace:*
-        version: link:../../packages/validators
       geist:
         specifier: 1.3.0
         version: 1.3.0(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -250,9 +247,6 @@ importers:
       '@tyfons-lab/db':
         specifier: workspace:*
         version: link:../db
-      '@tyfons-lab/validators':
-        specifier: workspace:*
-        version: link:../validators
       superjson:
         specifier: 2.2.1
         version: 2.2.1
@@ -316,7 +310,7 @@ importers:
         specifier: 0.30.10
         version: 0.30.10(@types/react@18.3.2)(postgres@3.4.4)(react@18.3.1)
       drizzle-zod:
-        specifier: ^0.5.1
+        specifier: 0.5.1
         version: 0.5.1(drizzle-orm@0.30.10(@types/react@18.3.2)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8)
       postgres:
         specifier: 3.4.4
@@ -562,19 +556,6 @@ importers:
       tailwindcss:
         specifier: 3.4.3
         version: 3.4.3(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.12.11)(typescript@5.4.5))
-      typescript:
-        specifier: 5.4.5
-        version: 5.4.5
-
-  packages/validators:
-    dependencies:
-      zod:
-        specifier: 3.23.8
-        version: 3.23.8
-    devDependencies:
-      '@tyfons-lab/tsconfig':
-        specifier: workspace:*
-        version: link:../../tooling/typescript
       typescript:
         specifier: 5.4.5
         version: 5.4.5

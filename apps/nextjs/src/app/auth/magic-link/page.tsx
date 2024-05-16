@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { credentials, magicLink, validateRequest } from "@tyfons-lab/auth";
+import { magicLink, validateRequest } from "@tyfons-lab/auth";
 import { type ActionResult, Form } from "../../_form";
 import { Input } from "@tyfons-lab/ui-web/input";
 import { Label } from "@tyfons-lab/ui-web/label";

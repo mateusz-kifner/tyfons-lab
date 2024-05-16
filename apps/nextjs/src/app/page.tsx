@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { credentials, lucia, validateRequest } from "@tyfons-lab/auth";
+import { lucia, signOut, validateRequest } from "@tyfons-lab/auth";
 import { sendSignInEmail } from "@tyfons-lab/email-templates";
 import { type ActionResult, Form } from "./_form";
 
@@ -33,7 +33,7 @@ export default async function HomePage() {
         <h1 className="font-extrabold text-5xl tracking-tight sm:text-[5rem]">
           Create <span className="text-primary">T3</span> Turbo
         </h1>
-        <h1>Hi, {user.username}!</h1>
+        <h1>Hi, {user.name}!</h1>
         <p>Your user ID is {user.id}.</p>
         <Form action={logout}>
           <button type="submit">Sign out</button>
@@ -64,7 +64,7 @@ export default async function HomePage() {
 
 async function logout(): Promise<ActionResult> {
   "use server";
-  const sessionCookie = await credentials.signOut();
+  const sessionCookie = await signOut();
   if ("error" in sessionCookie) return sessionCookie;
   cookies().set(
     sessionCookie.name,

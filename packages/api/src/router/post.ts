@@ -1,7 +1,7 @@
 import type { TRPCRouterRecord } from "@trpc/server";
 import { z } from "zod";
 
-import { desc, eq, schema } from "@tyfons-lab/db";
+import { CreatePostSchema, desc, eq, schema } from "@tyfons-lab/db";
 
 import { protectedProcedure, publicProcedure } from "../trpc";
 
