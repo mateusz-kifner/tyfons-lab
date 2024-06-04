@@ -1,15 +1,24 @@
 import { IconCheck } from "@tabler/icons-react";
+import { Button, buttonVariants } from "@tyfons-lab/ui-web/button";
 import GradientBorderContainer from "@tyfons-lab/ui-web/gradient-border-container";
-import RadialGradientContainer from "@tyfons-lab/ui-web/radial-gradient-container";
 
 function TestPage() {
   return (
-    <div>
-      <GradientBorderContainer className="m-10 flex h-20 w-20 items-center justify-center bg-stone-800 rounded-md">
+    <div className="flex flex-col gap-5 p-10">
+      <Button variant="outline">
+        Test <IconCheck />
+      </Button>
+      <GradientBorderContainer
+        className={buttonVariants({
+          variant: "outline",
+          className: "border-none hover:bg-transparent",
+        })}
+        style={{ borderRadius: "calc(var(--radius) - 1px)" }}
+        borderWidth="1px"
+        shadowWidth="0px"
+      >
         Test
-        <div className="h-10 w-10">
-          <IconCheck />
-        </div>
+        <IconCheck />
       </GradientBorderContainer>
     </div>
   );

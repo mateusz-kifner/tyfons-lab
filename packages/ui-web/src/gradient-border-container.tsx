@@ -24,18 +24,20 @@ const GradientBorderContainer = (props: GradientBorderContainerProps) => {
 
   return (
     <div {...moreProps} className={cn("relative", className)}>
-      <div
-        className="-z-10 absolute"
-        style={{
-          background: gradient,
-          left: `-${shadowWidth}`,
-          right: `-${shadowWidth}`,
-          top: `-${shadowWidth}`,
-          bottom: `-${shadowWidth}`,
-          borderRadius: `calc(${shadowWidth}/2)`,
-          filter: `blur(${shadowBlur})`,
-        }}
-      />
+      {shadowWidth !== 0 && shadowWidth !== "0px" && (
+        <div
+          className="-z-10 absolute"
+          style={{
+            background: gradient,
+            left: `-${shadowWidth}`,
+            right: `-${shadowWidth}`,
+            top: `-${shadowWidth}`,
+            bottom: `-${shadowWidth}`,
+            borderRadius: `calc(${shadowWidth}/2)`,
+            filter: `blur(${shadowBlur})`,
+          }}
+        />
+      )}
       <div
         className="-z-10 absolute"
         style={{
