@@ -16,10 +16,10 @@
   },
   "devDependencies": {
     "@tyfons-lab/tsconfig": "workspace:*",
-    "pino-pretty": "11.0.0",
+    "pino-pretty": "11.1.0",
     "typescript": "5.4.5"
   },
   "dependencies": {
-    "pino": "9.0.0"
+    "pino": "9.1.0"
   }
 }
