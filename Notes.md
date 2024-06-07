@@ -1,5 +1,5 @@
 Ideas
 
- - tailwind neumorphic gradient color
- - tailwind gradient border
- - gradient radial border
+ - [] tailwind neumorphic gradient color
+ - [x] tailwind gradient border
+ - [x] gradient radial border
