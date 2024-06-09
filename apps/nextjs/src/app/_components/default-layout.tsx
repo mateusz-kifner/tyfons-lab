@@ -1,6 +1,6 @@
 import Header from "./header";
 
-export function Dashboard() {
+export async function Dashboard() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <Header />

@@ -1,4 +1,10 @@
-import { IconAlertCircle, IconSearch, IconUser } from "@tabler/icons-react";
+import {
+  IconAlertCircle,
+  IconLogin,
+  IconSearch,
+  IconUser,
+} from "@tabler/icons-react";
+import { validateRequest } from "@tyfons-lab/auth";
 import { Button } from "@tyfons-lab/ui-web/button";
 import {
   DropdownMenu,
@@ -8,11 +14,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@tyfons-lab/ui-web/dropdown-menu";
-import { Input } from "@tyfons-lab/ui-web/input";
+// import { Input } from "@tyfons-lab/ui-web/input";
 import { Sheet, SheetContent, SheetTrigger } from "@tyfons-lab/ui-web/sheet";
 import Link from "next/link";
 
-function Header() {
+async function Header() {
+  const { user } = await validateRequest();
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -23,10 +30,10 @@ function Header() {
           <img src="/Logo2.svg" alt="Tyfons-lab" className="h-14 w-14" />
         </Link>
         <Link
-          href="#"
+          href="/chat"
           className="text-foreground transition-colors hover:text-foreground"
         >
-          Dashboard
+          Chat
         </Link>
       </nav>
       <Sheet>
@@ -38,37 +45,13 @@ function Header() {
         <SheetContent side="left">
           <nav className="grid gap-6 text-lg font-medium">
             <Link
-              href="#"
+              href="/"
               className="flex items-center gap-2 text-lg font-semibold"
             >
               <img src="/Logo2.svg" alt="Tyfons-lab" className="h-14 w-14" />
             </Link>
-            <Link href="#" className="hover:text-foreground">
-              Dashboard
-            </Link>
-            <Link
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Orders
-            </Link>
-            <Link
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Products
-            </Link>
-            <Link
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Customers
-            </Link>
-            <Link
-              href="#"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Analytics
+            <Link href="/chat" className="hover:text-foreground">
+              Chat
             </Link>
           </nav>
         </SheetContent>
@@ -85,22 +68,30 @@ function Header() {
             />
           </div>
         </form> */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+        {!user ? (
+          <Link href="/auth">
             <Button variant="secondary" size="icon" className="rounded-full">
-              <IconUser className="h-5 w-5" />
-              <span className="sr-only">Toggle user menu</span>
+              <IconLogin className="h-5 w-5" />
+              <span className="sr-only">Sign In</span>
             </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </Link>
+        ) : (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="secondary" size="icon" className="rounded-full">
+                <IconUser className="h-5 w-5" />
+                <span className="sr-only">Toggle user menu</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Settings</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Logout</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
       </div>
     </header>
   );
