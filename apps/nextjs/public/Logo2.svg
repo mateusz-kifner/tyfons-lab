@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:guide x="62.95532874438915" y="6.0443827158256695" angle="0"/>
+    <linearGradient id="gradient-1" bx:pinned="true">
+      <stop offset="0" style="stop-color: rgb(230, 0, 255);"/>
+      <stop offset="1" style="stop-color: rgb(74, 0, 255);"/>
+    </linearGradient>
+    <linearGradient id="gradient-1-0" gradientUnits="userSpaceOnUse" x1="47.741" y1="2.229" x2="47.741" y2="102.896" spreadMethod="pad" gradientTransform="matrix(1.106404, 0, 0, 0.903835, -0.000025, -0.000012)" xlink:href="#gradient-1"/>
+    <filter id="invert-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="invert 1 1">
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="1 0"/>
+        <feFuncG type="table" tableValues="1 0"/>
+        <feFuncB type="table" tableValues="1 0"/>
+      </feComponentTransfer>
+    </filter>
+    <mask id="mask-0">
+      <g transform="matrix(0.628404, 0.777887, -0.777887, 0.628404, 61.152294, -23.611179)">
+        <rect width="100" height="100" style=""/>
+        <g style="filter: url('#invert-filter-0');" transform="matrix(1, 0, 0, 1, -0.000006, 0)">
+          <g transform="matrix(0.613362, 0, 0, 0.613362, 21.807846, 19.189943)">
+            <g transform="matrix(1, 0, 0, 1, -3.229168, 0.896984)" style="transform-origin: 50.0005px 52.9965px;">
+              <path d="M 60 8.231 L 60 49.505 L 60 86.107 C 60 86.107 59.893 96 50 96 C 40.107 96 40 86.107 40 86.107 L 40 49.506 L 40 8.231 M 64 7.579 L 36 7.551 L 36 49.506 L 36 86.108 C 36 91.691 39.808 100 50 100 C 60.192 100 64 91.691 64 86.107 L 64 49.506 L 64 7.579 Z"/>
+              <rect x="34.273" width="31.455" height="0.119" style="stroke-linecap: round; stroke-linejoin: round; fill: rgb(255, 0, 0); stroke-width: 4.5px; stroke: rgb(0, 0, 0);" y="5.993"/>
+            </g>
+            <!-- <path style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 3px; transform-box: fill-box; transform-origin: 50% 50%;" d="M 38.136 43.761 C 42.411 43.605 46.207 46.423 46.937 51.345 C 47.967 58.29 55.269 59.865 55.269 59.865" transform="matrix(0.707107, -0.707107, 0.707107, 0.707107, 0.000002, -0.000002)"/> -->
+          </g>
+          <text style="font-family: 'TeX Gyre Cursor'; font-size: 98.4px; white-space: pre;" x="-9.04" y="74.489">{}</text>
+        </g>
+      </g>
+    </mask>
+  </defs>
+  <g>
+    <rect x="7.52" y="2.015" width="90.602" height="90.986" style="fill: url('#gradient-1-0'); paint-order: fill; isolation: isolate; transform-box: fill-box; transform-origin: 50% 50%; mask: url('#mask-0');" transform="matrix(0.628404, -0.777887, 0.777887, 0.628404, -2.73374, 3.664384)"/>
+  </g>
+</svg>
