@@ -7,6 +7,18 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
+    },
+    "./schemas": {
+      "types": "./dist/schemas.d.ts",
+      "default": "./src/schemas.ts"
+    },
+    "./services": {
+      "types": "./dist/services.d.ts",
+      "default": "./src/services.ts"
+    },
+    "./validators": {
+      "types": "./dist/validators.d.ts",
+      "default": "./src/validators.ts"
     }
   },
   "scripts": {

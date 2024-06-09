@@ -1,6 +1,7 @@
-import { Argon2id } from "oslo/password";
 import { z } from "zod";
 import { sendSignInEmail } from "@tyfons-lab/email-templates";
+import { authService, userService } from "@tyfons-lab/db/services";
+import { generateIdFromEntropySize } from "lucia";
 
 const emailZodSchema = z.string().email().min(5).max(32);
 const tokenZodSchema = z.string().max(64);
@@ -13,7 +14,21 @@ async function initiateSignIn(email: string | null) {
     };
   }
 
-  sendSignInEmail(result.data, "test code");
+  let user = await userService.getByEmail(result.data);
+  if ("error" in user) {
+    const id = generateIdFromEntropySize(10);
+    user = await userService.create({ id: id, email: result.data });
+    if ("error" in user) {
+      return user;
+    }
+  }
+  const id = generateIdFromEntropySize(10);
+  const tokenObj = await authService.createToken({ id, userId: user.id });
+  if ("error" in tokenObj) {
+    return tokenObj;
+  }
+  console.log(tokenObj);
+  sendSignInEmail(result.data, tokenObj.token);
 }
 async function validateSignIn(token: string | null) {
   const result = tokenZodSchema.safeParse(token);

@@ -1,12 +1,14 @@
 import { Lucia } from "lucia";
 import { DrizzlePostgreSQLAdapter } from "@lucia-auth/adapter-drizzle";
 import type { Session, User } from "lucia";
-import { type UserType, db, schema } from "@tyfons-lab/db";
+import { db } from "@tyfons-lab/db";
 import { cookies } from "next/headers";
 import { cache } from "react";
 import { env } from "../env";
+import { sessions, users } from "@tyfons-lab/db/schemas";
+import type { UserType } from "@tyfons-lab/db/validators";
 
-const adapter = new DrizzlePostgreSQLAdapter(db, schema.sessions, schema.users);
+const adapter = new DrizzlePostgreSQLAdapter(db, sessions, users);
 
 export type UserSession =
   | { user: User; session: Session }
