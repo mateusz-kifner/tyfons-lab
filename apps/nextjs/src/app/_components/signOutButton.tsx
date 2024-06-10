@@ -14,6 +14,7 @@ function SignOutButton() {
         mutateAsync()
           .then(() => {
             router.push("/");
+            router.refresh();
           })
           .catch((e) => console.log(e));
       }}
