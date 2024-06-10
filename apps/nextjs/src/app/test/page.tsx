@@ -6,14 +6,11 @@ import GradientBorderContainer from "@tyfons-lab/ui-web/gradient-border-containe
 function TestPage() {
   return (
     <div className="flex flex-col gap-5 p-10">
-      <Button variant="outline">
-        Test <IconCheck />
-      </Button>
       <GradientBorderContainer
         className={buttonVariants({
           variant: "outline",
           size: "icon",
-          className: "border-none hover:bg-transparent cursor-pointer",
+          className: "cursor-pointer border-none hover:bg-transparent",
         })}
         style={{ borderRadius: "calc(var(--radius) - 1px)" }}
         borderWidth="1px"
@@ -28,7 +25,7 @@ function TestPage() {
         className={buttonVariants({
           variant: "outline",
           size: "icon",
-          className: "border-none  cursor-pointer rounded-full",
+          className: "cursor-pointer rounded-full border-none",
         })}
         borderWidth="1px"
         borderRadius="100%"

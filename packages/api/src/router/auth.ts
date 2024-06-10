@@ -1,7 +1,7 @@
 import type { TRPCRouterRecord } from "@trpc/server";
 
 import { protectedProcedure, publicProcedure } from "../trpc";
-import { magicLink } from "@tyfons-lab/auth";
+import { magicLink, signOut } from "@tyfons-lab/auth";
 import { z } from "zod";
 
 export const authRouter = {
@@ -16,5 +16,9 @@ export const authRouter = {
   }),
   getSecretMessage: protectedProcedure.query(() => {
     return "you can see this secret message!";
+  }),
+
+  signOut: publicProcedure.mutation(async () => {
+    return await signOut();
   }),
 } satisfies TRPCRouterRecord;

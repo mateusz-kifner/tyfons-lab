@@ -45,7 +45,7 @@ const RadialGradientContainer = (props: RadialGradientContainerProps) => {
     ([stop, color]) => `${color} ${stop}`,
   );
   const getGrad1 = () => {
-    let arr = [];
+    const arr = [];
 
     for (let i = 100 - 12.5; i <= 100; i++) {
       arr.push(colorStops[i]);

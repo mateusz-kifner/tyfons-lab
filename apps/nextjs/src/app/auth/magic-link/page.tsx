@@ -21,7 +21,7 @@ export default async function Page() {
     return redirect("/");
   }
   return (
-    <Card className="mx-auto max-w-sm mt-6">
+    <Card className="mx-auto mt-6 max-w-sm">
       <CardHeader>
         <CardTitle className="text-2xl">Sign in</CardTitle>
         <CardDescription>
@@ -58,6 +58,5 @@ async function signin(_: any, formData: FormData): Promise<ActionResult> {
     return sessionCookie ?? { error: null };
   }
   console.log(sessionCookie);
-  // return sessionCookie
-  return redirect("/waiting");
+  return redirect("/auth/magic-link/waiting");
 }

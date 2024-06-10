@@ -1,3 +1,9 @@
+import { Button } from "@tyfons-lab/ui-web/button";
+
 export default async function HomePage() {
-  return <>text</>;
+  return (
+    <>
+      <Button>test</Button>
+    </>
+  );
 }

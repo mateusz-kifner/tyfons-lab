@@ -17,15 +17,16 @@ import {
 // import { Input } from "@tyfons-lab/ui-web/input";
 import { Sheet, SheetContent, SheetTrigger } from "@tyfons-lab/ui-web/sheet";
 import Link from "next/link";
+import SignOutButton from "./signOutButton";
 
 async function Header() {
   const { user } = await validateRequest();
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-      <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+      <nav className="hidden flex-col gap-6 font-medium text-lg md:flex md:flex-row md:items-center lg:gap-6 md:gap-5 md:text-sm">
         <Link
           href="/"
-          className="flex items-center gap-2 text-lg font-semibold md:text-base"
+          className="flex items-center gap-2 font-semibold text-lg md:text-base"
         >
           <img src="/Logo2.svg" alt="Tyfons-lab" className="h-14 w-14" />
         </Link>
@@ -43,10 +44,10 @@ async function Header() {
           </Button>
         </SheetTrigger>
         <SheetContent side="left">
-          <nav className="grid gap-6 text-lg font-medium">
+          <nav className="grid gap-6 font-medium text-lg">
             <Link
               href="/"
-              className="flex items-center gap-2 text-lg font-semibold"
+              className="flex items-center gap-2 font-semibold text-lg"
             >
               <img src="/Logo2.svg" alt="Tyfons-lab" className="h-14 w-14" />
             </Link>
@@ -56,7 +57,7 @@ async function Header() {
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+      <div className="flex w-full items-center gap-4 md:ml-auto lg:gap-4 md:gap-2">
         <div className="ml-auto flex-1 sm:flex-initial" />
         {/* <form className="ml-auto flex-1 sm:flex-initial">
           <div className="relative">
@@ -88,7 +89,7 @@ async function Header() {
               <DropdownMenuSeparator />
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <SignOutButton />
             </DropdownMenuContent>
           </DropdownMenu>
         )}
