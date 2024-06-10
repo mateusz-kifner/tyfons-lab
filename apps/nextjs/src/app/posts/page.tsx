@@ -1,9 +1,9 @@
 "use client";
 
-import { logger } from "@tyfons-lab/logger";
+//import { logger } from "@tyfons-lab/logger";
 
 function PostsPage() {
-  logger.info("test client");
+  //logger.info("test client");
   // useEffect(() => {
   //   console.log("test");
   // }, []);

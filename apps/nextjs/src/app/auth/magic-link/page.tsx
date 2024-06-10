@@ -54,9 +54,10 @@ async function signin(_: any, formData: FormData): Promise<ActionResult> {
   "use server";
   const email = formData.get("email");
   const sessionCookie = await magicLink.initiateSignIn(email as string);
-  if (sessionCookie === undefined || "error" in sessionCookie) {
+  if (sessionCookie === null || "error" in sessionCookie) {
     return sessionCookie ?? { error: null };
   }
-  console.log(email);
-  return redirect("/");
+  console.log(sessionCookie);
+  // return sessionCookie
+  return redirect("/waiting");
 }

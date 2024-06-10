@@ -10,7 +10,8 @@ import {
 } from "@react-email/components";
 
 interface SignInEmailProps {
-  validationCode?: string;
+  email: string;
+  validationCode: string;
 }
 
 const getBaseUrl = () => {
@@ -20,17 +21,17 @@ const getBaseUrl = () => {
 
 const baseUrl = getBaseUrl();
 
-export const SignInEmail = ({ validationCode }: SignInEmailProps) => (
+export const SignInEmail = ({ email, validationCode }: SignInEmailProps) => (
   <Html>
     <Head />
-    <Preview>Your login code for Linear</Preview>
+    <Preview>Your login code for Tyfons Lab</Preview>
     <Body style={main}>
       <Container style={container}>
         <Heading style={heading}>Tyfons Lab</Heading>
         <Section style={buttonContainer}>
           <Button
             style={button}
-            href={`${baseUrl}/api/magic-link/${validationCode}`}
+            href={`${baseUrl}/auth/magic-link/${email}/${validationCode}`}
           >
             Sign in
           </Button>

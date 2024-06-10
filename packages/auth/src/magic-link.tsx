@@ -2,6 +2,7 @@ import { z } from "zod";
 import { sendSignInEmail } from "@tyfons-lab/email-templates";
 import { authService, userService } from "@tyfons-lab/db/services";
 import { generateIdFromEntropySize } from "lucia";
+import { lucia } from "./auth";
 
 const emailZodSchema = z.string().email().min(5).max(32);
 const tokenZodSchema = z.string().max(64);
@@ -22,6 +23,8 @@ async function initiateSignIn(email: string | null) {
       return user;
     }
   }
+  await userService.update({ id: user.id, tokenId: null }); // TODO: make clearTokensForUser omit current token
+  await authService.clearTokensForUser(user.id);
   const id = generateIdFromEntropySize(10);
   const tokenObj = await authService.createToken({ id, userId: user.id });
   if ("error" in tokenObj) {
@@ -29,30 +32,42 @@ async function initiateSignIn(email: string | null) {
   }
   console.log(tokenObj);
   sendSignInEmail(result.data, tokenObj.token);
+  await userService.update({ id: user.id, tokenId: tokenObj.id });
+  return tokenObj.expiration_date;
 }
-async function validateSignIn(token: string | null) {
-  const result = tokenZodSchema.safeParse(token);
+async function validateSignIn(email: string | null, token: string | null) {
+  const result = tokenZodSchema.safeParse(email);
   if (!result.success) {
     return {
       error: result.error.message,
     };
   }
 
-  // const existingUser = await db
-  //   .select()
-  //   .from(schema.users)
-  //   .where(eq(schema.users.username, username));
+  const result2 = tokenZodSchema.safeParse(token);
+  if (!result2.success) {
+    return {
+      error: result2.error.message,
+    };
+  }
 
-  // if (existingUser[0] === undefined) {
-  //   return {
-  //     error: "Incorrect username or password",
-  //   };
-  // }
+  const val_email = result.data;
+  const val_token = result2.data;
+  const user = await userService.getByEmail(val_email);
+  if ("error" in user) {
+    return user;
+  }
+  if (user.tokenId === null) {
+    return { error: `[Auth]: No token found on user with email ${val_email}` };
+  }
+  const tokenObj = await authService.getById(user.tokenId);
+  if ("error" in tokenObj) {
+    return tokenObj;
+  }
 
-  // const session = await lucia.createSession(existingUser[0].id, {});
-  // const sessionCookie = lucia.createSessionCookie(session.id);
+  const session = await lucia.createSession(user.id, {});
+  const sessionCookie = lucia.createSessionCookie(session.id);
 
-  // return sessionCookie;
+  return sessionCookie;
 }
 
 const magicLink = {

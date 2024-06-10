@@ -10,6 +10,7 @@ import { Toaster } from "@tyfons-lab/ui-web/sonner";
 import { TRPCReactProvider } from "@/trpc/react";
 
 import { env } from "@/env";
+import DefaultLayout from "./_components/default-layout";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -50,10 +51,13 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TRPCReactProvider>{props.children}</TRPCReactProvider>
+          <TRPCReactProvider>
+            <DefaultLayout>{props.children}</DefaultLayout>
+          </TRPCReactProvider>
           <div className="absolute right-4 bottom-4">
             <ThemeToggle />
           </div>
+
           <Toaster />
         </ThemeProvider>
       </body>

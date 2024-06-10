@@ -16,7 +16,9 @@ export const emailTransporter = nodemailer.createTransport({
 });
 
 export async function sendSignInEmail(email: string, validationCode: string) {
-  const emailHtml = render(<SignInEmail validationCode={validationCode} />);
+  const emailHtml = render(
+    <SignInEmail validationCode={validationCode} email={encodeURI(email)} />,
+  );
   await emailTransporter.sendMail({
     from: env.EMAIL_FROM,
     to: email,

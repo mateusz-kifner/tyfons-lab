@@ -3,7 +3,7 @@ import { eq, inArray, sql } from "drizzle-orm";
 import type { User, UpdatedUser, NewUser } from "./validator";
 import { type DBType, db } from "..";
 import type { MetadataType } from "../types/MetadataType";
-import type { Err } from "../Err";
+import type { Err } from "../types/Err";
 
 // compile query ahead of time
 const userPrepareGetById = db.query.users
