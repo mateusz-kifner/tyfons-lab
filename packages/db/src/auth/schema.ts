@@ -23,12 +23,17 @@ export const users = pgTable("user", {
   image: varchar("image", { length: 255 }),
   role: roleEnum("role").notNull().default("normal"),
   tokenId: text("tokenId").references(() => authTokens.id),
+  wsTokenId: text("wsTokenId").references(() => authTokens.id),
   ...metadata,
 });
 
 export const userRelations = relations(users, ({ one }) => ({
   token: one(authTokens, {
     fields: [users.tokenId],
+    references: [authTokens.id],
+  }),
+  wsToken: one(authTokens, {
+    fields: [users.wsTokenId],
     references: [authTokens.id],
   }),
 }));

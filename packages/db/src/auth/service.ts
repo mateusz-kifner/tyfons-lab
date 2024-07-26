@@ -32,6 +32,19 @@ async function createToken(
   return newAuthToken[0];
 }
 
+async function createWSToken(
+  authTokenData: NewAuthToken,
+  tx: DBType = db,
+): Promise<AuthToken | Err> {
+  const newAuthToken = await tx
+    .insert(authTokens)
+    .values(authTokenData)
+    .returning();
+  if (!newAuthToken[0])
+    return { error: "[AuthService]: Could not create authToken" };
+  return newAuthToken[0];
+}
+
 async function clearTokensForUser(
   userId: string,
   tx: DBType = db,
@@ -47,6 +60,6 @@ async function clearTokensForUser(
   return { success: true };
 }
 
-const authService = { getById, createToken, clearTokensForUser };
+const authService = { getById, createToken, createWSToken, clearTokensForUser };
 
 export default authService;

@@ -1,7 +1,13 @@
 export const testEvent = {
-  onSubscribe: async () => {},
-  onUnsubscribe: async () => {},
-  emit: async () => {},
+  onSubscribe: async () => {
+    console.log("subscribed");
+  },
+  onUnsubscribe: async () => {
+    console.log("unsubscribed");
+  },
+  emit: async () => {
+    console.log("emit");
+  },
   // getSession: publicProcedure.query(({ ctx }) => {
   //   return ctx.session;
   // }),

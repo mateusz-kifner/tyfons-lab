@@ -1,10 +1,13 @@
 "use client";
 import { api } from "@/trpc/react";
+import { WebSocketsContext } from "@/wsc/client";
 import { Button } from "@tyfons-lab/ui-web/button";
+import { useContext } from "react";
 
 export default function HomePage() {
   const { data } = api.post.all.useQuery();
   const { mutateAsync } = api.post.create.useMutation();
+  const wsContext = useContext(WebSocketsContext);
 
   return (
     <>
@@ -23,6 +26,14 @@ export default function HomePage() {
         }}
       >
         test
+      </Button>
+      <Button
+        onClick={() => {
+          if (wsContext === null) return;
+          wsContext.sendMessage("test");
+        }}
+      >
+        send WS
       </Button>
     </>
   );
