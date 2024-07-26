@@ -1,21 +1,34 @@
 import { WebSocketServer } from "ws";
+import { validateWSSession } from "@tyfons-lab/auth/ws";
 
 const wss = new WebSocketServer({
   port: 3001,
 });
 
-wss.on("connection", (ws) => {
+wss.on("connection", async (ws, req) => {
   console.log(`➕➕ Connection (${wss.clients.size})`);
+  ws.once("close", () => {
+    console.log(`➖➖ Connection (${wss.clients.size})`);
+  });
+  if (!req.headers.cookie?.includes("auth_session")) {
+    console.log("Unauthorized connection, cookie missing");
+    ws.close();
+    return;
+  }
+  const session = await validateWSSession(req);
+  if (session.user === null) {
+    console.log("Unauthorized connection, cookie invalid");
+    ws.close();
+    return;
+  }
+  console.log("Authorized connection", session);
+
   ws.on("message", (data, isBinary) => {
     if (isBinary) {
       console.log("Binary message from client received.");
     } else {
       console.log(`Text message from client received: ${data}`);
     }
-  });
-
-  ws.once("close", () => {
-    console.log(`➖➖ Connection (${wss.clients.size})`);
   });
 });
 console.log("✅ WebSocket Server listening on ws://localhost:3001");

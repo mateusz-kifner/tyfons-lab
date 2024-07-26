@@ -27,6 +27,7 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
+    "@tyfons-lab/auth": "workspace:*",
     "express": "^4.19.2",
     "ws": "^8.18.0"
   }

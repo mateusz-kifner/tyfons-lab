@@ -1,4 +1,4 @@
-import { validateRequest } from "@tyfons-lab/auth";
+import { validateRequest } from "@tyfons-lab/auth/react";
 import { redirect } from "next/navigation";
 
 async function ChatPage() {

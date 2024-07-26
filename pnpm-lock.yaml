@@ -241,6 +241,9 @@ importers:
 
   apps/wss:
     dependencies:
+      '@tyfons-lab/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
       express:
         specifier: ^4.19.2
         version: 4.19.2

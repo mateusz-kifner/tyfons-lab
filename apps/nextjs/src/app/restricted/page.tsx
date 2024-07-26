@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { lucia, signOut, validateRequest } from "@tyfons-lab/auth";
+import { lucia, signOut } from "@tyfons-lab/auth";
+import { validateRequest } from "@tyfons-lab/auth/react";
 import { sendSignInEmail } from "@tyfons-lab/email-templates";
 import { type ActionResult, Form } from "../_form";
 

@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
-import { magicLink, validateRequest } from "@tyfons-lab/auth";
+import { magicLink } from "@tyfons-lab/auth";
+import { validateRequest } from "@tyfons-lab/auth/react";
 import { type ActionResult, Form } from "../../_form";
 import { Input } from "@tyfons-lab/ui-web/input";
 import { Label } from "@tyfons-lab/ui-web/label";

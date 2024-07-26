@@ -1,4 +1,5 @@
-import { lucia, validateRequest } from "./auth";
+import { lucia } from "./auth";
+import { validateRequest } from "./react";
 
 export * from "./auth";
 export type { UserSession as Session } from "./auth";

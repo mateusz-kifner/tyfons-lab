@@ -7,6 +7,8 @@
     ".": {
       "default": "./src/index.ts"
     },
+    "./react": "./src/react.ts",
+    "./ws": "./src/ws.ts",
     "./env": "./env.ts"
   },
   "scripts": {

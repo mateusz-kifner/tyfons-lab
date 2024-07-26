@@ -4,7 +4,7 @@ import {
   IconSearch,
   IconUser,
 } from "@tabler/icons-react";
-import { validateRequest } from "@tyfons-lab/auth";
+import { validateRequest } from "@tyfons-lab/auth/react";
 import { Button } from "@tyfons-lab/ui-web/button";
 import {
   DropdownMenu,
