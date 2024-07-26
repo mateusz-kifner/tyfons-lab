@@ -1,6 +1,3 @@
-import Link from "next/link";
-
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { magicLink, validateRequest } from "@tyfons-lab/auth";
 import { type ActionResult, Form } from "../../_form";
