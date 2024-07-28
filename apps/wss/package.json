@@ -29,6 +29,7 @@
   "dependencies": {
     "@tyfons-lab/auth": "workspace:*",
     "express": "^4.19.2",
-    "ws": "^8.18.0"
+    "ws": "^8.18.0",
+    "zod": "3.23.8"
   }
 }

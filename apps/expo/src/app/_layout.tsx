@@ -11,6 +11,7 @@ import { useColorScheme } from "@/lib/useColorScheme";
 import { TRPCProvider } from "@/utils/api";
 import { PortalHost } from "@/components/primitives/portal";
 import Constants from "expo-constants";
+import { WebSocketsProvider } from "@/utils/wsClient";
 
 const LIGHT_THEME: Theme = {
   dark: false,
@@ -64,15 +65,17 @@ export default function RootLayout() {
 
   return (
     <TRPCProvider>
-      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-        <Stack
-          screenOptions={{
-            statusBarStyle: isDarkColorScheme ? "light" : "dark",
-            statusBarColor: isDarkColorScheme ? "#000" : "#fff",
-          }}
-        />
-        <PortalHost />
-      </ThemeProvider>
+      <WebSocketsProvider>
+        <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+          <Stack
+            screenOptions={{
+              statusBarStyle: isDarkColorScheme ? "light" : "dark",
+              statusBarColor: isDarkColorScheme ? "#000" : "#fff",
+            }}
+          />
+          <PortalHost />
+        </ThemeProvider>
+      </WebSocketsProvider>
     </TRPCProvider>
   );
 }
