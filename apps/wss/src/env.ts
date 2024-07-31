@@ -3,7 +3,7 @@ import { z } from "zod";
 
 export const env = createEnv({
   server: {
-    WS_SERVER_URL: z.string().url(),
+    EXPO_PUBLIC_WS_SERVER_URL: z.string().url(),
   },
   runtimeEnv: process.env,
   emptyStringAsUndefined: true,

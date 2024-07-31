@@ -35,9 +35,6 @@ importers:
       '@shopify/flash-list':
         specifier: ~1.7.0
         version: 1.7.0(@babel/runtime@7.25.0)(react-native@0.74.4(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))(@types/react@18.3.3)(react@18.3.1))(react@18.3.1)
-      '@t3-oss/env-core':
-        specifier: 0.11.0
-        version: 0.11.0(typescript@5.5.4)(zod@3.23.8)
       '@tabler/icons-react-native':
         specifier: 3.11.0
         version: 3.11.0(react@18.3.1)
@@ -156,6 +153,9 @@ importers:
       '@types/react':
         specifier: 18.3.3
         version: 18.3.3
+      dotenv-cli:
+        specifier: 7.4.2
+        version: 7.4.2
       tailwindcss:
         specifier: 3.4.7
         version: 3.4.7(ts-node@10.9.2(@swc/core@1.3.101)(@types/node@20.14.13)(typescript@5.5.4))
@@ -17976,7 +17976,7 @@ snapshots:
       ansi-escapes: 4.3.2
       supports-hyperlinks: 2.3.0
 
-  terser-webpack-plugin@5.3.10(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11)(webpack@5.91.0(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11)):
+  terser-webpack-plugin@5.3.10(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11)(webpack@5.91.0(@swc/core@1.3.101)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
@@ -18401,7 +18401,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11)(webpack@5.91.0(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11))
+      terser-webpack-plugin: 5.3.10(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11)(webpack@5.91.0(@swc/core@1.3.101))
       watchpack: 2.4.1
       webpack-sources: 3.2.3
     transitivePeerDependencies:

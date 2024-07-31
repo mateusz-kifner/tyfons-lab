@@ -5,20 +5,20 @@
   "main": "index.js",
   "scripts": {
     "clean": "git clean -xdf .expo .turbo node_modules",
-    "dev": "expo start",
-    "dev:android": "expo start --android",
-    "dev:ios": "expo start --ios",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
+    "dev": "pnpm with-env expo start",
+    "dev:android": "pnpm with-env expo start --android",
+    "dev:ios": "pnpm with-env expo start --ios",
+    "android": "pnpm with-env expo run:android",
+    "ios": "pnpm with-env expo run:ios",
     "format": "biome format ./src",
     "lint": "biome lint ./src",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@expo/metro-config": "~0.18.10",
     "@react-native-async-storage/async-storage": "1.24.0",
     "@shopify/flash-list": "~1.7.0",
-    "@t3-oss/env-core": "0.11.0",
     "@tabler/icons-react-native": "3.11.0",
     "@tanstack/react-query": "5.51.16",
     "@trpc/client": "11.0.0-rc.467",
@@ -60,6 +60,7 @@
     "@types/babel__core": "7.20.5",
     "@types/lodash": "4.17.7",
     "@types/react": "18.3.3",
+    "dotenv-cli": "7.4.2",
     "tailwindcss": "3.4.7",
     "typescript": "5.5.4"
   }
