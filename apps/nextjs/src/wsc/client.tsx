@@ -1,5 +1,6 @@
 "use client";
 import { env } from "@/env";
+import { useLoaded } from "@/hooks/useLoaded";
 import { createContext, useEffect, useRef } from "react";
 
 interface WebSocketsContextType {
@@ -12,13 +13,15 @@ export const WebSocketsContext = createContext<WebSocketsContextType | null>(
 );
 
 export function WebSocketsProvider(props: { children: React.ReactNode }) {
+  const isLoaded = useLoaded();
   const { children } = props;
   const ws = useRef<WebSocket | null>(null);
 
   useEffect(() => {
+    if (!isLoaded) return;
     // If this ever changes state it will break connection
     // TODO: make this Context preserve connection across rerenders
-    ws.current = new WebSocket(env.EXPO_PUBLIC_WS_SERVER_URL);
+    ws.current = new WebSocket(process.env.NEXT_PUBLIC_WS_SERVER_URL ?? "");
     ws.current.onopen = () => console.log("ws opened");
     ws.current.onclose = () => console.log("ws closed");
     ws.current.onmessage = (e) => {

@@ -1,9 +1,19 @@
 import { WebSocketServer } from "ws";
 import { validateWSSession } from "@tyfons-lab/auth/ws";
 
-const wss = new WebSocketServer({
-  port: 3001,
-});
+function err(message: string): never {
+  throw Error(message);
+}
+
+const WSServerURL = new URL(
+  process.env.EXPO_PUBLIC_WS_SERVER_URL ??
+    err("EXPO_PUBLIC_WS_SERVER_URL not set"),
+);
+
+const host = WSServerURL.hostname;
+const port = Number.parseInt(WSServerURL.port);
+
+const wss = new WebSocketServer({ port, host });
 
 wss.on("connection", async (ws, req) => {
   console.log(`➕➕ Connection (${wss.clients.size})`);

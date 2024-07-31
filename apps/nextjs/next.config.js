@@ -19,7 +19,9 @@ const config = {
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-
+  env: {
+    NEXT_PUBLIC_WS_SERVER_URL: process.env.EXPO_PUBLIC_WS_SERVER_URL,
+  },
   experimental: {
     serverComponentsExternalPackages: ["oslo"],
   },
