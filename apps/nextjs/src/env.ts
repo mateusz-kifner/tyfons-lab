@@ -19,6 +19,7 @@ export const env = createEnv({
    */
   server: {
     DATABASE_URL: z.string(),
+    EXPO_PUBLIC_WS_SERVER_URL: z.string().url(),
   },
 
   /**
