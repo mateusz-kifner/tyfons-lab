@@ -12,6 +12,7 @@ import { TRPCReactProvider } from "@/trpc/react";
 import { env } from "@/env";
 import DefaultLayout from "./_components/default-layout";
 import { WebSocketsProvider } from "@/wsc/client";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -55,6 +56,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           <TRPCReactProvider>
             <WebSocketsProvider>
               <DefaultLayout>{props.children}</DefaultLayout>
+              <ReactQueryDevtools initialIsOpen={false} />
             </WebSocketsProvider>
           </TRPCReactProvider>
           <div className="absolute right-4 bottom-4">
