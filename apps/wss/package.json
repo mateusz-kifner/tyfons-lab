@@ -8,7 +8,7 @@
   "scripts": {
     "start": "pnpm with-env pnpm build && pnpm with-env node ./dist/index.js",
     "build": "pnpm with-env tsc",
-    "dev": "pnpm with-env tsx watch src/index.ts",
+    "dev": "pnpm with-env tsx watch --clear-screen=false src/index.ts",
     "clean": "rm -rf .turbo node_modules",
     "format": "biome format ./src",
     "lint": "biome lint ./src",

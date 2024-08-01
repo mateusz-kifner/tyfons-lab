@@ -41,7 +41,7 @@ wss.on("connection", async (ws, req) => {
     }
   });
 });
-console.log("✅ WebSocket Server listening on ws://localhost:3001");
+console.log(`✅ WebSocket Server listening on ${WSServerURL}`);
 
 process.on("SIGTERM", () => {
   console.log("SIGTERM");

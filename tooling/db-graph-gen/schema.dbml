@@ -34,10 +34,11 @@ table tyfons_lab_user {
   image varchar(255)
   role role [not null, default: 'normal']
   tokenId text
+  wsTokenId text
   updated_at timestamp [not null, default: `now()`]
   created_at timestamp [not null, default: `now()`]
   created_by_id varchar(255)
   updated_by_id varchar(255)
 }
 
-ref: tyfons_lab_user.tokenId - tyfons_lab_access_tokens.id
+ref: tyfons_lab_user.wsTokenId - tyfons_lab_access_tokens.id
