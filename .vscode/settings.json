@@ -11,6 +11,7 @@
     "tinycolor",
     "TRPC",
     "typecheck",
+    "WRPC",
     "zustand"
   ],
   "typescript.preferences.autoImportFileExcludePatterns": [
