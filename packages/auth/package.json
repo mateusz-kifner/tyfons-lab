@@ -18,12 +18,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@lucia-auth/adapter-drizzle": "^1.0.7",
+    "@lucia-auth/adapter-drizzle": "^1.1.0",
     "@t3-oss/env-nextjs": "0.11.0",
     "@tyfons-lab/db": "workspace:*",
     "@tyfons-lab/email-templates": "workspace:*",
     "lucia": "^3.2.0",
-    "next": "14.2.5",
+    "next": "14.2.6",
     "oslo": "^1.2.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",

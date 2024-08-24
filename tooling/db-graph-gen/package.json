@@ -13,7 +13,7 @@
   "devDependencies": {
     "@softwaretechnik/dbml-renderer": "^1.0.30",
     "@tyfons-lab/tsconfig": "workspace:*",
-    "drizzle-dbml-generator": "^0.8.0",
+    "drizzle-dbml-generator": "^0.9.0",
     "ts-node": "^10.9.2",
     "typescript": "5.5.4",
     "@tyfons-lab/db": "workspace:^"
