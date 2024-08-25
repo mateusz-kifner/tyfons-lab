@@ -1,6 +1,6 @@
 export const name = "email-templates";
 export { SignInEmail } from "./signin-email";
-import { render } from "@react-email/render";
+import { render } from "@react-email/components";
 import nodemailer from "nodemailer";
 import SignInEmail from "./signin-email";
 import { env } from "../env";
@@ -16,7 +16,7 @@ export const emailTransporter = nodemailer.createTransport({
 });
 
 export async function sendSignInEmail(email: string, validationCode: string) {
-  const emailHtml = render(
+  const emailHtml = await render(
     <SignInEmail validationCode={validationCode} email={encodeURI(email)} />,
   );
   await emailTransporter.sendMail({
