@@ -14,6 +14,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@mantine/hooks": "^7.12.1",
     "@t3-oss/env-nextjs": "0.11.1",
     "@tabler/icons-react": "^3.12.0",
     "@tanstack/react-query": "5.52.1",

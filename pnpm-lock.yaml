@@ -165,6 +165,9 @@ importers:
 
   apps/nextjs:
     dependencies:
+      '@mantine/hooks':
+        specifier: ^7.12.1
+        version: 7.12.1(react@18.3.1)
       '@t3-oss/env-nextjs':
         specifier: 0.11.1
         version: 0.11.1(typescript@5.5.4)(zod@3.23.8)
@@ -2352,6 +2355,11 @@ packages:
     peerDependencies:
       drizzle-orm: '>= 0.29 <1'
       lucia: 3.x
+
+  '@mantine/hooks@7.12.1':
+    resolution: {integrity: sha512-YPA3qiMHJkWID5+YzakBaLvjHtX3Fg3PdPY49iIb/CaWM9+lrJ+77TOVS7bsY7ZTBHXUfzft1/6Woqt3xSuweA==}
+    peerDependencies:
+      react: ^18.2.0
 
   '@next/env@14.2.3':
     resolution: {integrity: sha512-W7fd7IbkfmeeY2gXrzJYDx8D2lWKbVoTIj1o1ScPHNzvp30s1AuoEFSdr39bC5sjxJaxTtq3OTCZboNp0lNWHA==}
@@ -10475,6 +10483,10 @@ snapshots:
     dependencies:
       drizzle-orm: 0.33.0(@types/react@18.3.4)(postgres@3.4.4)(react@18.3.1)
       lucia: 3.2.0
+
+  '@mantine/hooks@7.12.1(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
 
   '@next/env@14.2.3': {}
 
