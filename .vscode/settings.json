@@ -1,7 +1,21 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ]
+  "cSpell.words": [
+    "clsx",
+    "nativewind",
+    "Pressable",
+    "reusables",
+    "sonner",
+    "superjson",
+    "tabler",
+    "tailwindcss",
+    "tinycolor",
+    "TRPC",
+    "typecheck",
+    "WRPC",
+    "zustand"
+  ],
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "drizzle-orm/mysql-*",
+    "drizzle-orm/sqlite-*"
+  ] // disable autocomplete for mysql and sqlite
 }

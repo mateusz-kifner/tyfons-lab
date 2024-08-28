@@ -1,14 +1,36 @@
-import NextAuth from "next-auth";
+import { lucia } from "./auth";
+import { validateRequest } from "./react";
 
-import { authConfig } from "./config";
+export * from "./auth";
+export type { UserSession as Session } from "./auth";
+export { default as magicLink } from "./magic-link";
+// async function signOut() {
+//   const { session } = await validateRequest();
+//   if (!session) {
+//     return {
+//       error: "Unauthorized",
+//     };
+//   }
 
-export type { Session } from "next-auth";
+//   await lucia.invalidateSession(session.id);
 
-const {
-  handlers: { GET, POST },
-  auth,
-  signIn,
-  signOut,
-} = NextAuth(authConfig);
+//   const sessionCookie = lucia.createBlankSessionCookie();
+//   return sessionCookie;
+// }
 
-export { GET, POST, auth, signIn, signOut };
+async function signOut() {
+  const { session } = await validateRequest();
+
+  if (!session) {
+    return {
+      error: "Unauthorized",
+    };
+  }
+
+  await lucia.invalidateSession(session.id);
+
+  const sessionCookie = lucia.createBlankSessionCookie();
+  await lucia.deleteExpiredSessions();
+  return sessionCookie;
+}
+export { signOut };

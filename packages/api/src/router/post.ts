@@ -1,16 +1,17 @@
 import type { TRPCRouterRecord } from "@trpc/server";
 import { z } from "zod";
 
-import { desc, eq, schema } from "@tyfons-lab/db";
-import { CreatePostSchema } from "@tyfons-lab/validators";
+import { desc, eq } from "@tyfons-lab/db";
+import { post } from "@tyfons-lab/db/schemas";
 
 import { protectedProcedure, publicProcedure } from "../trpc";
+import { CreatePostSchema } from "@tyfons-lab/db/validators";
 
 export const postRouter = {
   all: publicProcedure.query(({ ctx }) => {
     // return ctx.db.select().from(schema.post).orderBy(desc(schema.post.id));
     return ctx.db.query.post.findMany({
-      orderBy: desc(schema.post.id),
+      orderBy: desc(post.id),
       limit: 10,
     });
   }),
@@ -24,17 +25,17 @@ export const postRouter = {
       //   .where(eq(schema.post.id, input.id));
 
       return ctx.db.query.post.findFirst({
-        where: eq(schema.post.id, input.id),
+        where: eq(post.id, input.id),
       });
     }),
 
   create: protectedProcedure
     .input(CreatePostSchema)
     .mutation(({ ctx, input }) => {
-      return ctx.db.insert(schema.post).values(input);
+      return ctx.db.insert(post).values(input);
     }),
 
   delete: protectedProcedure.input(z.number()).mutation(({ ctx, input }) => {
-    return ctx.db.delete(schema.post).where(eq(schema.post.id, input));
+    return ctx.db.delete(post).where(eq(post.id, input));
   }),
 } satisfies TRPCRouterRecord;

@@ -1,13 +1,9 @@
 "use client";
 
-import { logger } from "@tyfons-lab/logger";
-import { useEffect } from "react";
+//import { logger } from "@tyfons-lab/logger";
 
-interface PostsPageProps {}
-
-function PostsPage(props: PostsPageProps) {
-  const {} = props;
-  logger.info("test client");
+function PostsPage() {
+  //logger.info("test client");
   // useEffect(() => {
   //   console.log("test");
   // }, []);

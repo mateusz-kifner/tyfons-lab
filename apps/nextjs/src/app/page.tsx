@@ -1,44 +1,40 @@
-import { Suspense } from "react";
-
-import { api } from "~/trpc/server";
-import { AuthShowcase } from "./_components/auth-showcase";
-import {
-  CreatePostForm,
-  PostCardSkeleton,
-  PostList,
-} from "./_components/posts";
-import { logger } from "@tyfons-lab/logger";
-
-//export const runtime = "edge";
+"use client";
+import { api } from "@/trpc/react";
+import { WebSocketsContext } from "@/wsc/client";
+import { Button } from "@tyfons-lab/ui-web/button";
+import { useContext } from "react";
 
 export default function HomePage() {
-  // You can await this here if you don't want to show Suspense fallback below
-  const posts = api.post.all();
-  logger.info({ user: "test" }, "test");
+  const { data } = api.post.all.useQuery();
+  const { mutateAsync } = api.post.create.useMutation();
+  const wsContext = useContext(WebSocketsContext);
 
   return (
-    <main className="container h-screen py-16">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="font-extrabold text-5xl tracking-tight sm:text-[5rem]">
-          Create <span className="text-primary">T3</span> Turbo
-        </h1>
-        <AuthShowcase />
-
-        <CreatePostForm />
-        <div className="w-full max-w-2xl overflow-y-scroll">
-          <Suspense
-            fallback={
-              <div className="flex w-full flex-col gap-4">
-                <PostCardSkeleton />
-                <PostCardSkeleton />
-                <PostCardSkeleton />
-              </div>
-            }
-          >
-            <PostList posts={posts} />
-          </Suspense>
-        </div>
-      </div>
-    </main>
+    <>
+      <ul>
+        {data?.map((post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+      <Button
+        onClick={() => {
+          mutateAsync({ title: "test", content: "test" })
+            .then(() => {})
+            .catch((e) => {
+              console.log(e);
+            });
+        }}
+      >
+        test
+      </Button>
+      <Button
+        onClick={() => {
+          if (wsContext === null) return;
+          wsContext.sendMessage("test");
+        }}
+      >
+        send WS
+      </Button>
+    </>
   );
 }

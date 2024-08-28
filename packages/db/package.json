@@ -7,30 +7,42 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
+    },
+    "./schemas": {
+      "types": "./dist/schemas.d.ts",
+      "default": "./src/schemas.ts"
+    },
+    "./services": {
+      "types": "./dist/services.d.ts",
+      "default": "./src/services.ts"
+    },
+    "./validators": {
+      "types": "./dist/validators.d.ts",
+      "default": "./src/validators.ts"
     }
   },
-  "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
+    "dev": "tsc --watch --preserveWatchOutput ",
     "clean": "rm -rf .turbo node_modules",
     "format": "biome format ./src",
     "lint": "biome lint ./src",
-    "push": "pnpm with-env drizzle-kit push:pg --config src/config.ts",
+    "push": "pnpm with-env drizzle-kit push --config src/config.ts",
     "studio": "pnpm with-env drizzle-kit studio --config src/config.ts",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@t3-oss/env-core": "0.10.1",
-    "drizzle-orm": "0.30.9",
+    "@t3-oss/env-core": "0.11.1",
+    "drizzle-orm": "0.33.0",
+    "drizzle-zod": "0.5.1",
     "postgres": "3.4.4",
-    "zod": "3.23.4"
+    "zod": "3.23.8"
   },
   "devDependencies": {
     "@tyfons-lab/tsconfig": "workspace:*",
-    "dotenv-cli": "7.4.1",
-    "drizzle-kit": "0.20.17",
-    "typescript": "5.4.5"
+    "dotenv-cli": "7.4.2",
+    "drizzle-kit": "0.24.1",
+    "typescript": "5.5.4"
   }
 }

@@ -8,7 +8,7 @@ import SuperJSON from "superjson";
 
 import type { AppRouter } from "@tyfons-lab/api";
 
-import { env } from "~/env";
+import { env } from "@/env";
 
 const createQueryClient = () =>
   new QueryClient({

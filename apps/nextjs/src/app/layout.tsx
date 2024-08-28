@@ -1,16 +1,18 @@
+import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
-import { cn } from "@tyfons-lab/ui";
-import { ThemeProvider, ThemeToggle } from "@tyfons-lab/ui/theme";
-import { Toaster } from "@tyfons-lab/ui/toast";
+import { cn } from "@tyfons-lab/ui-web";
+import { ThemeProvider, ThemeToggle } from "@tyfons-lab/ui-web/theme";
+import { Toaster } from "@tyfons-lab/ui-web/sonner";
 
-import { TRPCReactProvider } from "~/trpc/react";
+import { TRPCReactProvider } from "@/trpc/react";
 
-import "~/app/globals.css";
-
-import { env } from "~/env";
+import { env } from "@/env";
+import DefaultLayout from "./_components/default-layout";
+import { WebSocketsProvider } from "@/wsc/client";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -42,7 +44,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pl" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans text-foreground antialiased",
@@ -51,10 +53,16 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TRPCReactProvider>{props.children}</TRPCReactProvider>
+          <TRPCReactProvider>
+            <WebSocketsProvider>
+              <DefaultLayout>{props.children}</DefaultLayout>
+              <ReactQueryDevtools initialIsOpen={false} />
+            </WebSocketsProvider>
+          </TRPCReactProvider>
           <div className="absolute right-4 bottom-4">
             <ThemeToggle />
           </div>
+
           <Toaster />
         </ThemeProvider>
       </body>

@@ -6,10 +6,9 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
+    "dev": "tsc --watch --preserveWatchOutput ",
     "clean": "rm -rf .turbo node_modules",
     "format": "biome format ./src",
     "lint": "biome lint ./src",
@@ -17,10 +16,10 @@
   },
   "devDependencies": {
     "@tyfons-lab/tsconfig": "workspace:*",
-    "pino-pretty": "11.0.0",
-    "typescript": "5.4.5"
+    "pino-pretty": "11.2.2",
+    "typescript": "5.5.4"
   },
   "dependencies": {
-    "pino": "9.0.0"
+    "pino": "9.3.2"
   }
 }

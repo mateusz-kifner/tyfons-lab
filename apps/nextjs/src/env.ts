@@ -4,9 +4,10 @@ import { vercel } from "@t3-oss/env-nextjs/presets";
 import { z } from "zod";
 
 import { env as authEnv } from "@tyfons-lab/auth/env";
+import { env as emailTemplateEnv } from "@tyfons-lab/email-templates/env";
 
 export const env = createEnv({
-  extends: [authEnv, vercel()],
+  extends: [authEnv, emailTemplateEnv, vercel()],
   shared: {
     NODE_ENV: z
       .enum(["development", "production", "test"])
@@ -18,6 +19,7 @@ export const env = createEnv({
    */
   server: {
     DATABASE_URL: z.string(),
+    EXPO_PUBLIC_WS_SERVER_URL: z.string().url(),
   },
 
   /**

@@ -11,8 +11,8 @@ import type { AppRouter } from "@tyfons-lab/api";
  * A set of typesafe hooks for consuming your API.
  */
 export const api = createTRPCReact<AppRouter>();
-export { type RouterInputs, type RouterOutputs } from "@tyfons-lab/api";
 
+export { type RouterInputs, type RouterOutputs } from "@tyfons-lab/api";
 /**
  * Extend this function when going to production by
  * setting the baseUrl to your production API URL.
@@ -59,6 +59,7 @@ export function TRPCProvider(props: { children: React.ReactNode }) {
           headers() {
             const headers = new Map<string, string>();
             headers.set("x-trpc-source", "expo-react");
+            //headers.set("cookies", "test");
             return Object.fromEntries(headers);
           },
         }),
