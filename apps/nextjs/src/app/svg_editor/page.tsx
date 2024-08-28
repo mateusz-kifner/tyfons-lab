@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import SVGEditorToolbarButton from "../_svg_editor/Button";
 import {
   IconCircle,
@@ -19,6 +19,7 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@tyfons-lab/ui-web/menubar";
+import { useEffectOnce } from "@/hooks/useEffectOnce";
 
 interface SVGEditorProps {
   title: string;
@@ -31,9 +32,13 @@ function SVGEditor(props: SVGEditorProps) {
   >("pointer");
   const [mode, setMode] = useState<0 | 1 | 2>(0);
   const { ref: mouseRef, x, y } = useMouse();
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  useEffectOnce(() => {
+    scrollRef.current?.scrollTo(1080 * 3, 720 * 3);
+  });
 
   return (
-    <div className="flex h-full w-full grow flex-col">
+    <div className="flex w-full grow flex-col overflow-hidden">
       <div className="flex p-1">
         <Menubar className="flex grow">
           <MenubarMenu>
@@ -67,19 +72,33 @@ function SVGEditor(props: SVGEditorProps) {
           </MenubarMenu>
         </Menubar>
       </div>
-      <div className="relative flex h-full w-full grow">
-        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-        <svg
-          id="canvas"
-          ref={mouseRef}
-          className="absolute top-0 left-0 border-1 border-stone-900 border-solid bg-white"
-          style={{
-            width: 1080,
-            height: 720,
-          }}
+      <div className="relative flex w-screen grow overflow-hidden">
+        <div
+          ref={scrollRef}
+          className="absolute top-0 left-0 h-full w-full overflow-scroll"
         >
-          <rect x="10" y="10" width="100" height="100" />
-        </svg>
+          <div
+            style={{
+              width: 1080 * 6,
+              height: 720 * 6,
+            }}
+          >
+            {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+            <svg
+              id="canvas"
+              ref={mouseRef}
+              className="absolute border-1 border-stone-900 border-solid bg-white"
+              style={{
+                top: 720 * 3,
+                left: 1080 * 3,
+                width: 1080,
+                height: 720,
+              }}
+            >
+              <rect x="10" y="10" width="100" height="100" />
+            </svg>
+          </div>
+        </div>
         <div
           className="absolute top-0 left-0 h-2 w-2 rounded-full bg-red-500"
           style={{
