@@ -14,11 +14,12 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@mantine/hooks": "^7.12.1",
+    "@dnd-kit/core": "^6.1.0",
+    "@mantine/hooks": "^7.12.2",
     "@t3-oss/env-nextjs": "0.11.1",
     "@tabler/icons-react": "^3.14.0",
-    "@tanstack/react-query": "5.52.2",
-    "@tanstack/react-query-devtools": "5.52.2",
+    "@tanstack/react-query": "5.53.2",
+    "@tanstack/react-query-devtools": "5.53.2",
     "@trpc/client": "11.0.0-rc.490",
     "@trpc/react-query": "11.0.0-rc.490",
     "@trpc/server": "11.0.0-rc.490",
@@ -38,8 +39,8 @@
   "devDependencies": {
     "@tyfons-lab/tailwind-config": "workspace:*",
     "@tyfons-lab/tsconfig": "workspace:*",
-    "@types/node": "20.16.2",
-    "@types/react": "18.3.4",
+    "@types/node": "20.16.3",
+    "@types/react": "18.3.5",
     "@types/react-dom": "18.3.0",
     "dotenv-cli": "7.4.2",
     "jiti": "1.21.6",
