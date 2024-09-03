@@ -1,13 +1,8 @@
 "use client";
-import { type ComponentProps, useEffect, useState } from "react";
+import type { ComponentProps } from "react";
 import BoundingBoxButton, { Axis } from "./BoundingBoxButton";
 import { IconArrowsHorizontal, IconArrowsVertical } from "@tabler/icons-react";
-import {
-  DndContext,
-  type DragMoveEvent,
-  type DragEndEvent,
-  type DragStartEvent,
-} from "@dnd-kit/core";
+import { DndContext } from "@dnd-kit/core";
 import BoundingBoxActiveArea from "./BoundingBoxActiveArea";
 import { cn } from "@tyfons-lab/ui-web";
 import type { AABBType, Handles, Vector2 } from "./BoundingBoxTypes";

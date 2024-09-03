@@ -1,5 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
-import type { AABBType } from "./BoundingBox";
+import type { AABBType } from "./BoundingBoxTypes";
 import { cn } from "@tyfons-lab/ui-web";
 import type { ComponentProps } from "react";
 
