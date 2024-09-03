@@ -38,7 +38,7 @@ function SVGEditorSSR(props: SVGEditorProps) {
   const [tool, setTool] = useState<
     "pointer" | "rect" | "circle" | "line" | "polygon" | "point"
   >("pointer");
-  const [mode, setMode] = useState<0 | 1 | 2>(0);
+  const [mode, setMode] = useState<0 | 1>(0);
   const activeElementRef = useRef<SVGSVGElement | null>(null);
   const forceUpdate = useForceUpdate();
 
@@ -58,7 +58,11 @@ function SVGEditorSSR(props: SVGEditorProps) {
     );
   };
   const { AABB, AABBbox, setAABBbox, setAABB, activeHandle, eventHandlers } =
-    useBoundingBox({ onAABBset: setAABBAction, onAABBmove: setAABBAction });
+    useBoundingBox({
+      onAABBset: setAABBAction,
+      onAABBmove: setAABBAction,
+      mode,
+    });
   const svgRef = useEventListener(
     "click",
     (e) => {
@@ -67,6 +71,7 @@ function SVGEditorSSR(props: SVGEditorProps) {
       if (!target) return;
       if (target.tagName === "svg") {
         activeElementRef.current = null;
+        setMode(0);
         forceUpdate();
         return;
       }
@@ -186,6 +191,11 @@ function SVGEditorSSR(props: SVGEditorProps) {
                   {...eventHandlers}
                   activeHandle={activeHandle}
                   className="absolute top-0 left-0"
+                  onBoundingBoxClick={() => {
+                    console.log("test", mode);
+                    setMode((prev) => (prev === 0 ? 1 : 0));
+                  }}
+                  mode={mode}
                 />
               )}
             </div>

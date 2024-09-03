@@ -103,9 +103,14 @@ function computeAABBBasedOnHandle(
 interface useBoundingBoxProps {
   onAABBset?: (newAABB: AABBType) => void;
   onAABBmove?: (newAABB: AABBType) => void;
+  mode?: 0 | 1;
 }
 
-function useBoundingBox({ onAABBset, onAABBmove }: useBoundingBoxProps) {
+function useBoundingBox({
+  onAABBset,
+  onAABBmove,
+  mode = 0,
+}: useBoundingBoxProps) {
   const [AABBbox, setAABBbox] = useState<AABBType>({
     A: { x: 0, y: 0 },
     B: { x: 0, y: 0 },
