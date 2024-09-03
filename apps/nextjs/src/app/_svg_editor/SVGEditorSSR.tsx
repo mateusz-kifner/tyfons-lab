@@ -20,9 +20,13 @@ import {
 } from "@tyfons-lab/ui-web/menubar";
 import { useEffectOnce } from "@/hooks/useEffectOnce";
 import BoundingBox from "./BoundingBox";
-import { useEventListener } from "@mantine/hooks";
+import { useEventListener, useForceUpdate } from "@mantine/hooks";
 import useBoundingBox from "./useBoundingBox";
 import type { AABBType } from "./BoundingBoxTypes";
+
+const canvasWidth = 1080;
+const canvasHeight = 720;
+const topMenuWidth = 64 + 32;
 
 interface SVGEditorProps {
   title: string;
@@ -30,20 +34,43 @@ interface SVGEditorProps {
 
 function SVGEditorSSR(props: SVGEditorProps) {
   const { title } = props;
-  const { AABB, AABBbox, setAABBbox, setAABB, activeHandle, eventHandlers } =
-    useBoundingBox();
+
   const [tool, setTool] = useState<
     "pointer" | "rect" | "circle" | "line" | "polygon" | "point"
   >("pointer");
   const [mode, setMode] = useState<0 | 1 | 2>(0);
+  const activeElementRef = useRef<SVGSVGElement | null>(null);
+  const forceUpdate = useForceUpdate();
+
+  const setAABBAction = (newAABB: AABBType) => {
+    if (!activeElementRef.current) {
+      return;
+    }
+    activeElementRef.current.setAttribute("x", String(newAABB.A.x));
+    activeElementRef.current.setAttribute("y", String(newAABB.A.y));
+    activeElementRef.current.setAttribute(
+      "width",
+      String(newAABB.B.x - newAABB.A.x),
+    );
+    activeElementRef.current.setAttribute(
+      "height",
+      String(newAABB.B.y - newAABB.A.y),
+    );
+  };
+  const { AABB, AABBbox, setAABBbox, setAABB, activeHandle, eventHandlers } =
+    useBoundingBox({ onAABBset: setAABBAction, onAABBmove: setAABBAction });
   const svgRef = useEventListener(
     "click",
     (e) => {
       const target = e.target as SVGSVGElement;
       console.log(target);
-      if (!target || target.tagName === "svg") {
+      if (!target) return;
+      if (target.tagName === "svg") {
+        activeElementRef.current = null;
+        forceUpdate();
         return;
       }
+      activeElementRef.current = target;
       const x =
         typeof target.getAttribute("x") === "string"
           ? +(target.getAttribute("x") ?? "0")
@@ -69,13 +96,18 @@ function SVGEditorSSR(props: SVGEditorProps) {
       };
       setAABBbox(newAABB);
       setAABB(newAABB);
-      console.log(x, y, width, height);
     },
     // { once: true },
   );
   const scrollRef = useRef<HTMLDivElement | null>(null);
   useEffectOnce(() => {
-    scrollRef.current?.scrollTo(1080 * 3, 720 * 3);
+    const bodyRect = document.body.getBoundingClientRect();
+    const bodyWidth = bodyRect.width;
+    const bodyHeight = bodyRect.height;
+    scrollRef.current?.scrollTo(
+      canvasWidth * 2.5 - (bodyWidth - canvasWidth) / 2,
+      canvasHeight * 2.5 - (bodyHeight - topMenuWidth - canvasHeight) / 2,
+    );
   });
 
   return (
@@ -120,38 +152,42 @@ function SVGEditorSSR(props: SVGEditorProps) {
         >
           <div
             style={{
-              width: 1080 * 6,
-              height: 720 * 6,
+              width: canvasWidth * 6,
+              height: canvasHeight * 6,
             }}
           >
             <div
               className="absolute"
               style={{
-                top: 720 * 3,
-                left: 1080 * 3,
-                width: 1080,
-                height: 720,
+                top: canvasHeight * 2.5,
+                left: canvasWidth * 2.5,
+                width: canvasWidth,
+                height: canvasHeight,
               }}
             >
               {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
               <svg
                 id="svg_file"
                 ref={svgRef}
-                className="cursor-grabbing border-1 border-stone-900 border-solid bg-white"
+                className=" border-1 border-stone-900 border-solid bg-white"
                 style={{
-                  width: 1080,
-                  height: 720,
+                  width: canvasWidth,
+                  height: canvasHeight,
                 }}
               >
                 <rect x="10" y="10" width="100" height="100" />
+                <rect x="130" y="10" width="100" height="100" />
+                <rect x="250" y="10" width="100" height="100" />
               </svg>
-              <BoundingBox
-                AABBbox={AABBbox}
-                AABB={AABB}
-                {...eventHandlers}
-                activeHandle={activeHandle}
-                className="absolute top-0 left-0"
-              />
+              {activeElementRef.current !== null && (
+                <BoundingBox
+                  AABBbox={AABBbox}
+                  AABB={AABB}
+                  {...eventHandlers}
+                  activeHandle={activeHandle}
+                  className="absolute top-0 left-0"
+                />
+              )}
             </div>
           </div>
         </div>

@@ -100,7 +100,12 @@ function computeAABBBasedOnHandle(
   return newAABB;
 }
 
-function useBoundingBox() {
+interface useBoundingBoxProps {
+  onAABBset?: (newAABB: AABBType) => void;
+  onAABBmove?: (newAABB: AABBType) => void;
+}
+
+function useBoundingBox({ onAABBset, onAABBmove }: useBoundingBoxProps) {
   const [AABBbox, setAABBbox] = useState<AABBType>({
     A: { x: 0, y: 0 },
     B: { x: 0, y: 0 },
@@ -117,12 +122,14 @@ function useBoundingBox() {
     const newAABB = computeAABBBasedOnHandle(AABB, active.id as Handles, delta);
     setAABBbox(newAABB);
     setAABB(newAABB);
+    onAABBset?.(newAABB);
   }
 
   function onDragMove(event: DragMoveEvent) {
     const { active, delta } = event;
     const newAABB = computeAABBBasedOnHandle(AABB, active.id as Handles, delta);
     setAABBbox(newAABB);
+    onAABBmove?.(newAABB);
   }
 
   function onDragStart(event: DragStartEvent) {
