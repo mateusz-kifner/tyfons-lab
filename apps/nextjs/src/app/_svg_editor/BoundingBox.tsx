@@ -1,218 +1,37 @@
 "use client";
-import { useState } from "react";
+import { type ComponentProps, useEffect, useState } from "react";
 import BoundingBoxButton, { Axis } from "./BoundingBoxButton";
-import {
-  IconArrowBigDown,
-  IconArrowsHorizontal,
-  IconArrowsVertical,
-  IconArrowBigUp,
-} from "@tabler/icons-react";
+import { IconArrowsHorizontal, IconArrowsVertical } from "@tabler/icons-react";
 import {
   DndContext,
   type DragMoveEvent,
   type DragEndEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
+import BoundingBoxActiveArea from "./BoundingBoxActiveArea";
+import { cn } from "@tyfons-lab/ui-web";
+import type { AABBType, Handles, Vector2 } from "./BoundingBoxTypes";
 
 const buttonSize = 28;
 const buttonOffset = 5;
 
-type CapitalizeFirstLetter<S extends string> =
-  S extends `${infer First}${infer Rest}` ? `${Uppercase<First>}${Rest}` : S;
-
-type HorizontalDirections = "left" | "right";
-type VerticalDirections = "top" | "bottom";
-type DiagonalDirections =
-  `${VerticalDirections}${CapitalizeFirstLetter<HorizontalDirections>}`;
-type Handles =
-  `Handle${CapitalizeFirstLetter<HorizontalDirections | VerticalDirections | DiagonalDirections>}`;
-
-type Vector2 = { x: number; y: number };
-
-type AABB = { A: Vector2; B: Vector2 };
-
-interface BoundingBoxProps {
-  onChangeAABB?: (pos: Vector2) => void;
-  initialAABB?: AABB;
+interface BoundingBoxProps extends ComponentProps<typeof DndContext> {
+  AABBbox: AABBType;
+  AABB: AABBType;
+  activeHandle?: Handles | null;
+  className?: string;
 }
 
 function BoundingBox(props: BoundingBoxProps) {
   const {
-    onChangeAABB,
-    initialAABB = { A: { x: 0, y: 0 }, B: { x: 100, y: 100 } },
+    className,
+    onDragMove,
+    onDragStart,
+    onDragEnd,
+    AABBbox,
+    AABB,
+    activeHandle,
   } = props;
-  const [activeHandle, setActiveHandle] = useState<Handles | null>(null);
-  const [AABB, setAABB] = useState(initialAABB);
-  const [AABBbox, setAABBbox] = useState(initialAABB);
-
-  function onDragEnd(event: DragEndEvent) {
-    const { active, delta } = event;
-    setActiveHandle(null);
-    switch (active.id) {
-      case "HandleTop": {
-        setAABBbox({
-          ...AABB,
-          A: { x: AABB.A.x, y: AABB.A.y + delta.y },
-        });
-        setAABB((prev) => ({
-          ...prev,
-          A: { x: prev.A.x, y: prev.A.y + delta.y },
-        }));
-        return;
-      }
-      case "HandleBottom": {
-        setAABBbox({
-          ...AABB,
-          B: { x: AABB.B.x, y: AABB.B.y + delta.y },
-        });
-        setAABB((prev) => ({
-          ...prev,
-          B: { x: prev.B.x, y: prev.B.y + delta.y },
-        }));
-
-        return;
-      }
-      case "HandleLeft": {
-        setAABBbox({
-          ...AABB,
-          A: { x: AABB.A.x + delta.x, y: AABB.A.y },
-        });
-        setAABB((prev) => ({
-          ...prev,
-          A: { x: prev.A.x + delta.x, y: prev.A.y },
-        }));
-
-        return;
-      }
-      case "HandleRight": {
-        setAABBbox({
-          ...AABB,
-          B: { x: AABB.B.x + delta.x, y: AABB.B.y },
-        });
-        setAABB((prev) => ({
-          ...prev,
-          B: { x: prev.B.x + delta.x, y: prev.B.y },
-        }));
-
-        return;
-      }
-      case "HandleTopLeft": {
-        setAABBbox((prev) => ({
-          ...prev,
-          A: { x: AABB.A.x + delta.x, y: AABB.A.y + delta.y },
-        }));
-        setAABB((prev) => ({
-          ...prev,
-          A: { x: prev.A.x + delta.x, y: prev.A.y + delta.y },
-        }));
-        return;
-      }
-      case "HandleTopRight": {
-        setAABBbox((prev) => ({
-          A: { x: prev.A.x, y: AABB.A.y + delta.y },
-          B: { x: AABB.B.x + delta.x, y: prev.B.y },
-        }));
-        setAABB((prev) => ({
-          A: { x: prev.A.x, y: prev.A.y + delta.y },
-          B: { x: prev.B.x + delta.x, y: prev.B.y },
-        }));
-        return;
-      }
-      case "HandleBottomLeft": {
-        setAABBbox((prev) => ({
-          A: { x: AABB.A.x + delta.x, y: prev.A.y },
-          B: { x: prev.B.x, y: AABB.B.y + delta.y },
-        }));
-        setAABB((prev) => ({
-          A: { x: prev.A.x + delta.x, y: prev.A.y },
-          B: { x: prev.B.x, y: prev.B.y + delta.y },
-        }));
-        return;
-      }
-      case "HandleBottomRight": {
-        setAABBbox((prev) => ({
-          ...prev,
-          B: { x: AABB.B.x + delta.x, y: AABB.B.y + delta.y },
-        }));
-        setAABB((prev) => ({
-          ...prev,
-          B: { x: prev.B.x + delta.x, y: prev.B.y + delta.y },
-        }));
-        return;
-      }
-      default:
-        throw new Error("[BoundingBox]: unknown drag element");
-    }
-  }
-
-  function onDragMove(event: DragMoveEvent) {
-    const { active, delta } = event;
-    switch (active.id) {
-      case "HandleTop": {
-        setAABBbox((prev) => ({
-          ...prev,
-          A: { x: prev.A.x, y: AABB.A.y + delta.y },
-        }));
-        return;
-      }
-      case "HandleBottom": {
-        setAABBbox((prev) => ({
-          ...prev,
-          B: { x: prev.B.x, y: AABB.B.y + delta.y },
-        }));
-        return;
-      }
-      case "HandleLeft": {
-        setAABBbox((prev) => ({
-          ...prev,
-          A: { x: AABB.A.x + delta.x, y: prev.A.y },
-        }));
-        return;
-      }
-      case "HandleRight": {
-        setAABBbox((prev) => ({
-          ...prev,
-          B: { x: AABB.B.x + delta.x, y: prev.B.y },
-        }));
-        return;
-      }
-      case "HandleTopLeft": {
-        setAABBbox((prev) => ({
-          ...prev,
-          A: { x: AABB.A.x + delta.x, y: AABB.A.y + delta.y },
-        }));
-        return;
-      }
-      case "HandleTopRight": {
-        setAABBbox((prev) => ({
-          A: { x: prev.A.x, y: AABB.A.y + delta.y },
-          B: { x: AABB.B.x + delta.x, y: prev.B.y },
-        }));
-        return;
-      }
-      case "HandleBottomLeft": {
-        setAABBbox((prev) => ({
-          A: { x: AABB.A.x + delta.x, y: prev.A.y },
-          B: { x: prev.B.x, y: AABB.B.y + delta.y },
-        }));
-        return;
-      }
-      case "HandleBottomRight": {
-        setAABBbox((prev) => ({
-          ...prev,
-          B: { x: AABB.B.x + delta.x, y: AABB.B.y + delta.y },
-        }));
-        return;
-      }
-      default:
-        throw new Error("[BoundingBox]: unknown drag element");
-    }
-  }
-
-  function onDragStart(event: DragStartEvent) {
-    const { active } = event;
-    setActiveHandle(active.id as Handles);
-  }
 
   const size: Vector2 = {
     x: AABBbox.B.x - AABBbox.A.x,
@@ -220,21 +39,17 @@ function BoundingBox(props: BoundingBoxProps) {
   };
 
   return (
-    <div className="relative inset-0">
-      <div
-        className="absolute border border-stone-900 border-solid"
-        style={{
-          top: AABBbox.A.y,
-          left: AABBbox.A.x,
-          width: AABBbox.B.x - AABBbox.A.x,
-          height: AABBbox.B.y - AABBbox.A.y,
-        }}
-      />
+    <div className={cn("relative h-0 w-0", className)}>
       <DndContext
         onDragEnd={onDragEnd}
         onDragMove={onDragMove}
         onDragStart={onDragStart}
       >
+        <BoundingBoxActiveArea
+          className="absolute border border-stone-900 border-dashed"
+          AABB={AABBbox}
+          id="HandleActiveArea"
+        />
         <BoundingBoxButton
           position={{
             x: AABBbox.B.x - size.x / 2 - buttonSize / 2,
