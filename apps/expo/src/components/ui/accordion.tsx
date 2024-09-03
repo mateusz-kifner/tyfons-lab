@@ -81,7 +81,7 @@ const AccordionTrigger = React.forwardRef<
         <AccordionPrimitive.Trigger ref={ref} {...props} asChild>
           <Trigger
             className={cn(
-              "group flex flex-row items-center justify-between py-4 web:flex-1 web:focus-visible:outline-none web:focus-visible:ring-1 web:focus-visible:ring-muted-foreground web:transition-all",
+              "group flex web:flex-1 flex-row items-center justify-between py-4 web:transition-all web:focus-visible:outline-none web:focus-visible:ring-1 web:focus-visible:ring-muted-foreground",
               className,
             )}
           >

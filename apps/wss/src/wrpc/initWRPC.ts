@@ -81,7 +81,7 @@ class WRPCBuilder<TContext extends object, TMeta extends object> {
       isDev:
         opts?.isDev ??
         // eslint-disable-next-line @typescript-eslint/dot-notation
-        globalThis.process?.env["NODE_ENV"] !== "production",
+        globalThis.process?.env.NODE_ENV !== "production",
       allowOutsideOfServer: opts?.allowOutsideOfServer ?? false,
       errorFormatter: opts?.errorFormatter ?? defaultFormatter,
       isServer: opts?.isServer ?? isServerDefault,

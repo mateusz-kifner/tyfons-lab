@@ -20,6 +20,8 @@ import {
   MenubarTrigger,
 } from "@tyfons-lab/ui-web/menubar";
 import { useEffectOnce } from "@/hooks/useEffectOnce";
+import BoundingBox from "../_svg_editor/BoundingBox";
+import { DndContext } from "@dnd-kit/core";
 
 interface SVGEditorProps {
   title: string;
@@ -31,7 +33,6 @@ function SVGEditor(props: SVGEditorProps) {
     "pointer" | "rect" | "circle" | "line" | "polygon" | "point"
   >("pointer");
   const [mode, setMode] = useState<0 | 1 | 2>(0);
-  const { ref: mouseRef, x, y } = useMouse();
   const scrollRef = useRef<HTMLDivElement | null>(null);
   useEffectOnce(() => {
     scrollRef.current?.scrollTo(1080 * 3, 720 * 3);
@@ -77,34 +78,39 @@ function SVGEditor(props: SVGEditorProps) {
           ref={scrollRef}
           className="absolute top-0 left-0 h-full w-full overflow-scroll"
         >
-          <div
-            style={{
-              width: 1080 * 6,
-              height: 720 * 6,
-            }}
-          >
-            {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-            <svg
-              id="canvas"
-              ref={mouseRef}
-              className="absolute border-1 border-stone-900 border-solid bg-white"
+          <DndContext>
+            <div
               style={{
-                top: 720 * 3,
-                left: 1080 * 3,
-                width: 1080,
-                height: 720,
+                width: 1080 * 6,
+                height: 720 * 6,
               }}
             >
-              <rect x="10" y="10" width="100" height="100" />
-            </svg>
-          </div>
+              <div
+                className="absolute"
+                style={{
+                  top: 720 * 3,
+                  left: 1080 * 3,
+                  width: 1080,
+                  height: 720,
+                }}
+              >
+                {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+                <svg
+                  id="canvas"
+                  // ref={mouseRef}
+                  className="border-1 border-stone-900 border-solid bg-white"
+                  style={{
+                    width: 1080,
+                    height: 720,
+                  }}
+                >
+                  <rect x="10" y="10" width="100" height="100" />
+                </svg>
+                <BoundingBox />
+              </div>
+            </div>
+          </DndContext>
         </div>
-        <div
-          className="absolute top-0 left-0 h-2 w-2 rounded-full bg-red-500"
-          style={{
-            transform: `translate(${x - 4}px, ${y - 4}px)`,
-          }}
-        />
         <div
           id="Toolbar"
           className="-translate-y-1/2 absolute top-1/2 left-2 flex flex-col gap-2"

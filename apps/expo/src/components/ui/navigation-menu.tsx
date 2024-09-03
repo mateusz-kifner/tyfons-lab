@@ -39,7 +39,7 @@ const NavigationMenuList = React.forwardRef<
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      "web:group flex flex-1 flex-row items-center justify-center gap-1 web:list-none",
+      "web:group flex flex-1 web:list-none flex-row items-center justify-center gap-1",
       className,
     )}
     {...props}
@@ -50,7 +50,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "web:group h-10 w-max flex-row items-center justify-center rounded-md bg-background px-4 py-2 font-medium text-sm web:disabled:pointer-events-none web:inline-flex native:h-12 active:bg-accent web:data-[active]:bg-accent/50 web:data-[state=open]:bg-accent/50 web:focus:bg-accent web:hover:bg-accent native:px-3 web:focus:text-accent-foreground web:hover:text-accent-foreground disabled:opacity-50 web:focus:outline-none web:transition-colors",
+  "web:group web:inline-flex h-10 native:h-12 w-max flex-row items-center justify-center rounded-md bg-background native:px-3 px-4 py-2 font-medium text-sm web:transition-colors web:hover:bg-accent web:hover:text-accent-foreground web:focus:bg-accent web:focus:text-accent-foreground web:focus:outline-none active:bg-accent web:disabled:pointer-events-none disabled:opacity-50 web:data-[active]:bg-accent/50 web:data-[state=open]:bg-accent/50",
 );
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -140,7 +140,7 @@ const NavigationMenuViewport = React.forwardRef<
     <View className={cn("absolute top-full left-0 flex justify-center")}>
       <NavigationMenuPrimitive.Viewport
         className={cn(
-          "web:zoom-in-90 relative mt-1.5 w-full overflow-hidden rounded-md border border-border bg-popover text-popover-foreground shadow-lg web:h-[var(--radix-navigation-menu-viewport-height)] web:origin-top-center web:animate-in",
+          "web:zoom-in-90 relative mt-1.5 web:h-[var(--radix-navigation-menu-viewport-height)] w-full web:origin-top-center web:animate-in overflow-hidden rounded-md border border-border bg-popover text-popover-foreground shadow-lg",
           className,
         )}
         ref={ref}

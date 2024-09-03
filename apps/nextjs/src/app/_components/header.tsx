@@ -23,7 +23,7 @@ async function Header() {
   const { user } = await validateRequest();
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-      <nav className="hidden flex-col gap-6 font-medium text-lg md:flex md:flex-row md:items-center lg:gap-6 md:gap-5 md:text-sm">
+      <nav className="hidden flex-col gap-6 font-medium text-lg md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Link
           href="/"
           className="flex items-center gap-2 font-semibold text-lg md:text-base"
@@ -57,7 +57,7 @@ async function Header() {
           </nav>
         </SheetContent>
       </Sheet>
-      <div className="flex w-full items-center gap-4 md:ml-auto lg:gap-4 md:gap-2">
+      <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
         <div className="ml-auto flex-1 sm:flex-initial" />
         {/* <form className="ml-auto flex-1 sm:flex-initial">
           <div className="relative">

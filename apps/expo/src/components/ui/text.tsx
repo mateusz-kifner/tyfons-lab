@@ -16,7 +16,7 @@ const Text = React.forwardRef<TextRef, SlottableTextProps>(
     return (
       <Component
         className={cn(
-          "text-base text-foreground web:select-text",
+          "web:select-text text-base text-foreground",
           textClass,
           className,
         )}
