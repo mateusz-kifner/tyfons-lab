@@ -20,6 +20,6 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
-    "pino": "9.3.2"
+    "pino": "9.4.0"
   }
 }

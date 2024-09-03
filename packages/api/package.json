@@ -18,7 +18,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@trpc/server": "11.0.0-rc.490",
+    "@trpc/server": "11.0.0-rc.498",
     "@tyfons-lab/auth": "workspace:*",
     "@tyfons-lab/db": "workspace:*",
     "superjson": "2.2.1",

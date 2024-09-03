@@ -39,17 +39,17 @@ importers:
         specifier: 3.14.0
         version: 3.14.0(react@18.3.1)
       '@tanstack/react-query':
-        specifier: 5.53.2
-        version: 5.53.2(react@18.3.1)
+        specifier: 5.53.3
+        version: 5.53.3(react@18.3.1)
       '@trpc/client':
-        specifier: 11.0.0-rc.490
-        version: 11.0.0-rc.490(@trpc/server@11.0.0-rc.490)
+        specifier: 11.0.0-rc.498
+        version: 11.0.0-rc.498(@trpc/server@11.0.0-rc.498)
       '@trpc/react-query':
-        specifier: 11.0.0-rc.490
-        version: 11.0.0-rc.490(@tanstack/react-query@5.53.2(react@18.3.1))(@trpc/client@11.0.0-rc.490(@trpc/server@11.0.0-rc.490))(@trpc/server@11.0.0-rc.490)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 11.0.0-rc.498
+        version: 11.0.0-rc.498(@tanstack/react-query@5.53.3(react@18.3.1))(@trpc/client@11.0.0-rc.498(@trpc/server@11.0.0-rc.498))(@trpc/server@11.0.0-rc.498)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@trpc/server':
-        specifier: 11.0.0-rc.490
-        version: 11.0.0-rc.490
+        specifier: 11.0.0-rc.498
+        version: 11.0.0-rc.498
       class-variance-authority:
         specifier: 0.7.0
         version: 0.7.0
@@ -81,8 +81,8 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       nativewind:
-        specifier: 4.1.1
-        version: 4.1.1(@babel/core@7.25.2)(react-native-reanimated@3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-safe-area-context@4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-svg@15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4)))
+        specifier: 4.1.4
+        version: 4.1.4(react-native-reanimated@3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-safe-area-context@4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-svg@15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4)))
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -93,11 +93,11 @@ importers:
         specifier: ~0.75.2
         version: 0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4)
       react-native-css-interop:
-        specifier: 0.1.1
-        version: 0.1.1(@babel/core@7.25.2)(react-native-reanimated@3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-safe-area-context@4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-svg@15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4)))
+        specifier: 0.1.3
+        version: 0.1.3(react-native-reanimated@3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-safe-area-context@4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-svg@15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4)))
       react-native-gesture-handler:
-        specifier: ~2.18.1
-        version: 2.18.1(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)
+        specifier: ~2.19.0
+        version: 2.19.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)
       react-native-reanimated:
         specifier: 3.15.1
         version: 3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)
@@ -184,20 +184,20 @@ importers:
         specifier: ^3.14.0
         version: 3.14.0(react@18.3.1)
       '@tanstack/react-query':
-        specifier: 5.53.2
-        version: 5.53.2(react@18.3.1)
+        specifier: 5.53.3
+        version: 5.53.3(react@18.3.1)
       '@tanstack/react-query-devtools':
-        specifier: 5.53.2
-        version: 5.53.2(@tanstack/react-query@5.53.2(react@18.3.1))(react@18.3.1)
+        specifier: 5.54.0
+        version: 5.54.0(@tanstack/react-query@5.53.3(react@18.3.1))(react@18.3.1)
       '@trpc/client':
-        specifier: 11.0.0-rc.490
-        version: 11.0.0-rc.490(@trpc/server@11.0.0-rc.490)
+        specifier: 11.0.0-rc.498
+        version: 11.0.0-rc.498(@trpc/server@11.0.0-rc.498)
       '@trpc/react-query':
-        specifier: 11.0.0-rc.490
-        version: 11.0.0-rc.490(@tanstack/react-query@5.53.2(react@18.3.1))(@trpc/client@11.0.0-rc.490(@trpc/server@11.0.0-rc.490))(@trpc/server@11.0.0-rc.490)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 11.0.0-rc.498
+        version: 11.0.0-rc.498(@tanstack/react-query@5.53.3(react@18.3.1))(@trpc/client@11.0.0-rc.498(@trpc/server@11.0.0-rc.498))(@trpc/server@11.0.0-rc.498)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@trpc/server':
-        specifier: 11.0.0-rc.490
-        version: 11.0.0-rc.490
+        specifier: 11.0.0-rc.498
+        version: 11.0.0-rc.498
       '@tyfons-lab/api':
         specifier: workspace:*
         version: link:../../packages/api
@@ -309,8 +309,8 @@ importers:
   packages/api:
     dependencies:
       '@trpc/server':
-        specifier: 11.0.0-rc.490
-        version: 11.0.0-rc.490
+        specifier: 11.0.0-rc.498
+        version: 11.0.0-rc.498
       '@tyfons-lab/auth':
         specifier: workspace:*
         version: link:../auth
@@ -405,8 +405,8 @@ importers:
   packages/email-templates:
     dependencies:
       '@react-email/components':
-        specifier: 0.0.24
-        version: 0.0.24(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.0.25
+        version: 0.0.25(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@t3-oss/env-nextjs':
         specifier: 0.11.1
         version: 0.11.1(typescript@5.5.4)(zod@3.23.8)
@@ -460,8 +460,8 @@ importers:
   packages/logger:
     dependencies:
       pino:
-        specifier: 9.3.2
-        version: 9.3.2
+        specifier: 9.4.0
+        version: 9.4.0
     devDependencies:
       '@tyfons-lab/tsconfig':
         specifier: workspace:*
@@ -656,8 +656,8 @@ importers:
   tooling/tailwind:
     dependencies:
       postcss:
-        specifier: 8.4.43
-        version: 8.4.43
+        specifier: 8.4.44
+        version: 8.4.44
       tailwindcss:
         specifier: 3.4.10
         version: 3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4))
@@ -3597,8 +3597,8 @@ packages:
     peerDependencies:
       react: ^18.0 || ^19.0 || ^19.0.0-rc
 
-  '@react-email/code-block@0.0.8':
-    resolution: {integrity: sha512-WbuAEpTnB262i9C3SGPmmErgZ4iU5KIpqLUjr7uBJijqldLqZc5x39e8wPWaRdF7NLcShmrc/+G7GJgI1bdC5w==}
+  '@react-email/code-block@0.0.9':
+    resolution: {integrity: sha512-Zrhc71VYrSC1fVXJuaViKoB/dBjxLw6nbE53Bm/eUuZPdnnZ1+ZUIh8jfaRKC5MzMjgnLGQTweGXVnfIrhyxtQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^18.0 || ^19.0 || ^19.0.0-rc
@@ -3615,8 +3615,8 @@ packages:
     peerDependencies:
       react: ^18.0 || ^19.0 || ^19.0.0-rc
 
-  '@react-email/components@0.0.24':
-    resolution: {integrity: sha512-/DNmfTREaT59UFdkHoIK3BewJ214LfRxmduiil3m7POj+gougkItANu1+BMmgbUATxjf7jH1WoBxo9x/rhFEFw==}
+  '@react-email/components@0.0.25':
+    resolution: {integrity: sha512-lnfVVrThEcET5NPoeaXvrz9UxtWpGRcut2a07dLbyKgNbP7vj/cXTI5TuHtanCvhCddFpMDnElNRghDOfPzwUg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^18.0 || ^19.0 || ^19.0.0-rc
@@ -4079,42 +4079,42 @@ packages:
   '@tabler/icons@3.14.0':
     resolution: {integrity: sha512-OakKjK1kuDWKoNwdnHHVMt11kTZAC10iZpN/8o/CSYdeBH7S3v5n8IyqAYynFxLI8yBGTyBvljtvWdmWh57zSg==}
 
-  '@tanstack/query-core@5.53.2':
-    resolution: {integrity: sha512-gCsABpRrYfLsmwcQ0JCE5I3LOQ9KYrDDSnseUDP3T7ukV8E7+lhlHDJS4Gegt1TSZCsxKhc1J5A7TkF5ePjDUQ==}
+  '@tanstack/query-core@5.53.3':
+    resolution: {integrity: sha512-ZfjAgd7NpqDx0e4aYBt7EmS2enbulPrJwowTy+mayRE93WUUH+sIYHun1TdRjpGwDPMNNZ5D6goh7n3CwoO+HA==}
 
-  '@tanstack/query-devtools@5.52.3':
-    resolution: {integrity: sha512-oGX9qJuNpr4vOQyeksqHr+FgLQGs5UooK87R1wTtcsUUdrRKGSgs3cBllZMtWBJxg+yVvg0TlHNGYLMjvqX3GA==}
+  '@tanstack/query-devtools@5.54.0':
+    resolution: {integrity: sha512-B8Sa6mh7/4m2fyk2/YnUXeOZ1/us7G/C/i1It8YcCbieXc8vf1AdSYjR+mZIoJeKOKLqA741hZqfj8d4F1NCVg==}
 
-  '@tanstack/react-query-devtools@5.53.2':
-    resolution: {integrity: sha512-PvsJqEZMyj/Iur4y/UhxSmxjZaP/KvstO+bGiioI0FbjFerjaeZNRv0WzHU/iSs3TutBt7EMUMC2k9MSGeb3CA==}
+  '@tanstack/react-query-devtools@5.54.0':
+    resolution: {integrity: sha512-0GoijDWrCxB8CnWbu8U2xeg7XYeT0yhI6dPbAz7KHr2nyXELsdBZGHrr6PlfLR5jAHJ2OBpK2vu6blwkAjkuOA==}
     peerDependencies:
-      '@tanstack/react-query': ^5.53.2
+      '@tanstack/react-query': ^5.53.3
       react: ^18 || ^19
 
-  '@tanstack/react-query@5.53.2':
-    resolution: {integrity: sha512-ZxG/rspElkfqg2LElnNtsNgPtiCZ4Wl2XY43bATQqPvNgyrhzbCFzCjDwSQy9fJhSiDVALSlxYS8YOIiToqQmg==}
+  '@tanstack/react-query@5.53.3':
+    resolution: {integrity: sha512-286mN/91CeM7vC6CZFLKYDHSw+WyMX6ekIvzoTbpM4xyPb99VSyCKPLyPgaOatKqYm6ooMBquSq9NGRdKgsJfg==}
     peerDependencies:
       react: ^18 || ^19
 
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
 
-  '@trpc/client@11.0.0-rc.490':
-    resolution: {integrity: sha512-rfAzHF27osuP36JWGzq9TgXMnNc5kk1oAIoMafVHkCu3XlEZH3Ym2BpucHBWp/b5JYrtvzM91jskzvE0yO3mYw==}
+  '@trpc/client@11.0.0-rc.498':
+    resolution: {integrity: sha512-a1VjvLHCo8gPENMfzI8lVF1ys6kOGI3f/cIAZUMB0d2TlkDERlFYANnSnzFvmiKy6ICh3lsQQ3OIMmIfyd8OtQ==}
     peerDependencies:
-      '@trpc/server': 11.0.0-rc.490+b6a851870
+      '@trpc/server': 11.0.0-rc.498+5714423cc
 
-  '@trpc/react-query@11.0.0-rc.490':
-    resolution: {integrity: sha512-sM1AlLA5JPjsTRZJmXieAcbxHQXx+TGg1WTpyCAlBAue9rXGu9FoydfYxhpVcSrSbzdZ5HRmg/cXnC77/O7nBg==}
+  '@trpc/react-query@11.0.0-rc.498':
+    resolution: {integrity: sha512-il/fgO9DSTHmrJbDInGNl8PymLo19CEfIjBXmerTm4hg/p438fQb4ZKDVbpBxEThgAaaP6D0HTELWn5VDWG3VQ==}
     peerDependencies:
       '@tanstack/react-query': ^5.49.2
-      '@trpc/client': 11.0.0-rc.490+b6a851870
-      '@trpc/server': 11.0.0-rc.490+b6a851870
+      '@trpc/client': 11.0.0-rc.498+5714423cc
+      '@trpc/server': 11.0.0-rc.498+5714423cc
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
 
-  '@trpc/server@11.0.0-rc.490':
-    resolution: {integrity: sha512-JkKLvA0QIErqslsgU6uFvpv9xtxe78C59zqUdZFmUI0V9pIAJlxmODV4I9hTDcX8P+B30rP3z+q2+bPozN2MaQ==}
+  '@trpc/server@11.0.0-rc.498':
+    resolution: {integrity: sha512-LECCOz8JNB67CBasPA6fkLbhJIbUQRP1wq02xUfUMeaSEZFWJL+7fcTgLaWFQSHMMnMsvkLuDuDDkUSCF2SXmg==}
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -4483,12 +4483,6 @@ packages:
 
   babel-plugin-react-native-web@0.19.11:
     resolution: {integrity: sha512-0sHf8GgDhsRZxGwlwHHdfL3U8wImFaLw4haEa60U9M3EiO3bg6u3BJ+1vXhwgrevqSq76rMb5j1HJs+dNvMj5g==}
-
-  babel-plugin-tester@11.0.4:
-    resolution: {integrity: sha512-cqswtpSPo0e++rZB0l/54EG17LL25l9gLgh59yXfnmNxX+2lZTIOpx2zt4YI9QIClVXc8xf63J6yWwKkzy0jNg==}
-    engines: {node: ^14.20.0 || ^16.16.0 || >=18.5.0}
-    peerDependencies:
-      '@babel/core': '>=7.11.6'
 
   babel-plugin-transform-flow-enums@0.0.2:
     resolution: {integrity: sha512-g4aaCrDDOsWjbm0PUUeVnkcVd6AKJsVc/MbnPhEotEpkeJQP6b8nzewohQi7+QS8UyPehOhGWn0nOwjvWpmMvQ==}
@@ -4874,9 +4868,6 @@ packages:
 
   core-js-pure@3.37.0:
     resolution: {integrity: sha512-d3BrpyFr5eD4KcbRvQ3FTUx/KWmaDesr7+a3+1+P46IUnNoEt+oiLijPINZMEon7w9oGkIINWxrBAU9DEciwFQ==}
-
-  core-js@3.37.0:
-    resolution: {integrity: sha512-fu5vHevQ8ZG4og+LXug8ulUtVxjOcEYvifJr7L5Bfq9GOztVqsKd9/59hUk2ZSbCrS3BqUr3EpaYGIYzq7g3Ug==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -6418,9 +6409,6 @@ packages:
   lodash.get@4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
 
-  lodash.mergewith@4.6.2:
-    resolution: {integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==}
-
   lodash.throttle@4.1.1:
     resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
 
@@ -6634,10 +6622,6 @@ packages:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
 
-  min-indent@1.0.1:
-    resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
-    engines: {node: '>=4'}
-
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
 
@@ -6717,8 +6701,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nativewind@4.1.1:
-    resolution: {integrity: sha512-rlGopwgtj8/JHSvwdyFAJ+uHhF1r/BOlJm+lC+DPgP5kOggnKpL+6KQfO2oJapoM4t8yrbw13lZHShM/+3hLpQ==}
+  nativewind@4.1.4:
+    resolution: {integrity: sha512-zbYoyv71yYkF1WtjHLLB6nT8z/LQG1yPDBQGoexqXSmFu2PF/+0hRQPvSjndqk7qxsdFFCe5PM222NTeDiR5Kw==}
     engines: {node: '>=16'}
     peerDependencies:
       tailwindcss: '>3.3.0'
@@ -7102,8 +7086,8 @@ packages:
   pino-std-serializers@7.0.0:
     resolution: {integrity: sha512-e906FRY0+tV27iq4juKzSYPbUj2do2X2JX4EzSca1631EB2QJQUqGbDuERal7LCtOpxl6x3+nvo9NPZcmjkiFA==}
 
-  pino@9.3.2:
-    resolution: {integrity: sha512-WtARBjgZ7LNEkrGWxMBN/jvlFiE17LTbBoH0konmBU684Kd0uIiDwBXlcTCW7iJnA6HfIKwUssS/2AC6cDEanw==}
+  pino@9.4.0:
+    resolution: {integrity: sha512-nbkQb5+9YPhQRz/BeQmrWpEknAaqjpAqRK8NwJpmrX/JHu7JuZC5G1CeAwJDJfGes4h+YihC6in3Q2nGb+Y09w==}
     hasBin: true
 
   pirates@4.0.6:
@@ -7171,18 +7155,13 @@ packages:
     resolution: {integrity: sha512-TesUflQ0WKZqAvg52PWL6kHgLKP6xB6heTOdoYM0Wt2UHyxNa4K25EZZMgKns3BH1RLVbZCREPpLY0rhnNoHVQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  postcss@8.4.43:
-    resolution: {integrity: sha512-gJAQVYbh5R3gYm33FijzCZj7CHyQ3hWMgJMprLUlIYqCwTeZhBQ19wp0e9mA25BUbEvY5+EXuuaAjqQsrBxQBQ==}
+  postcss@8.4.44:
+    resolution: {integrity: sha512-Aweb9unOEpQ3ezu4Q00DPvvM2ZTUitJdNKeP/+uQgr1IBIqu574IaZoURId7BKtWMREwzKa9OgzPzezWGPWFQw==}
     engines: {node: ^10 || ^12 || >=14}
 
   postgres@3.4.4:
     resolution: {integrity: sha512-IbyN+9KslkqcXa8AO9fxpk97PA4pzewvpi2B3Dwy9u4zpV32QicaEdgmF3eSQUzdRk7ttDHQejNgAEr4XoeH4A==}
     engines: {node: '>=12'}
-
-  prettier@2.8.8:
-    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
 
   pretty-bytes@5.6.0:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
@@ -7335,8 +7314,8 @@ packages:
   react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
 
-  react-native-css-interop@0.1.1:
-    resolution: {integrity: sha512-2dChQLTrc4Phb6ZW2Hd+DuoNVVkqAkQYXDia4AaCJ2rNV6BzPAjv+QiFEh1iF1Oj4/3HG3ZAba85R2c8S5g1xw==}
+  react-native-css-interop@0.1.3:
+    resolution: {integrity: sha512-/15viD/QC1coQo52R1kuI9aQlojuXWQ4tKDfUJO/hzc9R+RqoatxXS9ysCXWbHd281NYr5RUXA3b0oyZ7FA24A==}
     engines: {node: '>=18'}
     peerDependencies:
       react: '>=18'
@@ -7351,8 +7330,8 @@ packages:
       react-native-svg:
         optional: true
 
-  react-native-gesture-handler@2.18.1:
-    resolution: {integrity: sha512-WF2fxQ5kTaxHghlkBM4YxO86SyGWVwrSNgJ1E8z/ZtL2xD5B3bg5agvuVFfOzvceC114yq71s6E9vKPz94ZxRw==}
+  react-native-gesture-handler@2.19.0:
+    resolution: {integrity: sha512-Cc6DnSnn5hhgiuJOtlOJmXkbBBOZkW9UnJJG+DrWPq2jJuNvM4g5qq2plsywhxQj9xT7FyXZwVVblaXabfGZvQ==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -7934,10 +7913,6 @@ packages:
   strip-final-newline@2.0.0:
     resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
     engines: {node: '>=6'}
-
-  strip-indent@3.0.0:
-    resolution: {integrity: sha512-laJTa3Jb+VQpaC6DseHhF7dXVqHTfJPCRDaEbid/drOhgitgYku/letMUqOXFoWV0zIIUbjpdH2t+tYj4bQMRQ==}
-    engines: {node: '>=8'}
 
   strip-json-comments@2.0.1:
     resolution: {integrity: sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==}
@@ -8723,12 +8698,12 @@ snapshots:
 
   '@babel/helper-annotate-as-pure@7.24.7':
     dependencies:
-      '@babel/types': 7.25.2
+      '@babel/types': 7.25.4
 
   '@babel/helper-builder-binary-assignment-operator-visitor@7.24.7':
     dependencies:
-      '@babel/traverse': 7.25.3
-      '@babel/types': 7.25.2
+      '@babel/traverse': 7.25.4
+      '@babel/types': 7.25.4
     transitivePeerDependencies:
       - supports-color
 
@@ -8811,8 +8786,8 @@ snapshots:
 
   '@babel/helper-module-imports@7.24.7':
     dependencies:
-      '@babel/traverse': 7.25.3
-      '@babel/types': 7.25.2
+      '@babel/traverse': 7.25.4
+      '@babel/types': 7.25.4
     transitivePeerDependencies:
       - supports-color
 
@@ -8862,15 +8837,15 @@ snapshots:
 
   '@babel/helper-simple-access@7.24.7':
     dependencies:
-      '@babel/traverse': 7.25.3
-      '@babel/types': 7.25.2
+      '@babel/traverse': 7.25.4
+      '@babel/types': 7.25.4
     transitivePeerDependencies:
       - supports-color
 
   '@babel/helper-skip-transparent-expression-wrappers@7.24.7':
     dependencies:
-      '@babel/traverse': 7.25.3
-      '@babel/types': 7.25.2
+      '@babel/traverse': 7.25.4
+      '@babel/types': 7.25.4
     transitivePeerDependencies:
       - supports-color
 
@@ -11750,7 +11725,7 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  '@react-email/code-block@0.0.8(react@18.3.1)':
+  '@react-email/code-block@0.0.9(react@18.3.1)':
     dependencies:
       prismjs: 1.29.0
       react: 18.3.1
@@ -11763,11 +11738,11 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  '@react-email/components@0.0.24(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@react-email/components@0.0.25(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@react-email/body': 0.0.10(react@18.3.1)
       '@react-email/button': 0.0.17(react@18.3.1)
-      '@react-email/code-block': 0.0.8(react@18.3.1)
+      '@react-email/code-block': 0.0.9(react@18.3.1)
       '@react-email/code-inline': 0.0.4(react@18.3.1)
       '@react-email/column': 0.0.12(react@18.3.1)
       '@react-email/container': 0.0.14(react@18.3.1)
@@ -12502,36 +12477,36 @@ snapshots:
 
   '@tabler/icons@3.14.0': {}
 
-  '@tanstack/query-core@5.53.2': {}
+  '@tanstack/query-core@5.53.3': {}
 
-  '@tanstack/query-devtools@5.52.3': {}
+  '@tanstack/query-devtools@5.54.0': {}
 
-  '@tanstack/react-query-devtools@5.53.2(@tanstack/react-query@5.53.2(react@18.3.1))(react@18.3.1)':
+  '@tanstack/react-query-devtools@5.54.0(@tanstack/react-query@5.53.3(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@tanstack/query-devtools': 5.52.3
-      '@tanstack/react-query': 5.53.2(react@18.3.1)
+      '@tanstack/query-devtools': 5.54.0
+      '@tanstack/react-query': 5.53.3(react@18.3.1)
       react: 18.3.1
 
-  '@tanstack/react-query@5.53.2(react@18.3.1)':
+  '@tanstack/react-query@5.53.3(react@18.3.1)':
     dependencies:
-      '@tanstack/query-core': 5.53.2
+      '@tanstack/query-core': 5.53.3
       react: 18.3.1
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
-  '@trpc/client@11.0.0-rc.490(@trpc/server@11.0.0-rc.490)':
+  '@trpc/client@11.0.0-rc.498(@trpc/server@11.0.0-rc.498)':
     dependencies:
-      '@trpc/server': 11.0.0-rc.490
+      '@trpc/server': 11.0.0-rc.498
 
-  '@trpc/react-query@11.0.0-rc.490(@tanstack/react-query@5.53.2(react@18.3.1))(@trpc/client@11.0.0-rc.490(@trpc/server@11.0.0-rc.490))(@trpc/server@11.0.0-rc.490)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@trpc/react-query@11.0.0-rc.498(@tanstack/react-query@5.53.3(react@18.3.1))(@trpc/client@11.0.0-rc.498(@trpc/server@11.0.0-rc.498))(@trpc/server@11.0.0-rc.498)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@tanstack/react-query': 5.53.2(react@18.3.1)
-      '@trpc/client': 11.0.0-rc.490(@trpc/server@11.0.0-rc.490)
-      '@trpc/server': 11.0.0-rc.490
+      '@tanstack/react-query': 5.53.3(react@18.3.1)
+      '@trpc/client': 11.0.0-rc.498(@trpc/server@11.0.0-rc.498)
+      '@trpc/server': 11.0.0-rc.498
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@trpc/server@11.0.0-rc.490': {}
+  '@trpc/server@11.0.0-rc.498': {}
 
   '@tsconfig/node10@1.0.11': {}
 
@@ -12945,7 +12920,7 @@ snapshots:
   babel-plugin-react-compiler@0.0.0-experimental-938cd9a-20240601:
     dependencies:
       '@babel/generator': 7.2.0
-      '@babel/types': 7.25.2
+      '@babel/types': 7.25.4
       chalk: 4.1.2
       invariant: 2.2.4
       pretty-format: 24.9.0
@@ -12953,17 +12928,6 @@ snapshots:
       zod-validation-error: 2.1.0(zod@3.23.8)
 
   babel-plugin-react-native-web@0.19.11: {}
-
-  babel-plugin-tester@11.0.4(@babel/core@7.25.2):
-    dependencies:
-      '@babel/core': 7.25.2
-      core-js: 3.37.0
-      debug: 4.3.4(supports-color@5.5.0)
-      lodash.mergewith: 4.6.2
-      prettier: 2.8.8
-      strip-indent: 3.0.0
-    transitivePeerDependencies:
-      - supports-color
 
   babel-plugin-transform-flow-enums@0.0.2(@babel/core@7.25.2):
     dependencies:
@@ -13410,8 +13374,6 @@ snapshots:
       browserslist: 4.23.3
 
   core-js-pure@3.37.0: {}
-
-  core-js@3.37.0: {}
 
   core-util-is@1.0.3: {}
 
@@ -15130,8 +15092,6 @@ snapshots:
 
   lodash.get@4.4.2: {}
 
-  lodash.mergewith@4.6.2: {}
-
   lodash.throttle@4.1.1: {}
 
   lodash@4.17.21: {}
@@ -15372,8 +15332,8 @@ snapshots:
       '@babel/generator': 7.25.0
       '@babel/parser': 7.25.4
       '@babel/template': 7.25.0
-      '@babel/traverse': 7.25.3
-      '@babel/types': 7.25.2
+      '@babel/traverse': 7.25.4
+      '@babel/types': 7.25.4
       accepts: 1.3.8
       chalk: 4.1.2
       ci-info: 2.0.0
@@ -15434,8 +15394,6 @@ snapshots:
   mimic-fn@1.2.0: {}
 
   mimic-fn@2.1.0: {}
-
-  min-indent@1.0.1: {}
 
   minimatch@3.1.2:
     dependencies:
@@ -15507,12 +15465,11 @@ snapshots:
 
   nanoid@3.3.7: {}
 
-  nativewind@4.1.1(@babel/core@7.25.2)(react-native-reanimated@3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-safe-area-context@4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-svg@15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4))):
+  nativewind@4.1.4(react-native-reanimated@3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-safe-area-context@4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-svg@15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4))):
     dependencies:
-      react-native-css-interop: 0.1.1(@babel/core@7.25.2)(react-native-reanimated@3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-safe-area-context@4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-svg@15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4)))
+      react-native-css-interop: 0.1.3(react-native-reanimated@3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-safe-area-context@4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-svg@15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4)))
       tailwindcss: 3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4))
     transitivePeerDependencies:
-      - '@babel/core'
       - react
       - react-native
       - react-native-reanimated
@@ -15929,7 +15886,7 @@ snapshots:
 
   pino-std-serializers@7.0.0: {}
 
-  pino@9.3.2:
+  pino@9.4.0:
     dependencies:
       atomic-sleep: 1.0.0
       fast-redact: 3.5.0
@@ -16003,15 +15960,13 @@ snapshots:
       picocolors: 1.0.1
       source-map-js: 1.2.0
 
-  postcss@8.4.43:
+  postcss@8.4.44:
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.0.1
       source-map-js: 1.2.0
 
   postgres@3.4.4: {}
-
-  prettier@2.8.8: {}
 
   pretty-bytes@5.6.0: {}
 
@@ -16196,12 +16151,11 @@ snapshots:
 
   react-is@18.2.0: {}
 
-  react-native-css-interop@0.1.1(@babel/core@7.25.2)(react-native-reanimated@3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-safe-area-context@4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-svg@15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4))):
+  react-native-css-interop@0.1.3(react-native-reanimated@3.15.1(@babel/core@7.25.2)(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-safe-area-context@4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native-svg@15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1))(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.5))(@types/node@20.16.3)(typescript@5.5.4))):
     dependencies:
       '@babel/helper-module-imports': 7.24.7
-      '@babel/traverse': 7.25.3
-      '@babel/types': 7.25.2
-      babel-plugin-tester: 11.0.4(@babel/core@7.25.2)
+      '@babel/traverse': 7.25.4
+      '@babel/types': 7.25.4
       lightningcss: 1.22.0
       react: 18.3.1
       react-native: 0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4)
@@ -16212,10 +16166,9 @@ snapshots:
       react-native-safe-area-context: 4.10.9(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)
       react-native-svg: 15.6.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1)
     transitivePeerDependencies:
-      - '@babel/core'
       - supports-color
 
-  react-native-gesture-handler@2.18.1(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1):
+  react-native-gesture-handler@2.19.0(react-native@0.75.2(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))(@types/react@18.3.5)(react@18.3.1)(typescript@5.5.4))(react@18.3.1):
     dependencies:
       '@egjs/hammerjs': 2.0.17
       hoist-non-react-statics: 3.3.2
@@ -16913,10 +16866,6 @@ snapshots:
   strip-eof@1.0.0: {}
 
   strip-final-newline@2.0.0: {}
-
-  strip-indent@3.0.0:
-    dependencies:
-      min-indent: 1.0.1
 
   strip-json-comments@2.0.1: {}
 
