@@ -1,8 +1,6 @@
 {
   "name": "@tyfons-lab/nextjs",
   "version": "0.1.0",
-  "private": true,
-  "type": "module",
   "scripts": {
     "build": "pnpm with-env next build",
     "clean": "git clean -xdf .next .turbo node_modules",
@@ -48,5 +46,8 @@
     "jiti": "1.21.6",
     "tailwindcss": "3.4.10",
     "typescript": "5.5.4"
-  }
+  },
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module"
 }

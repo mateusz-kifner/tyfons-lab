@@ -1,15 +1,12 @@
 {
   "name": "@tyfons-lab/email-templates",
-  "private": true,
   "version": "0.1.0",
-  "type": "module",
   "exports": {
     ".": {
       "default": "./src/index.tsx"
     },
     "./env": "./env.ts"
   },
-  "license": "UNLICENSED",
   "scripts": {
     "build": "pnpm with-env tsc",
     "dev": "pnpm with-env tsc --watch --preserveWatchOutput ",
@@ -40,5 +37,8 @@
     "jiti": "1.21.6",
     "tailwindcss": "3.4.10",
     "typescript": "5.5.4"
-  }
+  },
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module"
 }

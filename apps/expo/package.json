@@ -1,7 +1,6 @@
 {
   "name": "@tyfons-lab/expo",
   "version": "0.1.0",
-  "private": true,
   "main": "index.js",
   "scripts": {
     "clean": "git clean -xdf .expo .turbo node_modules",
@@ -63,5 +62,7 @@
     "dotenv-cli": "7.4.2",
     "tailwindcss": "3.4.10",
     "typescript": "5.5.4"
-  }
+  },
+  "private": true,
+  "license": "UNLICENSED"
 }
