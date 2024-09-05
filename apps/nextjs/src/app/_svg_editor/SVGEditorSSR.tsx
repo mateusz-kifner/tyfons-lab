@@ -22,7 +22,9 @@ import { useEffectOnce } from "@/hooks/useEffectOnce";
 import BoundingBox from "./BoundingBox";
 import { useEventListener, useForceUpdate } from "@mantine/hooks";
 import useBoundingBox from "./useBoundingBox";
-import type { AABBType } from "./BoundingBoxTypes";
+import type { AABBType, Vector2 } from "./BoundingBoxTypes";
+import RotateHandle from "./RotateHandle";
+import { buttonOffset, buttonSize } from "./BoundingBoxConfig";
 
 const canvasWidth = 1080;
 const canvasHeight = 720;
@@ -38,7 +40,7 @@ function SVGEditorSSR(props: SVGEditorProps) {
   const [tool, setTool] = useState<
     "pointer" | "rect" | "circle" | "line" | "polygon" | "point"
   >("pointer");
-  const [mode, setMode] = useState<0 | 1>(0);
+  const [rotation, setRotation] = useState(0);
   const activeElementRef = useRef<SVGSVGElement | null>(null);
   const forceUpdate = useForceUpdate();
 
@@ -61,7 +63,6 @@ function SVGEditorSSR(props: SVGEditorProps) {
     useBoundingBox({
       onAABBset: setAABBAction,
       onAABBmove: setAABBAction,
-      mode,
     });
   const svgRef = useEventListener(
     "click",
@@ -71,7 +72,7 @@ function SVGEditorSSR(props: SVGEditorProps) {
       if (!target) return;
       if (target.tagName === "svg") {
         activeElementRef.current = null;
-        setMode(0);
+
         forceUpdate();
         return;
       }
@@ -114,6 +115,10 @@ function SVGEditorSSR(props: SVGEditorProps) {
       canvasHeight * 2.5 - (bodyHeight - topMenuWidth - canvasHeight) / 2,
     );
   });
+  const size: Vector2 = {
+    x: AABBbox.B.x - AABBbox.A.x,
+    y: AABBbox.B.y - AABBbox.A.y,
+  };
 
   return (
     <div className="flex w-full grow flex-col overflow-hidden">
@@ -185,18 +190,21 @@ function SVGEditorSSR(props: SVGEditorProps) {
                 <rect x="250" y="10" width="100" height="100" />
               </svg>
               {activeElementRef.current !== null && (
-                <BoundingBox
-                  AABBbox={AABBbox}
-                  AABB={AABB}
-                  {...eventHandlers}
-                  activeHandle={activeHandle}
-                  className="absolute top-0 left-0"
-                  onBoundingBoxClick={() => {
-                    console.log("test", mode);
-                    setMode((prev) => (prev === 0 ? 1 : 0));
-                  }}
-                  mode={mode}
-                />
+                <>
+                  <BoundingBox
+                    AABBbox={AABBbox}
+                    AABB={AABB}
+                    {...eventHandlers}
+                    activeHandle={activeHandle}
+                    className="absolute top-0 left-0"
+                  />
+                  <RotateHandle
+                    className="absolute top-0 left-0"
+                    AABBbox={AABBbox}
+                    rotation={rotation}
+                    setRotation={setRotation}
+                  />
+                </>
               )}
             </div>
           </div>
@@ -207,54 +215,34 @@ function SVGEditorSSR(props: SVGEditorProps) {
         >
           <SVGEditorToolbarButton
             active={tool === "pointer"}
-            onKeyDown={() => {
-              setTool("pointer");
-              setMode(0);
-            }}
+            onKeyDown={() => setTool("pointer")}
           >
             <IconPointer size={32} />
           </SVGEditorToolbarButton>
           <SVGEditorToolbarButton
             active={tool === "rect"}
-            onKeyDown={() => {
-              setTool("rect");
-              setMode(0);
-            }}
+            onKeyDown={() => setTool("rect")}
           >
             <IconRectangle size={32} />
           </SVGEditorToolbarButton>
           <SVGEditorToolbarButton
             active={tool === "circle"}
-            onKeyDown={() => {
-              setTool("circle");
-              setMode(0);
-            }}
+            onKeyDown={() => setTool("circle")}
           >
             <IconCircle size={32} />
           </SVGEditorToolbarButton>
-          <SVGEditorToolbarButton
-            onKeyDown={() => {
-              setTool("polygon");
-              setMode(0);
-            }}
-          >
+          <SVGEditorToolbarButton onKeyDown={() => setTool("polygon")}>
             <IconPolygon size={32} />
           </SVGEditorToolbarButton>
           <SVGEditorToolbarButton
             active={tool === "line"}
-            onKeyDown={() => {
-              setTool("line");
-              setMode(0);
-            }}
+            onKeyDown={() => setTool("line")}
           >
             <IconLine size={32} />
           </SVGEditorToolbarButton>
           <SVGEditorToolbarButton
             active={tool === "point"}
-            onKeyDown={() => {
-              setTool("point");
-              setMode(0);
-            }}
+            onKeyDown={() => setTool("point")}
           >
             <IconPoint size={32} />
           </SVGEditorToolbarButton>

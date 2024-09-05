@@ -8,6 +8,7 @@ export enum Axis {
   All = 0,
   Vertical = 1,
   Horizontal = 2,
+  Rotation = 3,
 }
 
 interface BoundingBoxButtonProps
@@ -38,11 +39,6 @@ function BoundingBoxButton(props: BoundingBoxButtonProps) {
       style={{
         top: position.y,
         left: position.x,
-        // transform: CSS.Translate.toString({
-        //   ...transform,
-        //   x: axis !== Axis.Vertical ? transform?.x : undefined,
-        //   y: axis !== Axis.Horizontal ? transform?.y : undefined,
-        // } as Transform),
       }}
       variant="ghost"
       size="icon"

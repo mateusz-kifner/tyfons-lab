@@ -6,7 +6,8 @@ export type BoundingBoxHandleDiagonalDirections =
   `${BoundingBoxHandleVerticalDirections}${CapitalizeFirstLetter<BoundingBoxHandleHorizontalDirections>}`;
 export type Handles =
   | `Handle${CapitalizeFirstLetter<BoundingBoxHandleHorizontalDirections | BoundingBoxHandleVerticalDirections | BoundingBoxHandleDiagonalDirections>}`
-  | "HandleActiveArea";
+  | "HandleActiveArea"
+  | "HandleRotate";
 
 export type Vector2 = { x: number; y: number };
 

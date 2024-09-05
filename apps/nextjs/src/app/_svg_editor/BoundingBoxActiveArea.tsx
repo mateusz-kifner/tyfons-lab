@@ -10,7 +10,7 @@ interface BoundingBoxActiveAreaProps extends ComponentProps<"div"> {
 }
 
 function BoundingBoxActiveArea(props: BoundingBoxActiveAreaProps) {
-  const { AABB, active = false, id, className } = props;
+  const { AABB, active = false, id, className, ...moreProps } = props;
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id,
   });
@@ -30,6 +30,7 @@ function BoundingBoxActiveArea(props: BoundingBoxActiveAreaProps) {
       )}
       {...listeners}
       {...attributes}
+      {...moreProps}
     />
   );
 }
