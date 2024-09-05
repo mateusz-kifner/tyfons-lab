@@ -1,32 +1,15 @@
 "use client";
 import { useEffect, useId, useRef, useState } from "react";
-import SVGEditorToolbarButton from "./Button";
-import {
-  IconCircle,
-  IconLine,
-  IconPoint,
-  IconPointer,
-  IconPolygon,
-  IconRectangle,
-} from "@tabler/icons-react";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@tyfons-lab/ui-web/menubar";
+
 import { useEffectOnce } from "@/hooks/useEffectOnce";
 import BoundingBox from "./BoundingBox";
 import { useEventListener, useForceUpdate } from "@mantine/hooks";
 import useBoundingBox from "./useBoundingBox";
 import type { AABBType, Vector2 } from "./BoundingBoxTypes";
 import RotateHandle from "./RotateHandle";
-import { Separator } from "@tyfons-lab/ui-web/separator";
-import _ from "lodash";
-import { Input } from "@tyfons-lab/ui-web/input";
+import SVGEditorMenu from "./SVGEditorMenu";
+import SVGEditorToolbar, { type ToolNamesType } from "./SVGEditorToolbar";
+import SVGEditorProperties from "./SVGEditorProperties";
 
 const canvasWidth = 1080;
 const canvasHeight = 720;
@@ -40,12 +23,14 @@ interface SVGEditorProps {
 function SVGEditorSSR(props: SVGEditorProps) {
   const { title } = props;
   const uuid = useId();
-  const [tool, setTool] = useState<
-    "pointer" | "rect" | "circle" | "line" | "polygon" | "point"
-  >("pointer");
+  const [tool, setTool] = useState<ToolNamesType>("pointer");
   const [rotation, setRotation] = useState(0);
   const activeElementRef = useRef<SVGSVGElement | null>(null);
-  const forceUpdate = useForceUpdate();
+  const [forceUpdateVar, setForceUpdate] = useState(0);
+
+  const forceUpdate = () => {
+    setForceUpdate((v) => v + 1);
+  };
 
   const setAABBAction = (newAABB: AABBType) => {
     if (!activeElementRef.current) {
@@ -80,22 +65,13 @@ function SVGEditorSSR(props: SVGEditorProps) {
         return;
       }
       activeElementRef.current = target;
-      const x =
-        typeof target.getAttribute("x") === "string"
-          ? +(target.getAttribute("x") ?? "0")
-          : 0;
-      const y =
-        typeof target.getAttribute("y") === "string"
-          ? +(target.getAttribute("y") ?? "0")
-          : 0;
-      const width =
-        typeof target.getAttribute("width") === "string"
-          ? +(target.getAttribute("width") ?? "0")
-          : 0;
-      const height =
-        typeof target.getAttribute("height") === "string"
-          ? +(target.getAttribute("height") ?? "0")
-          : 0;
+      setTimeout(() => forceUpdate());
+
+      const box = target.getBoundingClientRect();
+      const x = box.x;
+      const y = box.y;
+      const width = box.width;
+      const height = box.height;
       const newAABB: AABBType = {
         A: { x, y },
         B: {
@@ -126,37 +102,7 @@ function SVGEditorSSR(props: SVGEditorProps) {
   return (
     <div className="flex w-full grow flex-col overflow-hidden">
       <div className="flex p-1">
-        <Menubar className="flex grow">
-          <MenubarMenu>
-            <MenubarTrigger>File</MenubarTrigger>
-            <MenubarContent>
-              <MenubarItem>
-                New file <MenubarShortcut>⌘T</MenubarShortcut>
-              </MenubarItem>
-              <MenubarItem>Open</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>Save</MenubarItem>
-              <MenubarItem>Save as...</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>Print</MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-          <MenubarMenu>
-            <MenubarTrigger>Edit</MenubarTrigger>
-            <MenubarContent>
-              <MenubarItem>
-                Undo <MenubarShortcut>⌘Z</MenubarShortcut>
-              </MenubarItem>
-              <MenubarItem>
-                Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
-              </MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>Cut</MenubarItem>
-              <MenubarItem>Copy</MenubarItem>
-              <MenubarItem>Paste</MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-        </Menubar>
+        <SVGEditorMenu />
       </div>
       <div className="flex grow">
         <div className="relative flex w-screen grow overflow-hidden">
@@ -189,7 +135,7 @@ function SVGEditorSSR(props: SVGEditorProps) {
                     height: canvasHeight,
                   }}
                 >
-                  <rect x="10" y="10" width="100" height="100" />
+                  <rect x="10" width="100" height="100" />
                   <rect x="130" y="10" width="100" height="100" />
                   <rect x="250" y="10" width="100" height="100" />
                 </svg>
@@ -213,68 +159,14 @@ function SVGEditorSSR(props: SVGEditorProps) {
               </div>
             </div>
           </div>
-          <div
-            id="Toolbar"
-            className="-translate-y-1/2 absolute top-1/2 left-2 flex flex-col gap-2"
-          >
-            <SVGEditorToolbarButton
-              active={tool === "pointer"}
-              onKeyDown={() => setTool("pointer")}
-            >
-              <IconPointer size={32} />
-            </SVGEditorToolbarButton>
-            <SVGEditorToolbarButton
-              active={tool === "rect"}
-              onKeyDown={() => setTool("rect")}
-            >
-              <IconRectangle size={32} />
-            </SVGEditorToolbarButton>
-            <SVGEditorToolbarButton
-              active={tool === "circle"}
-              onKeyDown={() => setTool("circle")}
-            >
-              <IconCircle size={32} />
-            </SVGEditorToolbarButton>
-            <SVGEditorToolbarButton onKeyDown={() => setTool("polygon")}>
-              <IconPolygon size={32} />
-            </SVGEditorToolbarButton>
-            <SVGEditorToolbarButton
-              active={tool === "line"}
-              onKeyDown={() => setTool("line")}
-            >
-              <IconLine size={32} />
-            </SVGEditorToolbarButton>
-            <SVGEditorToolbarButton
-              active={tool === "point"}
-              onKeyDown={() => setTool("point")}
-            >
-              <IconPoint size={32} />
-            </SVGEditorToolbarButton>
-          </div>
+          <SVGEditorToolbar tool={tool} setTool={setTool} />
         </div>
         <div className="flex w-96 pr-1 pb-1">
           <div className="flex grow flex-col gap-2 rounded border p-2">
-            <h3> {_.capitalize(activeElementRef.current?.tagName ?? "svg")}</h3>
-            <Separator />
-            {!!activeElementRef.current?.attributes &&
-              activeElementRef.current?.attributes.length > 0 &&
-              Array.from(activeElementRef.current.attributes).map(
-                (attr, index) => (
-                  <div key={`${uuid}${index}`}>
-                    {attr.name}{" "}
-                    <Input
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        activeElementRef.current?.setAttribute(
-                          attr.name,
-                          value,
-                        );
-                      }}
-                      defaultValue={attr.value}
-                    />
-                  </div>
-                ),
-              )}
+            <SVGEditorProperties
+              element={activeElementRef.current}
+              key={forceUpdateVar}
+            />
           </div>
         </div>
       </div>
