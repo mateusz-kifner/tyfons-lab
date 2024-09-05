@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import SVGEditorToolbarButton from "./Button";
 import {
   IconCircle,
@@ -24,11 +24,14 @@ import { useEventListener, useForceUpdate } from "@mantine/hooks";
 import useBoundingBox from "./useBoundingBox";
 import type { AABBType, Vector2 } from "./BoundingBoxTypes";
 import RotateHandle from "./RotateHandle";
-import { buttonOffset, buttonSize } from "./BoundingBoxConfig";
+import { Separator } from "@tyfons-lab/ui-web/separator";
+import _ from "lodash";
+import { Input } from "@tyfons-lab/ui-web/input";
 
 const canvasWidth = 1080;
 const canvasHeight = 720;
 const topMenuWidth = 64 + 32;
+const rightMenuWidth = 384;
 
 interface SVGEditorProps {
   title: string;
@@ -36,7 +39,7 @@ interface SVGEditorProps {
 
 function SVGEditorSSR(props: SVGEditorProps) {
   const { title } = props;
-
+  const uuid = useId();
   const [tool, setTool] = useState<
     "pointer" | "rect" | "circle" | "line" | "polygon" | "point"
   >("pointer");
@@ -111,7 +114,7 @@ function SVGEditorSSR(props: SVGEditorProps) {
     const bodyWidth = bodyRect.width;
     const bodyHeight = bodyRect.height;
     scrollRef.current?.scrollTo(
-      canvasWidth * 2.5 - (bodyWidth - canvasWidth) / 2,
+      canvasWidth * 2.5 - (bodyWidth - canvasWidth - rightMenuWidth) / 2,
       canvasHeight * 2.5 - (bodyHeight - topMenuWidth - canvasHeight) / 2,
     );
   });
@@ -155,97 +158,124 @@ function SVGEditorSSR(props: SVGEditorProps) {
           </MenubarMenu>
         </Menubar>
       </div>
-      <div className="relative flex w-screen grow overflow-hidden">
-        <div
-          ref={scrollRef}
-          className="absolute top-0 left-0 h-full w-full overflow-scroll"
-        >
+      <div className="flex grow">
+        <div className="relative flex w-screen grow overflow-hidden">
           <div
-            style={{
-              width: canvasWidth * 6,
-              height: canvasHeight * 6,
-            }}
+            ref={scrollRef}
+            className="absolute top-0 left-0 h-full w-full overflow-scroll"
           >
             <div
-              className="absolute"
               style={{
-                top: canvasHeight * 2.5,
-                left: canvasWidth * 2.5,
-                width: canvasWidth,
-                height: canvasHeight,
+                width: canvasWidth * 6,
+                height: canvasHeight * 6,
               }}
             >
-              {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-              <svg
-                id="svg_file"
-                ref={svgRef}
-                className=" border-1 border-stone-900 border-solid bg-white"
+              <div
+                className="absolute"
                 style={{
+                  top: canvasHeight * 2.5,
+                  left: canvasWidth * 2.5,
                   width: canvasWidth,
                   height: canvasHeight,
                 }}
               >
-                <rect x="10" y="10" width="100" height="100" />
-                <rect x="130" y="10" width="100" height="100" />
-                <rect x="250" y="10" width="100" height="100" />
-              </svg>
-              {activeElementRef.current !== null && (
-                <>
-                  <BoundingBox
-                    AABBbox={AABBbox}
-                    AABB={AABB}
-                    {...eventHandlers}
-                    activeHandle={activeHandle}
-                    className="absolute top-0 left-0"
-                  />
-                  <RotateHandle
-                    className="absolute top-0 left-0"
-                    AABBbox={AABBbox}
-                    rotation={rotation}
-                    setRotation={setRotation}
-                  />
-                </>
-              )}
+                {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+                <svg
+                  id="svg_file"
+                  ref={svgRef}
+                  className=" border-1 border-stone-900 border-solid bg-white"
+                  style={{
+                    width: canvasWidth,
+                    height: canvasHeight,
+                  }}
+                >
+                  <rect x="10" y="10" width="100" height="100" />
+                  <rect x="130" y="10" width="100" height="100" />
+                  <rect x="250" y="10" width="100" height="100" />
+                </svg>
+                {activeElementRef.current !== null && (
+                  <>
+                    <BoundingBox
+                      AABBbox={AABBbox}
+                      AABB={AABB}
+                      {...eventHandlers}
+                      activeHandle={activeHandle}
+                      className="absolute top-0 left-0"
+                    />
+                    <RotateHandle
+                      className="absolute top-0 left-0"
+                      AABBbox={AABBbox}
+                      rotation={rotation}
+                      setRotation={setRotation}
+                    />
+                  </>
+                )}
+              </div>
             </div>
           </div>
+          <div
+            id="Toolbar"
+            className="-translate-y-1/2 absolute top-1/2 left-2 flex flex-col gap-2"
+          >
+            <SVGEditorToolbarButton
+              active={tool === "pointer"}
+              onKeyDown={() => setTool("pointer")}
+            >
+              <IconPointer size={32} />
+            </SVGEditorToolbarButton>
+            <SVGEditorToolbarButton
+              active={tool === "rect"}
+              onKeyDown={() => setTool("rect")}
+            >
+              <IconRectangle size={32} />
+            </SVGEditorToolbarButton>
+            <SVGEditorToolbarButton
+              active={tool === "circle"}
+              onKeyDown={() => setTool("circle")}
+            >
+              <IconCircle size={32} />
+            </SVGEditorToolbarButton>
+            <SVGEditorToolbarButton onKeyDown={() => setTool("polygon")}>
+              <IconPolygon size={32} />
+            </SVGEditorToolbarButton>
+            <SVGEditorToolbarButton
+              active={tool === "line"}
+              onKeyDown={() => setTool("line")}
+            >
+              <IconLine size={32} />
+            </SVGEditorToolbarButton>
+            <SVGEditorToolbarButton
+              active={tool === "point"}
+              onKeyDown={() => setTool("point")}
+            >
+              <IconPoint size={32} />
+            </SVGEditorToolbarButton>
+          </div>
         </div>
-        <div
-          id="Toolbar"
-          className="-translate-y-1/2 absolute top-1/2 left-2 flex flex-col gap-2"
-        >
-          <SVGEditorToolbarButton
-            active={tool === "pointer"}
-            onKeyDown={() => setTool("pointer")}
-          >
-            <IconPointer size={32} />
-          </SVGEditorToolbarButton>
-          <SVGEditorToolbarButton
-            active={tool === "rect"}
-            onKeyDown={() => setTool("rect")}
-          >
-            <IconRectangle size={32} />
-          </SVGEditorToolbarButton>
-          <SVGEditorToolbarButton
-            active={tool === "circle"}
-            onKeyDown={() => setTool("circle")}
-          >
-            <IconCircle size={32} />
-          </SVGEditorToolbarButton>
-          <SVGEditorToolbarButton onKeyDown={() => setTool("polygon")}>
-            <IconPolygon size={32} />
-          </SVGEditorToolbarButton>
-          <SVGEditorToolbarButton
-            active={tool === "line"}
-            onKeyDown={() => setTool("line")}
-          >
-            <IconLine size={32} />
-          </SVGEditorToolbarButton>
-          <SVGEditorToolbarButton
-            active={tool === "point"}
-            onKeyDown={() => setTool("point")}
-          >
-            <IconPoint size={32} />
-          </SVGEditorToolbarButton>
+        <div className="flex w-96 pr-1 pb-1">
+          <div className="flex grow flex-col gap-2 rounded border p-2">
+            <h3> {_.capitalize(activeElementRef.current?.tagName ?? "svg")}</h3>
+            <Separator />
+            {!!activeElementRef.current?.attributes &&
+              activeElementRef.current?.attributes.length > 0 &&
+              Array.from(activeElementRef.current.attributes).map(
+                (attr, index) => (
+                  <div key={`${uuid}${index}`}>
+                    {attr.name}{" "}
+                    <Input
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        activeElementRef.current?.setAttribute(
+                          attr.name,
+                          value,
+                        );
+                      }}
+                      defaultValue={attr.value}
+                    />
+                  </div>
+                ),
+              )}
+          </div>
         </div>
       </div>
     </div>
