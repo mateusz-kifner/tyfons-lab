@@ -14,19 +14,19 @@
   },
   "devDependencies": {
     "@tyfons-lab/tsconfig": "workspace:*",
-    "@types/express": "^4.17.21",
+    "@types/express": "4.17.21",
     "@types/node": "20.16.5",
-    "@types/ws": "^8.5.12",
-    "nodemon": "^3.1.4",
-    "ts-node": "^10.9.2",
-    "tsc": "^2.0.4",
-    "tsx": "^4.19.0",
-    "typescript": "5.5.4"
+    "@types/ws": "8.5.12",
+    "nodemon": "3.1.4",
+    "ts-node": "10.9.2",
+    "tsc": "2.0.4",
+    "tsx": "4.19.1",
+    "typescript": "5.6.2"
   },
   "dependencies": {
     "@tyfons-lab/auth": "workspace:*",
-    "express": "^4.19.2",
-    "ws": "^8.18.0",
+    "express": "4.21.0",
+    "ws": "8.18.0",
     "zod": "3.23.8"
   },
   "private": true,

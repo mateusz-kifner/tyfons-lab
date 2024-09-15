@@ -16,7 +16,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@trpc/server": "11.0.0-rc.498",
+    "@trpc/server": "11.0.0-rc.502",
     "@tyfons-lab/auth": "workspace:*",
     "@tyfons-lab/db": "workspace:*",
     "superjson": "2.2.1",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@tyfons-lab/tsconfig": "workspace:*",
-    "typescript": "5.5.4"
+    "typescript": "5.6.2"
   },
   "private": true,
   "license": "UNLICENSED",
